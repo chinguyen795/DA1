@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DA1.Properties
+namespace UIDuAn1.Properties
 {
 
 
