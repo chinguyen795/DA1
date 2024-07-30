@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DA1
+namespace UIDuAn1
 {
-    public partial class Form1 : Form
+    public partial class UC_MayTinh : UserControl
     {
-        public Form1()
+        public UC_MayTinh()
         {
             InitializeComponent();
         }
