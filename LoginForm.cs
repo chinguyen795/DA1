@@ -67,7 +67,11 @@ namespace Ui_DuAn
                 MessageBox.Show("Vui lòng nhập mật khẩu!");
                 return;
             }
-
+            if (matKhau.Length < 8)
+            {
+                MessageBox.Show("Mật khẩu phải có ít nhất 8 ký tự!");
+                return;
+            }
             using (var context = new QUANLYQUANNETContext())
             {
                 var query = from NhanVien in context.NhanVien
