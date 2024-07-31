@@ -217,6 +217,7 @@
             this.lbQuenMatKhau.Size = new System.Drawing.Size(106, 16);
             this.lbQuenMatKhau.TabIndex = 17;
             this.lbQuenMatKhau.Text = "Quên mật khẩu ?";
+            this.lbQuenMatKhau.Click += new System.EventHandler(this.lbQuenMatKhau_Click);
             // 
             // btnThoat
             // 
@@ -240,6 +241,7 @@
             this.btnThoat.Size = new System.Drawing.Size(115, 41);
             this.btnThoat.TabIndex = 132;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnDangNhap
             // 
@@ -263,6 +265,7 @@
             this.btnDangNhap.Size = new System.Drawing.Size(115, 41);
             this.btnDangNhap.TabIndex = 133;
             this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // LoginForm
             // 
