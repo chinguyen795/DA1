@@ -507,7 +507,7 @@
             this.Controls.Add(this.dtgHoaDon);
             this.Name = "UC_HoaDon";
             this.Size = new System.Drawing.Size(999, 758);
-            this.Load += new System.EventHandler(this.UC_HoaDon_Load);
+//            this.Load += new System.EventHandler(this.UC_HoaDon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgHoaDon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
