@@ -52,7 +52,11 @@ namespace UIDuAn1
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
                 return;
             }
-
+            if (matkhaumoi.Length < 8)
+            {
+                MessageBox.Show("Mật khẩu phải có ít nhất 8 ký tự!");
+                return;
+            }
             using (var context = new QUANLYQUANNETContext())
             {
                 var query = from NhanVien in context.NhanVien
@@ -97,5 +101,6 @@ namespace UIDuAn1
                 }
             }
         }
+
     }
 }
