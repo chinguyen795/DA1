@@ -62,6 +62,7 @@
             this.btnXacNhan.Size = new System.Drawing.Size(115, 41);
             this.btnXacNhan.TabIndex = 142;
             this.btnXacNhan.Text = "Xác nhận";
+            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // btnThoat
             // 
@@ -85,6 +86,7 @@
             this.btnThoat.Size = new System.Drawing.Size(115, 41);
             this.btnThoat.TabIndex = 142;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // label3
             // 
