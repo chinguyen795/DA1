@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnXuatThongTin = new Guna.UI2.WinForms.Guna2GradientButton();
             this.cbLuaChon = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtThang = new Guna.UI2.WinForms.Guna2TextBox();
@@ -61,7 +61,7 @@
             this.btnXuatThongTin.ForeColor = System.Drawing.Color.White;
             this.btnXuatThongTin.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnXuatThongTin.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
-            this.btnXuatThongTin.Location = new System.Drawing.Point(578, 11);
+            this.btnXuatThongTin.Location = new System.Drawing.Point(563, 37);
             this.btnXuatThongTin.Name = "btnXuatThongTin";
             this.btnXuatThongTin.Size = new System.Drawing.Size(147, 44);
             this.btnXuatThongTin.TabIndex = 130;
@@ -81,7 +81,7 @@
             this.cbLuaChon.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbLuaChon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbLuaChon.ItemHeight = 30;
-            this.cbLuaChon.Location = new System.Drawing.Point(31, 11);
+            this.cbLuaChon.Location = new System.Drawing.Point(34, 41);
             this.cbLuaChon.Name = "cbLuaChon";
             this.cbLuaChon.Size = new System.Drawing.Size(340, 36);
             this.cbLuaChon.TabIndex = 131;
@@ -102,7 +102,7 @@
             this.txtThang.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtThang.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtThang.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtThang.Location = new System.Drawing.Point(31, 171);
+            this.txtThang.Location = new System.Drawing.Point(34, 201);
             this.txtThang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtThang.Name = "txtThang";
             this.txtThang.PasswordChar = '\0';
@@ -120,7 +120,7 @@
             this.lbThongTin3.BackColor = System.Drawing.Color.Transparent;
             this.lbThongTin3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbThongTin3.ForeColor = System.Drawing.Color.Black;
-            this.lbThongTin3.Location = new System.Drawing.Point(613, 193);
+            this.lbThongTin3.Location = new System.Drawing.Point(635, 254);
             this.lbThongTin3.Name = "lbThongTin3";
             this.lbThongTin3.Size = new System.Drawing.Size(75, 20);
             this.lbThongTin3.TabIndex = 134;
@@ -135,7 +135,7 @@
             this.lbThongTin2.BackColor = System.Drawing.Color.Transparent;
             this.lbThongTin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbThongTin2.ForeColor = System.Drawing.Color.Black;
-            this.lbThongTin2.Location = new System.Drawing.Point(613, 141);
+            this.lbThongTin2.Location = new System.Drawing.Point(635, 193);
             this.lbThongTin2.Name = "lbThongTin2";
             this.lbThongTin2.Size = new System.Drawing.Size(75, 20);
             this.lbThongTin2.TabIndex = 135;
@@ -150,7 +150,7 @@
             this.lbThongTin1.BackColor = System.Drawing.Color.Transparent;
             this.lbThongTin1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbThongTin1.ForeColor = System.Drawing.Color.Black;
-            this.lbThongTin1.Location = new System.Drawing.Point(613, 91);
+            this.lbThongTin1.Location = new System.Drawing.Point(635, 125);
             this.lbThongTin1.Name = "lbThongTin1";
             this.lbThongTin1.Size = new System.Drawing.Size(75, 20);
             this.lbThongTin1.TabIndex = 136;
@@ -158,27 +158,27 @@
             // 
             // dtgKhachHang
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dtgKhachHang.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.dtgKhachHang.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgKhachHang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgKhachHang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgKhachHang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgKhachHang.ColumnHeadersHeight = 4;
             this.dtgKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgKhachHang.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgKhachHang.DefaultCellStyle = dataGridViewCellStyle9;
             this.dtgKhachHang.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgKhachHang.Location = new System.Drawing.Point(0, 377);
             this.dtgKhachHang.Name = "dtgKhachHang";
@@ -221,7 +221,7 @@
             this.cbMNV.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbMNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbMNV.ItemHeight = 30;
-            this.cbMNV.Location = new System.Drawing.Point(31, 95);
+            this.cbMNV.Location = new System.Drawing.Point(34, 125);
             this.cbMNV.Name = "cbMNV";
             this.cbMNV.Size = new System.Drawing.Size(211, 36);
             this.cbMNV.TabIndex = 138;

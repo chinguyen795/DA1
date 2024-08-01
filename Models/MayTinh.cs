@@ -9,11 +9,6 @@ namespace UIDuAn1.Models
 {
     public partial class MayTinh
     {
-        public MayTinh()
-        {
-            HoaDon = new HashSet<HoaDon>();
-        }
-
         public string MaMay { get; set; }
         public string Cpu { get; set; }
         public string Gpu { get; set; }
@@ -23,6 +18,5 @@ namespace UIDuAn1.Models
         public string MaNhanVien { get; set; }
 
         public virtual NhanVien MaNhanVienNavigation { get; set; }
-        public virtual ICollection<HoaDon> HoaDon { get; set; }
     }
 }

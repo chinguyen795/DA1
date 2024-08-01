@@ -14,6 +14,7 @@ namespace UIDuAn1.Models
         public int SoGioLam { get; set; }
         public string ViPham { get; set; }
         public string MaNhanVien { get; set; }
+        public DateTime NgayLam { get; set; }
 
         public virtual NhanVien MaNhanVienNavigation { get; set; }
     }

@@ -43,12 +43,10 @@
             this.txtGiaTien = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtGPU = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCPU = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtMayTinh = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.dtgMayTinh = new Guna.UI2.WinForms.Guna2DataGridView();
             this.cbMaNV = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -59,6 +57,8 @@
             this.btnXoa = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnLamMoi = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnTimKiem = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMaMayTinh = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgMayTinh)).BeginInit();
             this.SuspendLayout();
@@ -261,31 +261,6 @@
             this.txtCPU.Size = new System.Drawing.Size(211, 35);
             this.txtCPU.TabIndex = 56;
             // 
-            // txtMayTinh
-            // 
-            this.txtMayTinh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMayTinh.AutoRoundedCorners = true;
-            this.txtMayTinh.BorderRadius = 16;
-            this.txtMayTinh.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMayTinh.DefaultText = "";
-            this.txtMayTinh.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtMayTinh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtMayTinh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMayTinh.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMayTinh.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMayTinh.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtMayTinh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMayTinh.Location = new System.Drawing.Point(35, 118);
-            this.txtMayTinh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtMayTinh.Name = "txtMayTinh";
-            this.txtMayTinh.PasswordChar = '\0';
-            this.txtMayTinh.PlaceholderText = "Mã máy tính";
-            this.txtMayTinh.SelectedText = "";
-            this.txtMayTinh.Size = new System.Drawing.Size(211, 35);
-            this.txtMayTinh.TabIndex = 55;
-            // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -345,21 +320,6 @@
             this.label1.Size = new System.Drawing.Size(42, 20);
             this.label1.TabIndex = 50;
             this.label1.Text = "CPU";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(31, 78);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 20);
-            this.label3.TabIndex = 49;
-            this.label3.Text = "Mã máy tính";
             // 
             // dtgMayTinh
             // 
@@ -601,6 +561,47 @@
             this.btnTimKiem.TabIndex = 142;
             this.btnTimKiem.Text = "Tìm kiếm";
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(31, 78);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 20);
+            this.label3.TabIndex = 49;
+            this.label3.Text = "Mã máy tính";
+            // 
+            // txtMaMayTinh
+            // 
+            this.txtMaMayTinh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaMayTinh.AutoRoundedCorners = true;
+            this.txtMaMayTinh.BorderRadius = 16;
+            this.txtMaMayTinh.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMaMayTinh.DefaultText = "";
+            this.txtMaMayTinh.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtMaMayTinh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtMaMayTinh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMaMayTinh.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMaMayTinh.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMaMayTinh.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtMaMayTinh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMaMayTinh.Location = new System.Drawing.Point(29, 118);
+            this.txtMaMayTinh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMaMayTinh.Name = "txtMaMayTinh";
+            this.txtMaMayTinh.PasswordChar = '\0';
+            this.txtMaMayTinh.PlaceholderText = "Mã máy tính";
+            this.txtMaMayTinh.ReadOnly = true;
+            this.txtMaMayTinh.SelectedText = "";
+            this.txtMaMayTinh.Size = new System.Drawing.Size(211, 35);
+            this.txtMaMayTinh.TabIndex = 55;
+            // 
             // UC_MayTinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -621,7 +622,7 @@
             this.Controls.Add(this.txtGiaTien);
             this.Controls.Add(this.txtGPU);
             this.Controls.Add(this.txtCPU);
-            this.Controls.Add(this.txtMayTinh);
+            this.Controls.Add(this.txtMaMayTinh);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
@@ -651,12 +652,10 @@
         private Guna.UI2.WinForms.Guna2TextBox txtGiaTien;
         private Guna.UI2.WinForms.Guna2TextBox txtGPU;
         private Guna.UI2.WinForms.Guna2TextBox txtCPU;
-        private Guna.UI2.WinForms.Guna2TextBox txtMayTinh;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2DataGridView dtgMayTinh;
         private Guna.UI2.WinForms.Guna2ComboBox cbMaNV;
         private System.Windows.Forms.Label label9;
@@ -667,5 +666,7 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnXoa;
         private Guna.UI2.WinForms.Guna2GradientButton btnLamMoi;
         private Guna.UI2.WinForms.Guna2GradientButton btnTimKiem;
+        private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2TextBox txtMaMayTinh;
     }
 }
