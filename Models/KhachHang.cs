@@ -11,16 +11,16 @@ namespace UIDuAn1.Models
     {
         public KhachHang()
         {
-            HoaDon = new HashSet<HoaDon>();
+            HoaDonChiTiet = new HashSet<HoaDonChiTiet>();
         }
 
         public string MaKhachHang { get; set; }
         public string TaiKhoan { get; set; }
         public string MatKhau { get; set; }
-        public int SoGioSuDung { get; set; }
+        public decimal SoTien { get; set; }
         public string MaNhanVien { get; set; }
 
         public virtual NhanVien MaNhanVienNavigation { get; set; }
-        public virtual ICollection<HoaDon> HoaDon { get; set; }
+        public virtual ICollection<HoaDonChiTiet> HoaDonChiTiet { get; set; }
     }
 }

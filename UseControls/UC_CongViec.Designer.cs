@@ -145,6 +145,7 @@
             this.txtMaCaLam.Name = "txtMaCaLam";
             this.txtMaCaLam.PasswordChar = '\0';
             this.txtMaCaLam.PlaceholderText = "Mã ca làm";
+            this.txtMaCaLam.ReadOnly = true;
             this.txtMaCaLam.SelectedText = "";
             this.txtMaCaLam.Size = new System.Drawing.Size(211, 35);
             this.txtMaCaLam.TabIndex = 55;
@@ -477,7 +478,6 @@
             this.Controls.Add(this.dtgCongViec);
             this.Name = "UC_CongViec";
             this.Size = new System.Drawing.Size(999, 758);
-//            this.Load += new System.EventHandler(this.UC_CongViec_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgCongViec)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

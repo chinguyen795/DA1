@@ -22,7 +22,7 @@ namespace Ui_DuAn
         {
             Application.Exit();
         }
-
+        private bool ispasswordShow = false;
         // Class dùng để lưu thông tin đăng nhập
         public class CurrentUser
         {
@@ -104,6 +104,20 @@ namespace Ui_DuAn
             FormQuenMatKhau formQuenMatKhau = new FormQuenMatKhau();
             formQuenMatKhau.Show();
             this.Hide();
+        }
+
+        private void btnShowMkCu_Click(object sender, EventArgs e)
+        {
+            if (ispasswordShow)
+            {
+                txtMatKhau.PasswordChar = '\0';
+                ispasswordShow = false;
+            }
+            else
+            {
+                txtMatKhau.PasswordChar = '●';
+                ispasswordShow = true;
+            }
         }
     }
 
