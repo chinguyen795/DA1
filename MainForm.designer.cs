@@ -327,7 +327,7 @@
             this.pnContainer.MaximumSize = new System.Drawing.Size(205, 114);
             this.pnContainer.MinimumSize = new System.Drawing.Size(205, 40);
             this.pnContainer.Name = "pnContainer";
-            this.pnContainer.Size = new System.Drawing.Size(205, 41);
+            this.pnContainer.Size = new System.Drawing.Size(205, 40);
             this.pnContainer.TabIndex = 14;
             // 
             // btnConViec
@@ -335,7 +335,6 @@
             this.btnConViec.BackColor = System.Drawing.Color.Transparent;
             this.btnConViec.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(130)))), ((int)(((byte)(211)))));
             this.btnConViec.BorderRadius = 10;
-            this.btnConViec.BorderThickness = 1;
             this.btnConViec.CustomBorderThickness = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.btnConViec.CustomizableEdges.TopLeft = false;
             this.btnConViec.CustomizableEdges.TopRight = false;
@@ -345,10 +344,10 @@
             this.btnConViec.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnConViec.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(130)))), ((int)(((byte)(211)))));
             this.btnConViec.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConViec.ForeColor = System.Drawing.Color.Black;
+            this.btnConViec.ForeColor = System.Drawing.Color.White;
             this.btnConViec.HoverState.BorderColor = System.Drawing.Color.Navy;
-            this.btnConViec.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(83)))), ((int)(((byte)(251)))));
-            this.btnConViec.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnConViec.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnConViec.HoverState.ForeColor = System.Drawing.Color.Black;
             this.btnConViec.Image = ((System.Drawing.Image)(resources.GetObject("btnConViec.Image")));
             this.btnConViec.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnConViec.ImageOffset = new System.Drawing.Point(8, 0);
@@ -370,10 +369,10 @@
             this.btnThongTin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnThongTin.FillColor = System.Drawing.Color.Transparent;
             this.btnThongTin.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTin.ForeColor = System.Drawing.Color.Black;
+            this.btnThongTin.ForeColor = System.Drawing.Color.White;
             this.btnThongTin.HoverState.BorderColor = System.Drawing.Color.Navy;
-            this.btnThongTin.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(83)))), ((int)(((byte)(251)))));
-            this.btnThongTin.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnThongTin.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnThongTin.HoverState.ForeColor = System.Drawing.Color.Black;
             this.btnThongTin.Image = ((System.Drawing.Image)(resources.GetObject("btnThongTin.Image")));
             this.btnThongTin.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnThongTin.ImageOffset = new System.Drawing.Point(8, 0);

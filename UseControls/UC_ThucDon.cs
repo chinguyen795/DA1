@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIDuAn1.Models;
+
 namespace UIDuAn1
 {
     public partial class UC_ThucDon : UserControl
@@ -59,5 +60,6 @@ namespace UIDuAn1
                 }
             }
         }
+
     }
 }

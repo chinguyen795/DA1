@@ -228,6 +228,7 @@
             this.txtMaKhachHang.Name = "txtMaKhachHang";
             this.txtMaKhachHang.PasswordChar = '\0';
             this.txtMaKhachHang.PlaceholderText = "Mã khách hàng";
+            this.txtMaKhachHang.ReadOnly = true;
             this.txtMaKhachHang.SelectedText = "";
             this.txtMaKhachHang.Size = new System.Drawing.Size(211, 35);
             this.txtMaKhachHang.TabIndex = 102;

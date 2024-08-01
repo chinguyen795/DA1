@@ -46,6 +46,7 @@
             this.lbQuenMatKhau = new System.Windows.Forms.Label();
             this.btnThoat = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnDangNhap = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnShowMkCu = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -99,7 +100,7 @@
             this.txtMatKhau.Location = new System.Drawing.Point(43, 205);
             this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.PasswordChar = '\0';
+            this.txtMatKhau.PasswordChar = '●';
             this.txtMatKhau.PlaceholderText = "Mật khẩu";
             this.txtMatKhau.SelectedText = "";
             this.txtMatKhau.Size = new System.Drawing.Size(302, 37);
@@ -267,10 +268,32 @@
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
+            // btnShowMkCu
+            // 
+            this.btnShowMkCu.BackColor = System.Drawing.Color.White;
+            this.btnShowMkCu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnShowMkCu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnShowMkCu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnShowMkCu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnShowMkCu.FillColor = System.Drawing.Color.Transparent;
+            this.btnShowMkCu.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnShowMkCu.ForeColor = System.Drawing.Color.White;
+            this.btnShowMkCu.HoverState.FillColor = System.Drawing.Color.White;
+            this.btnShowMkCu.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.btnShowMkCu.Image = ((System.Drawing.Image)(resources.GetObject("btnShowMkCu.Image")));
+            this.btnShowMkCu.Location = new System.Drawing.Point(311, 211);
+            this.btnShowMkCu.Name = "btnShowMkCu";
+            this.btnShowMkCu.PressedColor = System.Drawing.Color.White;
+            this.btnShowMkCu.ShadowDecoration.Color = System.Drawing.Color.White;
+            this.btnShowMkCu.Size = new System.Drawing.Size(25, 25);
+            this.btnShowMkCu.TabIndex = 134;
+            this.btnShowMkCu.Click += new System.EventHandler(this.btnShowMkCu_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(850, 475);
+            this.Controls.Add(this.btnShowMkCu);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.lbQuenMatKhau);
@@ -313,6 +336,7 @@
         private System.Windows.Forms.Label lbQuenMatKhau;
         private Guna.UI2.WinForms.Guna2GradientButton btnDangNhap;
         private Guna.UI2.WinForms.Guna2GradientButton btnThoat;
+        private Guna.UI2.WinForms.Guna2Button btnShowMkCu;
     }
 }
 
