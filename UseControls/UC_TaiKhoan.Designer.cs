@@ -50,6 +50,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnDoiMatKhau = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnTimKiem = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnShowMkCu = new Guna.UI2.WinForms.Guna2Button();
+            this.btnShowMkNhapLai = new Guna.UI2.WinForms.Guna2Button();
+            this.btnShowMkMoi = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // label13
@@ -98,8 +101,7 @@
             // 
             // txtMatKhauCu
             // 
-            this.txtMatKhauCu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtMatKhauCu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMatKhauCu.AutoRoundedCorners = true;
             this.txtMatKhauCu.BorderRadius = 16;
@@ -112,10 +114,11 @@
             this.txtMatKhauCu.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMatKhauCu.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMatKhauCu.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMatKhauCu.IconRightOffset = new System.Drawing.Point(10, 0);
             this.txtMatKhauCu.Location = new System.Drawing.Point(628, 217);
             this.txtMatKhauCu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMatKhauCu.Name = "txtMatKhauCu";
-            this.txtMatKhauCu.PasswordChar = '\0';
+            this.txtMatKhauCu.PasswordChar = '●';
             this.txtMatKhauCu.PlaceholderText = "Mật khẩu cũ";
             this.txtMatKhauCu.SelectedText = "";
             this.txtMatKhauCu.Size = new System.Drawing.Size(211, 35);
@@ -148,8 +151,7 @@
             // 
             // txtMatKhauMoi
             // 
-            this.txtMatKhauMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtMatKhauMoi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMatKhauMoi.AutoRoundedCorners = true;
             this.txtMatKhauMoi.BorderRadius = 16;
@@ -162,10 +164,11 @@
             this.txtMatKhauMoi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMatKhauMoi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMatKhauMoi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMatKhauMoi.IconRightOffset = new System.Drawing.Point(10, 0);
             this.txtMatKhauMoi.Location = new System.Drawing.Point(629, 321);
             this.txtMatKhauMoi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMatKhauMoi.Name = "txtMatKhauMoi";
-            this.txtMatKhauMoi.PasswordChar = '\0';
+            this.txtMatKhauMoi.PasswordChar = '●';
             this.txtMatKhauMoi.PlaceholderText = "Mật khẩu mới";
             this.txtMatKhauMoi.SelectedText = "";
             this.txtMatKhauMoi.Size = new System.Drawing.Size(211, 35);
@@ -192,14 +195,14 @@
             this.txtMaVaTenNV.Name = "txtMaVaTenNV";
             this.txtMaVaTenNV.PasswordChar = '\0';
             this.txtMaVaTenNV.PlaceholderText = "Mã | Tên nhân viên";
+            this.txtMaVaTenNV.ReadOnly = true;
             this.txtMaVaTenNV.SelectedText = "";
             this.txtMaVaTenNV.Size = new System.Drawing.Size(211, 35);
             this.txtMaVaTenNV.TabIndex = 107;
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
@@ -243,8 +246,7 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
@@ -277,6 +279,7 @@
             this.txtVaiTro.Name = "txtVaiTro";
             this.txtVaiTro.PasswordChar = '\0';
             this.txtVaiTro.PlaceholderText = "Vai trò";
+            this.txtVaiTro.ReadOnly = true;
             this.txtVaiTro.SelectedText = "";
             this.txtVaiTro.Size = new System.Drawing.Size(211, 35);
             this.txtVaiTro.TabIndex = 123;
@@ -302,6 +305,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.PlaceholderText = "Email";
+            this.txtEmail.ReadOnly = true;
             this.txtEmail.SelectedText = "";
             this.txtEmail.Size = new System.Drawing.Size(211, 35);
             this.txtEmail.TabIndex = 122;
@@ -338,8 +342,7 @@
             // 
             // txtNhapLaiMatKhau
             // 
-            this.txtNhapLaiMatKhau.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNhapLaiMatKhau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNhapLaiMatKhau.AutoRoundedCorners = true;
             this.txtNhapLaiMatKhau.BorderRadius = 16;
@@ -352,10 +355,11 @@
             this.txtNhapLaiMatKhau.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNhapLaiMatKhau.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtNhapLaiMatKhau.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNhapLaiMatKhau.IconRightOffset = new System.Drawing.Point(10, 0);
             this.txtNhapLaiMatKhau.Location = new System.Drawing.Point(629, 434);
             this.txtNhapLaiMatKhau.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNhapLaiMatKhau.Name = "txtNhapLaiMatKhau";
-            this.txtNhapLaiMatKhau.PasswordChar = '\0';
+            this.txtNhapLaiMatKhau.PasswordChar = '●';
             this.txtNhapLaiMatKhau.PlaceholderText = "Nhập lại mật khẩu";
             this.txtNhapLaiMatKhau.SelectedText = "";
             this.txtNhapLaiMatKhau.Size = new System.Drawing.Size(211, 35);
@@ -363,8 +367,7 @@
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
@@ -408,7 +411,8 @@
             // 
             // btnDoiMatKhau
             // 
-            this.btnDoiMatKhau.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDoiMatKhau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDoiMatKhau.Animated = true;
             this.btnDoiMatKhau.AutoRoundedCorners = true;
             this.btnDoiMatKhau.BorderRadius = 21;
@@ -453,10 +457,82 @@
             this.btnTimKiem.TabIndex = 130;
             this.btnTimKiem.Text = "Tìm kiếm";
             // 
+            // btnShowMkCu
+            // 
+            this.btnShowMkCu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShowMkCu.BackColor = System.Drawing.Color.White;
+            this.btnShowMkCu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnShowMkCu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnShowMkCu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnShowMkCu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnShowMkCu.FillColor = System.Drawing.Color.Transparent;
+            this.btnShowMkCu.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnShowMkCu.ForeColor = System.Drawing.Color.White;
+            this.btnShowMkCu.HoverState.FillColor = System.Drawing.Color.White;
+            this.btnShowMkCu.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.btnShowMkCu.Image = ((System.Drawing.Image)(resources.GetObject("btnShowMkCu.Image")));
+            this.btnShowMkCu.Location = new System.Drawing.Point(804, 223);
+            this.btnShowMkCu.Name = "btnShowMkCu";
+            this.btnShowMkCu.PressedColor = System.Drawing.Color.White;
+            this.btnShowMkCu.ShadowDecoration.Color = System.Drawing.Color.White;
+            this.btnShowMkCu.Size = new System.Drawing.Size(25, 25);
+            this.btnShowMkCu.TabIndex = 131;
+            this.btnShowMkCu.Click += new System.EventHandler(this.btnShowMkCu_Click);
+            // 
+            // btnShowMkNhapLai
+            // 
+            this.btnShowMkNhapLai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShowMkNhapLai.BackColor = System.Drawing.Color.White;
+            this.btnShowMkNhapLai.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnShowMkNhapLai.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnShowMkNhapLai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnShowMkNhapLai.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnShowMkNhapLai.FillColor = System.Drawing.Color.Transparent;
+            this.btnShowMkNhapLai.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnShowMkNhapLai.ForeColor = System.Drawing.Color.White;
+            this.btnShowMkNhapLai.HoverState.FillColor = System.Drawing.Color.White;
+            this.btnShowMkNhapLai.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.btnShowMkNhapLai.Image = ((System.Drawing.Image)(resources.GetObject("btnShowMkNhapLai.Image")));
+            this.btnShowMkNhapLai.Location = new System.Drawing.Point(805, 440);
+            this.btnShowMkNhapLai.Name = "btnShowMkNhapLai";
+            this.btnShowMkNhapLai.PressedColor = System.Drawing.Color.White;
+            this.btnShowMkNhapLai.ShadowDecoration.Color = System.Drawing.Color.White;
+            this.btnShowMkNhapLai.Size = new System.Drawing.Size(25, 25);
+            this.btnShowMkNhapLai.TabIndex = 132;
+            this.btnShowMkNhapLai.Click += new System.EventHandler(this.btnShowMkNhapLai_Click);
+            // 
+            // btnShowMkMoi
+            // 
+            this.btnShowMkMoi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShowMkMoi.BackColor = System.Drawing.Color.White;
+            this.btnShowMkMoi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnShowMkMoi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnShowMkMoi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnShowMkMoi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnShowMkMoi.FillColor = System.Drawing.Color.Transparent;
+            this.btnShowMkMoi.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnShowMkMoi.ForeColor = System.Drawing.Color.White;
+            this.btnShowMkMoi.HoverState.FillColor = System.Drawing.Color.White;
+            this.btnShowMkMoi.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.btnShowMkMoi.Image = ((System.Drawing.Image)(resources.GetObject("btnShowMkMoi.Image")));
+            this.btnShowMkMoi.Location = new System.Drawing.Point(805, 327);
+            this.btnShowMkMoi.Name = "btnShowMkMoi";
+            this.btnShowMkMoi.PressedColor = System.Drawing.Color.White;
+            this.btnShowMkMoi.ShadowDecoration.Color = System.Drawing.Color.White;
+            this.btnShowMkMoi.Size = new System.Drawing.Size(25, 25);
+            this.btnShowMkMoi.TabIndex = 133;
+            this.btnShowMkMoi.Click += new System.EventHandler(this.btnShowMkMoi_Click);
+            // 
             // UC_TaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnShowMkMoi);
+            this.Controls.Add(this.btnShowMkNhapLai);
+            this.Controls.Add(this.btnShowMkCu);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.btnDoiMatKhau);
             this.Controls.Add(this.label9);
@@ -507,5 +583,8 @@
         private System.Windows.Forms.Label label9;
         private Guna.UI2.WinForms.Guna2GradientButton btnDoiMatKhau;
         private Guna.UI2.WinForms.Guna2GradientButton btnTimKiem;
+        private Guna.UI2.WinForms.Guna2Button btnShowMkCu;
+        private Guna.UI2.WinForms.Guna2Button btnShowMkNhapLai;
+        private Guna.UI2.WinForms.Guna2Button btnShowMkMoi;
     }
 }
