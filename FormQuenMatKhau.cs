@@ -11,7 +11,6 @@ using Ui_DuAn;
 using MimeKit;
 using MailKit.Net.Smtp;
 using UIDuAn1.Models;
-
 namespace UIDuAn1
 {
     public partial class FormQuenMatKhau : Form
