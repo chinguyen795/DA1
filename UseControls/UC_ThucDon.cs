@@ -245,7 +245,7 @@ namespace UIDuAn1
                 string gia = selectRow.Cells["Gia"].Value.ToString();
                 string tinhtrang = selectRow.Cells["TinhTrang"].Value.ToString();
                 byte[] imageData = (byte[])selectRow.Cells["HinhAnh"].Value;
-                string manv = selectRow.Cells["Manv"].Value.ToString();
+                string manv = selectRow.Cells["MaNhanVien"].Value.ToString();
 
                 txtMaMonAn.Text = matd;
                 txtTenMonAn.Text = tentd;
