@@ -120,6 +120,7 @@ namespace UIDuAn1
         }
         private void reset()
         {
+            txtTenMonAn.Clear();
             txtTimKiem.Clear();
             txtGiaMonAn.Clear();
             txtMaMonAn.Clear();
@@ -128,6 +129,32 @@ namespace UIDuAn1
             pcChenAnh.Image = null;
             rdoConMonAn.Checked = false;
             rdoHetMonAn.Checked = false;
+        }
+
+        private string GenerateNewMaMonAn()
+        {
+            using (var context = new QUANLYQUANNETContext())
+            {
+                var existingMaMonAn = context.ThucDon
+                    .Select(td => int.Parse(td.MaMonAn.Substring(2)))
+                    .ToList();
+
+                existingMaMonAn.Sort();
+
+                int newMaMonAnNumber = 1; // Bắt đầu từ 1
+
+                // Tìm số nhỏ nhất còn thiếu
+                for (int i = 0; i < existingMaMonAn.Count; i++)
+                {
+                    if (existingMaMonAn[i] != newMaMonAnNumber)
+                    {
+                        break;
+                    }
+                    newMaMonAnNumber++;
+                }
+
+                return "MA" + newMaMonAnNumber.ToString("D3");
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -141,9 +168,7 @@ namespace UIDuAn1
                     string.IsNullOrWhiteSpace(txtSoluongMon.Text) ||
                     string.IsNullOrWhiteSpace(txtGiaMonAn.Text) ||
                     !int.TryParse(txtSoluongMon.Text, out sl) ||
-                    !int.TryParse(txtGiaMonAn.Text, out gia)
-                    )
-
+                    !int.TryParse(txtGiaMonAn.Text, out gia))
                 {
                     MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
                     return;
@@ -155,12 +180,11 @@ namespace UIDuAn1
                     return;
                 }
 
-                //San pham tu tang KH + 000
-                int customerCount = context.ThucDon.Count();
-                string newCustomerID = $"MA{(customerCount + 1).ToString("D3")}";
+                // Tạo mã món ăn mới
+                string newCustomerID = GenerateNewMaMonAn();
 
                 bool tinhtrang = rdoConMonAn.Checked;
-                // Tạo đối tượng khách hàng mới
+                // Tạo đối tượng món ăn mới
                 ThucDon newSP = new ThucDon
                 {
                     MaMonAn = newCustomerID,
@@ -170,6 +194,7 @@ namespace UIDuAn1
                     TinhTrang = tinhtrang,
                     MaNhanVien = cbMaNV.SelectedValue.ToString()
                 };
+
                 // Lưu trữ ảnh
                 if (pcChenAnh.Image != null)
                 {
@@ -179,22 +204,22 @@ namespace UIDuAn1
                 {
                     newSP.HinhAnh = null;
                 }
+
                 try
                 {
                     context.ThucDon.Add(newSP);
                     context.SaveChanges();
                     MessageBox.Show("Thêm thành công");
                     LoadData();
-
                     reset();
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Lỗi");
                 }
-
             }
         }
+
 
         private void UC_ThucDon_Load(object sender, EventArgs e)
         {
@@ -342,7 +367,7 @@ namespace UIDuAn1
 
                 if (dtgThucDon.SelectedRows.Count > 0)
                 {
-                    string id = dtgThucDon.SelectedRows[0].Cells["Masp"].Value.ToString();
+                    string id = dtgThucDon.SelectedRows[0].Cells["MaMonAn"].Value.ToString();
 
                     using (var context = new QUANLYQUANNETContext())
                     {

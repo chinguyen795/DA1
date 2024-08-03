@@ -24,19 +24,41 @@ namespace UIDuAn1
             cbLuaChon.Items.Add("Doanh thu của tháng");
             cbLuaChon.SelectedIndex = 0;
 
+            cbLuaChon.SelectedIndexChanged += new EventHandler(cbLuaChon_SelectedIndexChanged);
             btnXuatThongTin.Click += new EventHandler(btnXuatThongTin_Click);
 
             LoadEmployeeData();
+            UpdateComboBoxVisibility();
         }
 
         private void LoadEmployeeData()
         {
             using (var context = new QUANLYQUANNETContext())
             {
-                var employees = context.NhanVien.Select(nv => new { nv.MaNhanVien }).ToList();
+                var employees = context.NhanVien
+                    .Select(nv => new { nv.MaNhanVien, nv.HoTen, DisplayText = nv.MaNhanVien + " | " + nv.HoTen })
+                    .ToList();
+
                 cbMNV.DataSource = employees;
-                cbMNV.DisplayMember = "MaNhanVien";
+                cbMNV.DisplayMember = "DisplayText";
                 cbMNV.ValueMember = "MaNhanVien";
+            }
+        }
+
+        private void cbLuaChon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateComboBoxVisibility();
+        }
+
+        private void UpdateComboBoxVisibility()
+        {
+            if (cbLuaChon.SelectedItem.ToString() == "Lương từng nhân viên theo tháng")
+            {
+                cbMNV.Visible = true;
+            }
+            else
+            {
+                cbMNV.Visible = false;
             }
         }
 
@@ -56,26 +78,51 @@ namespace UIDuAn1
                 {
                     var caLam = context.CaLam
                         .Where(c => c.NgayLam.Month == month)
+                        .Join(context.NhanVien,
+                              c => c.MaNhanVien,
+                              nv => nv.MaNhanVien,
+                              (c, nv) => new { c.MaNhanVien, nv.HoTen, c.SoGioLam, c.NgayLam })
                         .ToList();
+
+                    if (caLam.Count == 0)
+                    {
+                        lbThongTin2.Text = "Không có dữ liệu.";
+                        lbThongTin3.Text = string.Empty;
+                        return;
+                    }
+
                     dtgKhachHang.DataSource = caLam;
 
                     int totalHours = caLam.Sum(c => c.SoGioLam);
                     int salary = totalHours * 20000;
-                    lbThongTin2.Text = "Lương cần trả: " + salary.ToString();
-                    lbThongTin3.Text = "Hệ số 1:20000";
+                    lbThongTin2.Text = $"Lương cần trả cho tất cả nhân viên tháng {month}: " + salary.ToString();
+                    lbThongTin3.Text = "Hệ số lương: 1:20000";
                 }
                 else if (selectedOption == "Lương từng nhân viên theo tháng")
                 {
                     string employeeId = cbMNV.SelectedValue.ToString();
                     var caLam = context.CaLam
                         .Where(c => c.MaNhanVien == employeeId && c.NgayLam.Month == month)
+                        .Join(context.NhanVien,
+                              c => c.MaNhanVien,
+                              nv => nv.MaNhanVien,
+                              (c, nv) => new { c.MaNhanVien, nv.HoTen, c.SoGioLam, c.NgayLam })
                         .ToList();
+
+                    if (caLam.Count == 0)
+                    {
+                        lbThongTin2.Text = "Không có dữ liệu.";
+                        lbThongTin3.Text = string.Empty;
+                        return;
+                    }
+
                     dtgKhachHang.DataSource = caLam;
 
                     int totalHours = caLam.Sum(c => c.SoGioLam);
                     int salary = totalHours * 20000;
-                    lbThongTin2.Text = "Lương cần trả: " + salary.ToString();
-                    lbThongTin3.Text = "Hệ số 1:20000";
+                    var employeeName = caLam.FirstOrDefault()?.HoTen ?? "Không có dữ liệu";
+                    lbThongTin2.Text = $"Lương cần trả cho {employeeName} trong tháng {month}: " + salary.ToString();
+                    lbThongTin3.Text = "Hệ số lương: 1:20000";
                 }
                 else if (selectedOption == "Doanh thu của tháng")
                 {
@@ -83,14 +130,22 @@ namespace UIDuAn1
                         .Where(hd => hd.NgayLap.Month == month)
                         .ToList();
 
+                    if (hoaDons.Count == 0)
+                    {
+                        lbThongTin2.Text = "Không có dữ liệu.";
+                        lbThongTin3.Text = string.Empty;
+                        return;
+                    }
+
                     dtgKhachHang.DataSource = hoaDons;
 
                     decimal totalRevenue = hoaDons.Sum(hd => hd.TriGia);
 
                     lbThongTin2.Text = $"Doanh thu tháng {month}: {totalRevenue.ToString()}";
-                    lbThongTin3.Text = "Hệ số 1:10000";
+                    lbThongTin3.Text = "Hệ số lương: 1:10000";
                 }
             }
         }
+
     }
 }
