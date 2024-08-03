@@ -1,4 +1,5 @@
 ﻿using MimeKit;
+using MailKit.Net.Smtp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,7 +69,45 @@ namespace UIDuAn1
             cbVaiTro.Items.Add("Nhân Viên");
             cbVaiTro.Items.Add("Trưởng Ca");
         }
-        private void LoadData()
+        private void SendEmail(string toEmail, string subject, string body)
+        {
+            try
+            {
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("nguyenncpc09256", "nguyenchinguyen7925@gmail.com"));
+                message.To.Add(new MailboxAddress("", toEmail));
+                message.Subject = subject;
+                message.Body = new TextPart("html")
+                {
+                    Text = body
+                };
+
+                using (var client = new SmtpClient())
+                {
+                    client.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
+                    client.Authenticate("nguyenchinguyen7925@gmail.com", "zkfe bzvm qkam uklk"); // Thay bằng mật khẩu ứng dụng
+                    client.Send(message);
+                    client.Disconnect(true);
+                }
+
+                MessageBox.Show("Mật khẩu đã được gửi đến email của nhân viên vừa tạo");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
+        private string GenerateRandomPassword()
+        {
+            // Logic để tạo mật khẩu ngẫu nhiên, ví dụ:
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            Random random = new Random();
+            string password = new string(Enumerable.Repeat(chars, 8) // Độ dài mật khẩu là 8
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+            return password;
+        }
+
+            private void LoadData()
         {
             using (var context = new QUANLYQUANNETContext())
             {
@@ -130,7 +169,7 @@ namespace UIDuAn1
                 txtEmail.Text = gmail;
                 txtDiaChi.Text = diachi;
                 txtHoVaTen.Text = hoten;
-                // Thiết lập trạng thái của radio button dựa trên giá trị từ DataGridView
+
                 if (trangthai == "1")
                 {
                     rdoHoatDong.Checked = true;
@@ -205,10 +244,13 @@ namespace UIDuAn1
                     DiaChi = txtDiaChi.Text,
                     TrangThai = tinhtrang,
                     TenVaiTro = cbVaiTro.Text,
+                    MatKhau = GenerateRandomPassword()
                 };
 
                 try
                 {
+
+                    SendEmail(newNV.Gmail, "Mật khẩu mới", $"Mật khẩu mới của bạn là: {newNV.MatKhau}");
                     // Thêm nhân viên vào cơ sở dữ liệu
                     context.NhanVien.Add(newNV);
                     context.SaveChanges();
