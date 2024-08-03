@@ -23,7 +23,7 @@ namespace UIDuAn1
         }
         private void loadData()
         {
-/*            using (var context = new QUANLYQUANNETContext())
+            using (var context = new QUANLYQUANNETContext())
             {
                 var nhanVien = context.NhanVien
                     .FirstOrDefault(nv => nv.Gmail == CurrentUser.Instance.Email);
@@ -40,7 +40,8 @@ namespace UIDuAn1
                     MessageBox.Show("Không tìm thấy thông tin nhân viên!");
                 }
             }
-*/        }
+
+        }
         private bool isPasswordShown = false;
         private void btnDoiMatKhau_Click(object sender, EventArgs e)
         {
