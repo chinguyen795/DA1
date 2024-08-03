@@ -22,6 +22,7 @@ namespace UIDuAn1
             cbLuaChon.Items.Add("Lương phải trả cho nhân viên theo tháng");
             cbLuaChon.Items.Add("Lương từng nhân viên theo tháng");
             cbLuaChon.Items.Add("Doanh thu của tháng");
+            cbLuaChon.Items.Add("Món ăn được mua nhiều nhất theo tháng");
             cbLuaChon.SelectedIndex = 0;
 
             cbLuaChon.SelectedIndexChanged += new EventHandler(cbLuaChon_SelectedIndexChanged);
@@ -38,13 +39,12 @@ namespace UIDuAn1
                 var employees = context.NhanVien
                     .Select(nv => new { nv.MaNhanVien, nv.HoTen, DisplayText = nv.MaNhanVien + " | " + nv.HoTen })
                     .ToList();
-
                 cbMNV.DataSource = employees;
                 cbMNV.DisplayMember = "DisplayText";
                 cbMNV.ValueMember = "MaNhanVien";
+                cbMNV.Visible = false; // Ẩn ComboBox lúc đầu
             }
         }
-
         private void cbLuaChon_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateComboBoxVisibility();
@@ -100,6 +100,7 @@ namespace UIDuAn1
                 }
                 else if (selectedOption == "Lương từng nhân viên theo tháng")
                 {
+                    cbMNV.Visible = true; // Hiển thị ComboBox
                     string employeeId = cbMNV.SelectedValue.ToString();
                     var caLam = context.CaLam
                         .Where(c => c.MaNhanVien == employeeId && c.NgayLam.Month == month)
@@ -144,8 +145,67 @@ namespace UIDuAn1
                     lbThongTin2.Text = $"Doanh thu tháng {month}: {totalRevenue.ToString()}";
                     lbThongTin3.Text = "Hệ số lương: 1:10000";
                 }
+                else if (selectedOption == "Món ăn được mua nhiều nhất theo tháng")
+                {
+                    // Truy vấn để lấy món ăn được mua nhiều nhất theo tháng
+                    var intermediateData = context.HoaDonChiTiet
+                        .Join(context.HoaDon,
+                             hdct => hdct.MaHoaDon,
+                             hd => hd.MaHoaDon,
+                             (hdct, hd) => new { hdct.MaMonAn, hd.NgayLap, hdct.SoLuongMon })
+                        .Where(hdct => hdct.NgayLap.Month == month)
+                        .Join(context.ThucDon,
+                             hdct => hdct.MaMonAn,
+                             td => td.MaMonAn,
+                             (hdct, td) => new { hdct.MaMonAn, td.TenMonAn, hdct.NgayLap, hdct.SoLuongMon })
+                        .ToList();
+
+                    if (intermediateData.Count == 0)
+                    {
+                        lbThongTin2.Text = "Không có dữ liệu trong tháng được chọn.";
+                        lbThongTin3.Text = string.Empty;
+                        return;
+                    }
+
+                    var mostPurchasedDish = intermediateData
+                        .GroupBy(hdct => hdct.MaMonAn)
+                        .Select(g => new
+                        {
+                            MaMonAn = g.Key,
+                            SoLuong = g.Sum(hdct => hdct.SoLuongMon)
+                        })
+                        .OrderByDescending(g => g.SoLuong)
+                        .FirstOrDefault();
+
+                    // Kiểm tra nếu không có dữ liệu
+                    if (mostPurchasedDish == null)
+                    {
+                        lbThongTin2.Text = "Không có dữ liệu.";
+                        lbThongTin3.Text = string.Empty;
+                        return;
+                    }
+
+                    // Truy vấn để lấy tên món ăn từ bảng ThucDon
+                    var dishName = context.ThucDon
+                        .Where(td => td.MaMonAn == mostPurchasedDish.MaMonAn)
+                        .Select(td => td.TenMonAn)
+                        .FirstOrDefault();
+
+                    // Kiểm tra nếu không có tên món ăn
+                    if (dishName == null)
+                    {
+                        lbThongTin2.Text = "Không tìm thấy tên món ăn.";
+                        lbThongTin3.Text = string.Empty;
+                        return;
+                    }
+
+                    dtgKhachHang.DataSource = intermediateData;
+                    // Hiển thị kết quả
+                    lbThongTin2.Text = $"Tên món ăn nhiều lượt mua nhất: {dishName}";
+                    lbThongTin3.Text = $"Số lượng đã bán: {mostPurchasedDish.SoLuong}";
+                }
+
             }
         }
-
     }
 }
