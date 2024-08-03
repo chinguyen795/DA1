@@ -59,9 +59,10 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Teal;
-            this.label13.Location = new System.Drawing.Point(3, 16);
+            this.label13.Location = new System.Drawing.Point(4, 20);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(95, 24);
+            this.label13.Size = new System.Drawing.Size(120, 29);
             this.label13.TabIndex = 68;
             this.label13.Text = "Công việc";
             // 
@@ -69,9 +70,10 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label12.Location = new System.Drawing.Point(0, 52);
+            this.label12.Location = new System.Drawing.Point(0, 64);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(999, 1);
+            this.label12.Size = new System.Drawing.Size(1332, 1);
             this.label12.TabIndex = 65;
             // 
             // txtThoiGianLam
@@ -80,7 +82,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtThoiGianLam.AutoRoundedCorners = true;
-            this.txtThoiGianLam.BorderRadius = 16;
+            this.txtThoiGianLam.BorderRadius = 20;
             this.txtThoiGianLam.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtThoiGianLam.DefaultText = "";
             this.txtThoiGianLam.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -90,13 +92,13 @@
             this.txtThoiGianLam.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtThoiGianLam.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtThoiGianLam.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtThoiGianLam.Location = new System.Drawing.Point(23, 272);
-            this.txtThoiGianLam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtThoiGianLam.Location = new System.Drawing.Point(31, 335);
+            this.txtThoiGianLam.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtThoiGianLam.Name = "txtThoiGianLam";
             this.txtThoiGianLam.PasswordChar = '\0';
             this.txtThoiGianLam.PlaceholderText = "Thời gian làm";
             this.txtThoiGianLam.SelectedText = "";
-            this.txtThoiGianLam.Size = new System.Drawing.Size(211, 35);
+            this.txtThoiGianLam.Size = new System.Drawing.Size(281, 43);
             this.txtThoiGianLam.TabIndex = 57;
             // 
             // txtViPham
@@ -105,7 +107,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtViPham.AutoRoundedCorners = true;
-            this.txtViPham.BorderRadius = 16;
+            this.txtViPham.BorderRadius = 20;
             this.txtViPham.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtViPham.DefaultText = "";
             this.txtViPham.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -115,13 +117,13 @@
             this.txtViPham.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtViPham.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtViPham.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtViPham.Location = new System.Drawing.Point(396, 272);
-            this.txtViPham.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtViPham.Location = new System.Drawing.Point(528, 335);
+            this.txtViPham.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtViPham.Name = "txtViPham";
             this.txtViPham.PasswordChar = '\0';
             this.txtViPham.PlaceholderText = "Vi phạm";
             this.txtViPham.SelectedText = "";
-            this.txtViPham.Size = new System.Drawing.Size(211, 35);
+            this.txtViPham.Size = new System.Drawing.Size(281, 43);
             this.txtViPham.TabIndex = 56;
             // 
             // txtMaCaLam
@@ -130,7 +132,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaCaLam.AutoRoundedCorners = true;
-            this.txtMaCaLam.BorderRadius = 16;
+            this.txtMaCaLam.BorderRadius = 20;
             this.txtMaCaLam.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaCaLam.DefaultText = "";
             this.txtMaCaLam.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -140,14 +142,14 @@
             this.txtMaCaLam.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMaCaLam.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMaCaLam.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaCaLam.Location = new System.Drawing.Point(23, 119);
-            this.txtMaCaLam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMaCaLam.Location = new System.Drawing.Point(31, 146);
+            this.txtMaCaLam.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtMaCaLam.Name = "txtMaCaLam";
             this.txtMaCaLam.PasswordChar = '\0';
             this.txtMaCaLam.PlaceholderText = "Mã ca làm";
             this.txtMaCaLam.ReadOnly = true;
             this.txtMaCaLam.SelectedText = "";
-            this.txtMaCaLam.Size = new System.Drawing.Size(211, 35);
+            this.txtMaCaLam.Size = new System.Drawing.Size(281, 43);
             this.txtMaCaLam.TabIndex = 55;
             // 
             // label5
@@ -159,9 +161,10 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(392, 78);
+            this.label5.Location = new System.Drawing.Point(523, 96);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 20);
+            this.label5.Size = new System.Drawing.Size(74, 25);
             this.label5.TabIndex = 53;
             this.label5.Text = "Ca làm";
             // 
@@ -174,9 +177,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(19, 225);
+            this.label2.Location = new System.Drawing.Point(25, 277);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 20);
+            this.label2.Size = new System.Drawing.Size(129, 25);
             this.label2.TabIndex = 51;
             this.label2.Text = "Thời gian làm";
             // 
@@ -189,9 +193,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(392, 225);
+            this.label1.Location = new System.Drawing.Point(523, 277);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 20);
+            this.label1.Size = new System.Drawing.Size(84, 25);
             this.label1.TabIndex = 50;
             this.label1.Text = "Vi phạm";
             // 
@@ -204,9 +209,10 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(19, 78);
+            this.label3.Location = new System.Drawing.Point(25, 96);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 20);
+            this.label3.Size = new System.Drawing.Size(102, 25);
             this.label3.TabIndex = 49;
             this.label3.Text = "Mã ca làm";
             // 
@@ -234,10 +240,12 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgCongViec.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgCongViec.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dtgCongViec.Location = new System.Drawing.Point(0, 407);
+            this.dtgCongViec.Location = new System.Drawing.Point(0, 501);
+            this.dtgCongViec.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtgCongViec.Name = "dtgCongViec";
             this.dtgCongViec.RowHeadersVisible = false;
-            this.dtgCongViec.Size = new System.Drawing.Size(999, 277);
+            this.dtgCongViec.RowHeadersWidth = 51;
+            this.dtgCongViec.Size = new System.Drawing.Size(1332, 341);
             this.dtgCongViec.TabIndex = 48;
             this.dtgCongViec.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dtgCongViec.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -260,6 +268,7 @@
             this.dtgCongViec.ThemeStyle.RowsStyle.Height = 22;
             this.dtgCongViec.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgCongViec.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dtgCongViec.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgCongViec_CellDoubleClick);
             // 
             // cbMaNV
             // 
@@ -275,9 +284,10 @@
             this.cbMaNV.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbMaNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbMaNV.ItemHeight = 30;
-            this.cbMaNV.Location = new System.Drawing.Point(764, 118);
+            this.cbMaNV.Location = new System.Drawing.Point(1019, 145);
+            this.cbMaNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbMaNV.Name = "cbMaNV";
-            this.cbMaNV.Size = new System.Drawing.Size(208, 36);
+            this.cbMaNV.Size = new System.Drawing.Size(276, 36);
             this.cbMaNV.TabIndex = 96;
             // 
             // label4
@@ -289,9 +299,10 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(760, 78);
+            this.label4.Location = new System.Drawing.Point(1013, 96);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 20);
+            this.label4.Size = new System.Drawing.Size(130, 25);
             this.label4.TabIndex = 95;
             this.label4.Text = "Mã nhân viên";
             // 
@@ -299,7 +310,7 @@
             // 
             this.txtTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTimKiem.AutoRoundedCorners = true;
-            this.txtTimKiem.BorderRadius = 16;
+            this.txtTimKiem.BorderRadius = 20;
             this.txtTimKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTimKiem.DefaultText = "";
             this.txtTimKiem.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -310,12 +321,13 @@
             this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTimKiem.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTimKiem.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtTimKiem.IconLeft")));
-            this.txtTimKiem.Location = new System.Drawing.Point(668, 9);
+            this.txtTimKiem.Location = new System.Drawing.Point(891, 11);
+            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.PasswordChar = '\0';
             this.txtTimKiem.PlaceholderText = "Tìm kiếm";
             this.txtTimKiem.SelectedText = "";
-            this.txtTimKiem.Size = new System.Drawing.Size(200, 35);
+            this.txtTimKiem.Size = new System.Drawing.Size(267, 43);
             this.txtTimKiem.TabIndex = 101;
             this.txtTimKiem.TextOffset = new System.Drawing.Point(5, 0);
             // 
@@ -324,7 +336,7 @@
             this.btnLamMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLamMoi.Animated = true;
             this.btnLamMoi.AutoRoundedCorners = true;
-            this.btnLamMoi.BorderRadius = 21;
+            this.btnLamMoi.BorderRadius = 26;
             this.btnLamMoi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnLamMoi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLamMoi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -336,18 +348,20 @@
             this.btnLamMoi.ForeColor = System.Drawing.Color.White;
             this.btnLamMoi.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnLamMoi.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
-            this.btnLamMoi.Location = new System.Drawing.Point(813, 702);
+            this.btnLamMoi.Location = new System.Drawing.Point(1084, 864);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(147, 44);
+            this.btnLamMoi.Size = new System.Drawing.Size(196, 54);
             this.btnLamMoi.TabIndex = 130;
             this.btnLamMoi.Text = "Làm mới";
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // btnXoa
             // 
             this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXoa.Animated = true;
             this.btnXoa.AutoRoundedCorners = true;
-            this.btnXoa.BorderRadius = 21;
+            this.btnXoa.BorderRadius = 26;
             this.btnXoa.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnXoa.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnXoa.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -359,18 +373,20 @@
             this.btnXoa.ForeColor = System.Drawing.Color.White;
             this.btnXoa.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnXoa.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
-            this.btnXoa.Location = new System.Drawing.Point(580, 702);
+            this.btnXoa.Location = new System.Drawing.Point(773, 864);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(147, 44);
+            this.btnXoa.Size = new System.Drawing.Size(196, 54);
             this.btnXoa.TabIndex = 131;
             this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click_1);
             // 
             // btnSua
             // 
             this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSua.Animated = true;
             this.btnSua.AutoRoundedCorners = true;
-            this.btnSua.BorderRadius = 21;
+            this.btnSua.BorderRadius = 26;
             this.btnSua.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSua.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -382,18 +398,20 @@
             this.btnSua.ForeColor = System.Drawing.Color.White;
             this.btnSua.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnSua.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
-            this.btnSua.Location = new System.Drawing.Point(263, 702);
+            this.btnSua.Location = new System.Drawing.Point(351, 864);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(147, 44);
+            this.btnSua.Size = new System.Drawing.Size(196, 54);
             this.btnSua.TabIndex = 132;
             this.btnSua.Text = "Sửa";
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click_1);
             // 
             // btnThem
             // 
             this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnThem.Animated = true;
             this.btnThem.AutoRoundedCorners = true;
-            this.btnThem.BorderRadius = 21;
+            this.btnThem.BorderRadius = 26;
             this.btnThem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnThem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnThem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -405,18 +423,20 @@
             this.btnThem.ForeColor = System.Drawing.Color.White;
             this.btnThem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnThem.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
-            this.btnThem.Location = new System.Drawing.Point(45, 702);
+            this.btnThem.Location = new System.Drawing.Point(60, 864);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(147, 44);
+            this.btnThem.Size = new System.Drawing.Size(196, 54);
             this.btnThem.TabIndex = 133;
             this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click_1);
             // 
             // btnTimKiem
             // 
             this.btnTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTimKiem.Animated = true;
             this.btnTimKiem.AutoRoundedCorners = true;
-            this.btnTimKiem.BorderRadius = 16;
+            this.btnTimKiem.BorderRadius = 20;
             this.btnTimKiem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnTimKiem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTimKiem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -428,11 +448,13 @@
             this.btnTimKiem.ForeColor = System.Drawing.Color.White;
             this.btnTimKiem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnTimKiem.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
-            this.btnTimKiem.Location = new System.Drawing.Point(874, 9);
+            this.btnTimKiem.Location = new System.Drawing.Point(1165, 11);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(122, 35);
+            this.btnTimKiem.Size = new System.Drawing.Size(163, 43);
             this.btnTimKiem.TabIndex = 134;
             this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // cbCaLam
             // 
@@ -448,14 +470,15 @@
             this.cbCaLam.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbCaLam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbCaLam.ItemHeight = 30;
-            this.cbCaLam.Location = new System.Drawing.Point(396, 118);
+            this.cbCaLam.Location = new System.Drawing.Point(528, 145);
+            this.cbCaLam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbCaLam.Name = "cbCaLam";
-            this.cbCaLam.Size = new System.Drawing.Size(208, 36);
+            this.cbCaLam.Size = new System.Drawing.Size(276, 36);
             this.cbCaLam.TabIndex = 135;
             // 
             // UC_CongViec
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.cbCaLam);
             this.Controls.Add(this.btnTimKiem);
@@ -476,8 +499,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtgCongViec);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UC_CongViec";
-            this.Size = new System.Drawing.Size(999, 758);
+            this.Size = new System.Drawing.Size(1332, 933);
+            this.Load += new System.EventHandler(this.UC_CongViec_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dtgCongViec)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
