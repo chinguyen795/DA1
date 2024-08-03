@@ -375,11 +375,17 @@ namespace UIDuAn1
 
                         if (DeleteTD != null)
                         {
+                            try {
                             context.ThucDon.Remove(DeleteTD);
                             context.SaveChanges();
                             MessageBox.Show("Xóa thành công");
                             LoadData();
                             reset();
+                            }
+                            catch (Exception ex)
+                            {
+                            MessageBox.Show("Không thể xoá vì còn liên kết với dữ liệu khác (hoá đơn)");
+                            }
                         }
                     }
 
