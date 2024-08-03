@@ -274,7 +274,7 @@ namespace UIDuAn1
             if (dtgThucDon.SelectedRows.Count > 0)
             {
                 int selectedRowIndex = dtgThucDon.SelectedRows[0].Index;
-                string MaSelected = dtgThucDon.Rows[selectedRowIndex].Cells["Masp"].Value.ToString();
+                string MaSelected = dtgThucDon.Rows[selectedRowIndex].Cells["MaMonAn"].Value.ToString();
 
                 using (var context = new QUANLYQUANNETContext())
                 {
