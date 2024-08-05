@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIDuAn1.Models;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace UIDuAn1
 {
@@ -131,7 +132,7 @@ namespace UIDuAn1
                                 hd.TriGia,
                                 nv.HoTen,
                                 hd.NgayLap,
-                                td.MaNhanVien,
+                                hd.MaNhanVien,
                                 kh.MaKhachHang,
                             };
 
@@ -148,9 +149,8 @@ namespace UIDuAn1
                 dtgHoaDon.Columns[4].HeaderText = "Trị Giá";
                 dtgHoaDon.Columns[5].HeaderText = "Nhân Viên";
                 dtgHoaDon.Columns[6].HeaderText = "Ngày Lập";
-                dtgHoaDon.Columns[7].Visible = true;
-                dtgHoaDon.Columns[8].Visible = true;
-
+                dtgHoaDon.Columns[7].Visible = false;
+                dtgHoaDon.Columns[8].Visible = false;
             }
         }
         private void dtgHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -188,7 +188,15 @@ namespace UIDuAn1
                     MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
                     return;
                 }
+                int soLuongMonAn = int.Parse(txtSoLuongmonAn.Text);
+                string maMonAn = cboMaMonAn.SelectedValue.ToString();
+                var monAn = context.ThucDon.FirstOrDefault(ma => ma.MaMonAn == maMonAn);
 
+                if (monAn == null || soLuongMonAn > monAn.SoLuong)
+                {
+                    MessageBox.Show("Số lượng món ăn trong hóa đơn vượt quá số lượng trong kho.");
+                    return;
+                }
                 // Tự động tạo mã hóa đơn mới
                 int count = context.HoaDon.Count();
                 string newMaHoaDon = $"HD{(count + 1).ToString("D3")}";
@@ -401,6 +409,7 @@ namespace UIDuAn1
                 decimal triGia = Convert.ToDecimal(selectedRow.Cells["TriGia"].Value);
                 string tenNhanVien = selectedRow.Cells["HoTen"].Value.ToString();
                 string taiKhoanKhachHang = selectedRow.Cells["TaiKhoan"].Value.ToString();
+                
 
                 // Điền dữ liệu vào các trường trên form
                 txtMaHoaDon.Text = maHoaDon;
