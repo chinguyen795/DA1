@@ -10,6 +10,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIDuAn1.Models;
+using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UIDuAn1
 {
@@ -21,9 +23,9 @@ namespace UIDuAn1
             currentUserRole = userRole;
             InitializeComponent();
             checkVaiTro();
-            LoadCombo();
+            //LoadComboBox();
         }
-        
+
         private void checkVaiTro()
         {
             using (var context = new QUANLYQUANNETContext())
@@ -62,12 +64,54 @@ namespace UIDuAn1
                 }
             }
         }
-        void LoadCombo()
-        {
-            cbVaiTro.Items.Add("Admin");
-            cbVaiTro.Items.Add("Nhân Viên");
-            cbVaiTro.Items.Add("Trưởng Ca");
-        }
+
+        //private void LoadComboBox()
+        //{
+        //    // Chuỗi kết nối đến cơ sở dữ liệu
+        //    string connectionString = "Server=HUANPCGAMING;Database=QUANLYQUANNET;User Id=sa;Password=123456;";
+
+        //    // Truy vấn SQL để lấy dữ liệu
+        //    string query = "SELECT TenVaiTro FROM NhanVien"; // Thay đổi "ColumnName" và "TableName" theo cấu trúc cơ sở dữ liệu của bạn
+
+        //    // Tạo đối tượng SqlConnection
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        try
+        //        {
+        //            // Mở kết nối
+        //            connection.Open();
+
+        //            // Tạo đối tượng SqlCommand
+        //            SqlCommand command = new SqlCommand(query, connection);
+
+        //            // Thực hiện truy vấn và lấy dữ liệu
+        //            SqlDataReader reader = command.ExecuteReader();
+
+        //            // Xóa các mục hiện tại trong ComboBox (nếu có)
+        //            cbVaiTro.Items.Clear();
+
+        //            // Đọc dữ liệu và thêm vào ComboBox
+        //            while (reader.Read())
+        //            {
+        //                // Giả sử giá trị trong cột là một chuỗi
+        //                string item = reader["TenVaiTro"].ToString();
+        //                cbVaiTro.Items.Add(item);
+        //            }
+
+        //            // Đóng reader
+        //            reader.Close();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Xử lý lỗi
+        //            MessageBox.Show("Lỗi: " + ex.Message);
+        //        }
+        //    }
+        //}
+
+
+
+
         private void LoadData()
         {
             using (var context = new QUANLYQUANNETContext())
@@ -85,63 +129,68 @@ namespace UIDuAn1
 
                 dtgThongTinNV.DataSource = query.ToList();
 
-                dtgThongTinNV.Columns[0].HeaderText = "MaNhanVien";
-                dtgThongTinNV.Columns[1].HeaderText = "HoTen";
+                dtgThongTinNV.Columns[0].HeaderText = "Mã nhân viên";
+                dtgThongTinNV.Columns[1].HeaderText = "Họ tên";
                 dtgThongTinNV.Columns[2].HeaderText = "Email";
-                dtgThongTinNV.Columns[3].HeaderText = "DiaChi";
-                dtgThongTinNV.Columns[4].HeaderText = "VaiTro";
-                dtgThongTinNV.Columns[5].HeaderText = "TrangThai";
+                dtgThongTinNV.Columns[3].HeaderText = "Địa chỉ";
+                dtgThongTinNV.Columns[4].HeaderText = "Vai trò";
+                dtgThongTinNV.Columns[5].HeaderText = "Trạng Thái";
             }
         }
-
-
-
         private void UC_ThongTin_Load(object sender, EventArgs e)
         {
             LoadData();
+            //LoadComboBox();
         }
+
         private void Reset()
-        {
+        {   
+            txtMaNV.Clear();
             txtHoVaTen.Clear();
             txtEmail.Clear();
-            txtMaNV.Clear();
             txtDiaChi.Clear();
-            txtTimKiem.Clear();
             rdoHoatDong.Checked = false;
             rdoKhongHoatDong.Checked = false;
-            cbVaiTro.Items.Clear();
+            cbVaiTro.SelectedIndex = -1; // Đặt ComboBox thành trạng thái không chọn
         }
+
         private QUANLYQUANNETContext db;
 
         private void dtgThongTinNV_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
+                // Lấy hàng được chọn từ DataGridView
                 DataGridViewRow selectRow = dtgThongTinNV.Rows[e.RowIndex];
 
+                // Lấy giá trị từ các ô trong hàng
                 string manv = selectRow.Cells["MaNhanVien"].Value.ToString();
                 string hoten = selectRow.Cells["HoTen"].Value.ToString();
                 string gmail = selectRow.Cells["Gmail"].Value.ToString();
                 string diachi = selectRow.Cells["DiaChi"].Value.ToString();
                 string tenvaitro = selectRow.Cells["TenVaiTro"].Value.ToString();
-                string trangthai = selectRow.Cells["TrangThai"].Value.ToString();
+                bool trangthai = Convert.ToBoolean(selectRow.Cells["TrangThai"].Value); // Chuyển đổi thành bool
 
+                // Hiển thị giá trị trong các điều khiển trên form
                 txtMaNV.Text = manv;
                 txtEmail.Text = gmail;
                 txtDiaChi.Text = diachi;
                 txtHoVaTen.Text = hoten;
+                cbVaiTro.Text = tenvaitro;
+
                 // Thiết lập trạng thái của radio button dựa trên giá trị từ DataGridView
-                if (trangthai == "1")
+                if (trangthai)
                 {
-                    rdoHoatDong.Checked = true;
+                    rdoHoatDong.Checked = true; // Nếu trạng thái là true, chọn radio button "Hoạt động"
+                    rdoKhongHoatDong.Checked = false; // Đảm bảo radio button khác không được chọn
                 }
-                else if (trangthai == "2")
+                else
                 {
-                    rdoKhongHoatDong.Checked = true;
+                    rdoKhongHoatDong.Checked = true; // Nếu trạng thái là false, chọn radio button "Không hoạt động"
+                    rdoHoatDong.Checked = false; // Đảm bảo radio button khác không được chọn
                 }
             }
         }
-
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             Reset();
@@ -159,7 +208,7 @@ namespace UIDuAn1
                         .Where(x => !string.IsNullOrEmpty(x))
                         .Select(int.Parse)
                         .DefaultIfEmpty(0).Max();
-            return $"NV{(maxID + 1).ToString("D3")}";
+            return $"NV{(maxID + 1).ToString("D2")}";
         }
 
 
@@ -178,31 +227,46 @@ namespace UIDuAn1
                     string.IsNullOrWhiteSpace(diachi) ||
                     string.IsNullOrWhiteSpace(email))
                 {
-                    MessageBox.Show("Không để trống thông tin.");
+                    MessageBox.Show("Không để trống thông tin");
                     return;
                 }
 
                 // Kiểm tra kí tự đặc biệt trong tên nhân viên
                 if (!Regex.IsMatch(tennv, "^[a-zA-ZÀ-ỹ ]+$"))
                 {
-                    MessageBox.Show("Tên nhân viên không được chứa ký tự đặc biệt.");
+                    MessageBox.Show("Tên nhân viên không được chứa ký tự đặc biệt");
                     return;
                 }
 
-                // Kiểm tra rdo
+                // Kiểm tra định dạng email
+                if (!email.EndsWith("@gmail.com"))
+                {
+                    MessageBox.Show("Email phải có đuôi @gmail.com");
+                    return;
+                }
+
+                // Kiểm tra email trùng lặp
+                if (context.NhanVien.Any(nv => nv.Gmail == email))
+                {
+                    MessageBox.Show("Email đã tồn tại, vui lòng nhập email khác");
+                    return;
+                }
+
+                // Kiểm tra tình trạng
                 if (!rdoHoatDong.Checked && !rdoKhongHoatDong.Checked)
                 {
-                    MessageBox.Show("Vui lòng chọn tình trạng.");
+                    MessageBox.Show("Vui lòng chọn tình trạng");
                     return;
                 }
                 bool tinhtrang = rdoHoatDong.Checked;
+
                 // Tạo đối tượng nhân viên mới
                 NhanVien newNV = new NhanVien
                 {
                     MaNhanVien = newCustomerID,
-                    HoTen = txtHoVaTen.Text,
-                    Gmail = txtEmail.Text,
-                    DiaChi = txtDiaChi.Text,
+                    HoTen = tennv,
+                    Gmail = email,
+                    DiaChi = diachi,
                     TrangThai = tinhtrang,
                     TenVaiTro = cbVaiTro.Text,
                 };
@@ -213,26 +277,18 @@ namespace UIDuAn1
                     context.NhanVien.Add(newNV);
                     context.SaveChanges();
 
-                    // Thêm nhân viên mới vào DataGridView
-                    var newEmployee = new
-                    {
-                        newNV.MaNhanVien,
-                        newNV.HoTen,
-                        newNV.Gmail,
-                        newNV.DiaChi,
-                        newNV.TenVaiTro,
-                        newNV.TrangThai
-                    };
-                    dtgThongTinNV.Rows.Add(newEmployee);
+                    MessageBox.Show("Thêm thành công");
+                    LoadData();
                     Reset();
-
-                    LoadData();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    LoadData();
+                    // Hiển thị thông tin lỗi cụ thể hơn
+                    MessageBox.Show("Lỗi: " + ex.Message);
                 }
             }
+
+
 
         }
 
@@ -245,7 +301,14 @@ namespace UIDuAn1
 
                 using (var context = new QUANLYQUANNETContext())
                 {
+                    // Lấy thông tin từ các điều khiển trên form
                     string tennv = txtHoVaTen.Text;
+                    string diachi = txtDiaChi.Text;
+                    string email = txtEmail.Text;
+                    string tenvaitro = cbVaiTro.Text;
+                    bool tinhtrang = rdoHoatDong.Checked;
+
+                    // Tìm nhân viên cần cập nhật
                     NhanVien SuaNV = context.NhanVien.FirstOrDefault(c => c.MaNhanVien == MaSelected);
                     if (SuaNV == null)
                     {
@@ -254,28 +317,38 @@ namespace UIDuAn1
                     }
 
                     // Kiểm tra các trường thông tin bắt buộc
-                    if (string.IsNullOrWhiteSpace(txtHoVaTen.Text) ||
-                        string.IsNullOrWhiteSpace(txtDiaChi.Text) ||
-                        string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                        !Regex.IsMatch(tennv, "^[a-zA-ZÀ-ỹ ]+$"))
+                    if (string.IsNullOrWhiteSpace(tennv) ||
+                        string.IsNullOrWhiteSpace(diachi) ||
+                        string.IsNullOrWhiteSpace(email) ||
+                        !Regex.IsMatch(tennv, "^[a-zA-ZÀ-ỹ ]+$") ||
+                        !Regex.IsMatch(diachi, "^[a-zA-ZÀ-ỹ ]+$") ||
+                        cbVaiTro.SelectedIndex == -1)
                     {
                         MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
                         return;
                     }
-                    bool tinhtrang = rdoHoatDong.Checked;
 
-                    if (SuaNV != null)
+                    // Kiểm tra email có đuôi @gmail.com
+                    if (!email.EndsWith("@gmail.com"))
                     {
-                        SuaNV.Gmail = txtEmail.Text;
-                        SuaNV.HoTen = txtHoVaTen.Text;
-                        SuaNV.DiaChi = txtDiaChi.Text;
-                        SuaNV.TrangThai = tinhtrang;
-                        SuaNV.TenVaiTro = cbVaiTro.Text;
-                        context.SaveChanges();
-                        MessageBox.Show("Cập nhật thành công");
-                        LoadData();
-                        Reset();
+                        MessageBox.Show("Email phải có đuôi @gmail.com");
+                        return;
                     }
+
+                    // Cập nhật thông tin của nhân viên
+                    SuaNV.Gmail = email;
+                    SuaNV.HoTen = tennv;
+                    SuaNV.DiaChi = diachi;
+                    SuaNV.TrangThai = tinhtrang;
+                    SuaNV.TenVaiTro = tenvaitro;
+
+                    // Lưu thay đổi vào cơ sở dữ liệu
+                    context.SaveChanges();
+                    MessageBox.Show("Cập nhật thành công");
+
+                    // Làm mới dữ liệu trên form và reset các điều khiển
+                    LoadData();
+                    Reset();
                 }
             }
             else
@@ -283,44 +356,41 @@ namespace UIDuAn1
                 MessageBox.Show("Vui lòng chọn nhân viên cần cập nhật");
             }
 
+
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
-                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                if (dtgThongTinNV.SelectedRows.Count > 0)
                 {
-                    if (dtgThongTinNV.SelectedRows.Count > 0)
+                    string id = dtgThongTinNV.SelectedRows[0].Cells["MaNhanVien"].Value.ToString();
+
+                    using (var context = new QUANLYQUANNETContext())
                     {
-                        string id = dtgThongTinNV.SelectedRows[0].Cells["MaNhanVien"].Value.ToString();
+                        NhanVien DeleteNV = context.NhanVien.FirstOrDefault(c => c.MaNhanVien == id);
 
-                        using (var context = new QUANLYQUANNETContext())
+                        if (DeleteNV != null)
                         {
-                            NhanVien DeleteNV = context.NhanVien.FirstOrDefault(c => c.MaNhanVien == id);
-
-                            if (DeleteNV != null)
+                            try
                             {
-                                try
-                                {
-                                    context.NhanVien.Remove(DeleteNV);
-                                    context.SaveChanges();
-                                    MessageBox.Show("Xóa thành công");
-                                    LoadData();
-                                    Reset();
-                                }
-                                catch (Exception)
-                                {
-                                    MessageBox.Show("Không thể xóa nhân viên này vì còn liên kết với dữ liệu khác (sản phẩm, khách hàng)");
-                                }
+                                context.NhanVien.Remove(DeleteNV);
+                                context.SaveChanges();
+                                MessageBox.Show("Xóa thành công");
+                                LoadData();
+                                Reset();
+                            }
+                            catch (Exception)
+                            {
+                                MessageBox.Show("Không thể xóa nhân viên này vì còn liên kết với dữ liệu khác (sản phẩm, khách hàng)");
                             }
                         }
                     }
                 }
             }
-
         }
-
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             using (var context = new QUANLYQUANNETContext())
@@ -338,7 +408,6 @@ namespace UIDuAn1
                                 nv.TenVaiTro,
                                 nv.TrangThai
                             };
-
                 // Thực hiện tìm kiếm trên phía client
                 var filteredResult = query.ToList().Where(nv =>
                     nv.MaNhanVien.Contains(CTimKiem) ||
@@ -356,7 +425,7 @@ namespace UIDuAn1
     }
 
 }
-    
+
 
 
 
