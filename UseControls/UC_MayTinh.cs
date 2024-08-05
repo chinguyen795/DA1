@@ -21,6 +21,7 @@ namespace UIDuAn1
             currentUserRole = userRole;
             InitializeComponent();
             checkVaiTro();
+            reset();
         }
 
         private void checkVaiTro()
@@ -74,7 +75,7 @@ namespace UIDuAn1
                 string RAM = selectRow.Cells["RAM"].Value.ToString();
                 string Giatien = selectRow.Cells["GiaTien"].Value.ToString();
                 bool tinhTrang = (bool)selectRow.Cells["TinhTrang"].Value;
-                string manv = selectRow.Cells["MaNhanVien"].Value.ToString();
+                cbMaNV.SelectedValue = selectRow.Cells["MaNhanVien"].Value.ToString();
 
                 txtMaMayTinh.Text = MaMay;
                 txtCPU.Text = CPU;
@@ -90,7 +91,7 @@ namespace UIDuAn1
                     rdoKhongHoatDong.Checked = true;
                 }
 
-                cbMaNV.Text = manv;
+                
 
             }
         }
@@ -110,9 +111,8 @@ namespace UIDuAn1
                 cbMaNV.ValueMember = "MaNv";
 
                 var query = from MT in context.MayTinh
-                            join NhanVien in context.NhanVien on MT.MaNhanVien
-                            equals NhanVien.MaNhanVien
-
+                            join NhanVien in context.NhanVien on MT.MaNhanVien equals NhanVien.MaNhanVien
+                            orderby MT.MaMay // Thêm dòng này để sắp xếp mã máy tính
                             select new
                             {
                                 MT.MaMay,
@@ -121,8 +121,8 @@ namespace UIDuAn1
                                 MT.Ram,
                                 MT.GiaTien,
                                 MT.TinhTrang,
-                                NhanVien.HoTen,
-                                NhanVien.MaNhanVien
+                                NhanVien.MaNhanVien,
+                                NhanVien.HoTen
                             };
 
                 dtgMayTinh.DataSource = query.ToList();
@@ -134,13 +134,12 @@ namespace UIDuAn1
                 dtgMayTinh.Columns[4].HeaderText = "Gía tiền";
                 dtgMayTinh.Columns[5].HeaderText = "Tình trạng";
                 dtgMayTinh.Columns[6].Visible = false;
-                dtgMayTinh.Columns[7].HeaderText = "Mã nhân viên";
+                dtgMayTinh.Columns[7].HeaderText = "Tên nhân viên";
 
                 int mayTinhCount = context.MayTinh.Count();
                 string newMayTinhID = $"MT{(mayTinhCount + 1).ToString("D3")}";
 
                 txtMaMayTinh.Text = newMayTinhID;
-
             }
         }
         private void reset()
@@ -156,9 +155,9 @@ namespace UIDuAn1
 
             using (var context = new QUANLYQUANNETContext())
             {
-                int count = context.CaLam.Count();
-                string newMaCa = $"MT{(count + 1).ToString("D3")}";
-                txtMaMayTinh.Text = newMaCa;
+                int mayTinhCount = context.MayTinh.Count();
+                string newMaMayTinh = $"MT{(mayTinhCount + 1).ToString("D3")}";
+                txtMaMayTinh.Text = newMaMayTinh;
             }
         }
 
@@ -186,7 +185,7 @@ namespace UIDuAn1
                     !ContainsLetter(txtGPU.Text) ||
                     !ContainsLetter(txtRAM.Text) ||
                     !decimal.TryParse(txtGiaTien.Text, out giaTien) ||
-                    giaTien <= 0)
+                    giaTien <= 0 || giaTien > 922337203685477.5807m)
                 {
                     MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
                     return;
