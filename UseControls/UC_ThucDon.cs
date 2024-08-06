@@ -93,6 +93,10 @@ namespace UIDuAn1
 
                 dtgThucDon.DataSource = query.ToList();
 
+                int count = context.ThucDon.Count();
+                string newMaThucDon = $"MA{(count + 1).ToString("D3")}";
+                txtMaMonAn.Text = newMaThucDon;
+
                 dtgThucDon.Columns[0].HeaderText = "Mã Thực Đơn";
                 dtgThucDon.Columns[1].HeaderText = "Tên Thực Đơn";
                 dtgThucDon.Columns[2].HeaderText = "Số lượng";
