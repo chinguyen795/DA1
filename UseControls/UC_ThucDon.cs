@@ -98,8 +98,9 @@ namespace UIDuAn1
                 dtgThucDon.Columns[2].HeaderText = "Số lượng";
                 dtgThucDon.Columns[3].HeaderText = "Giá";
                 dtgThucDon.Columns[4].HeaderText = "Tình Trạng";
-                dtgThucDon.Columns[5].HeaderText = "Mã Nhân Viên";
-                dtgThucDon.Columns[6].HeaderText = "Tên Nhân Viên";
+                dtgThucDon.Columns[5].HeaderText = "Hình Ảnh";
+                dtgThucDon.Columns[6].HeaderText = "Mã Nhân Viên";
+                dtgThucDon.Columns[7].HeaderText = "Tên Nhân Viên";
 
             }
         }
@@ -164,7 +165,8 @@ namespace UIDuAn1
                     string.IsNullOrWhiteSpace(txtSoluongMon.Text) ||
                     string.IsNullOrWhiteSpace(txtGiaMonAn.Text) ||
                     !int.TryParse(txtSoluongMon.Text, out sl) ||
-                    !int.TryParse(txtGiaMonAn.Text, out gia))
+                    !int.TryParse(txtGiaMonAn.Text, out gia) ||
+                     gia <= 0 || gia > 922337203685477.5807m)
                 {
                     MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
                     return;
@@ -175,6 +177,8 @@ namespace UIDuAn1
                     MessageBox.Show("Vui lòng chọn tình trạng.");
                     return;
                 }
+
+                
 
                 // Tạo mã món ăn mới
                 string newCustomerID = GenerateNewMaMonAn();
@@ -268,29 +272,28 @@ namespace UIDuAn1
                 string tentd = selectRow.Cells["TenMonAn"].Value.ToString();
                 string soluong = selectRow.Cells["SoLuong"].Value.ToString();
                 string gia = selectRow.Cells["Gia"].Value.ToString();
-                string tinhtrang = selectRow.Cells["TinhTrang"].Value.ToString();
+                bool tinhtrang = (bool)selectRow.Cells["TinhTrang"].Value;
                 byte[] imageData = (byte[])selectRow.Cells["HinhAnh"].Value;
-                string manv = selectRow.Cells["MaNhanVien"].Value.ToString();
+                cbMaNV.SelectedValue = selectRow.Cells["MaNhanVien"].Value.ToString();
 
                 txtMaMonAn.Text = matd;
                 txtTenMonAn.Text = tentd;
                 txtSoluongMon.Text = soluong;
                 txtGiaMonAn.Text = gia;
-                if (tinhtrang == "1")
+                if (tinhtrang)
                 {
                     rdoConMonAn.Checked = true;
                 }
-                else if (tinhtrang == "2")
+                else
                 {
                     rdoHetMonAn.Checked = true;
                 }
 
-                // pcChenAnh.Image = Image.FromFile(hinhanh);
-                cbMaNV.Text = manv;
                 using (MemoryStream ms = new MemoryStream(imageData))
                 {
                     pcChenAnh.Image = Image.FromStream(ms);
                 }
+
             }
         }
 
