@@ -142,42 +142,6 @@ namespace UIDuAn1
             rdoKhongHoatDong.Checked = false;
             cbVaiTro.SelectedIndex = -1; // Đặt ComboBox thành trạng thái không chọn
         }
-        private void dtgThongTinNV_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                // Lấy hàng được chọn từ DataGridView
-                DataGridViewRow selectRow = dtgThongTinNV.Rows[e.RowIndex];
-
-                // Lấy giá trị từ các ô trong hàng
-                string manv = selectRow.Cells["MaNhanVien"].Value.ToString();
-                string hoten = selectRow.Cells["HoTen"].Value.ToString();
-                string gmail = selectRow.Cells["Gmail"].Value.ToString();
-                string diachi = selectRow.Cells["DiaChi"].Value.ToString();
-                string tenvaitro = selectRow.Cells["TenVaiTro"].Value.ToString();
-                bool trangthai = Convert.ToBoolean(selectRow.Cells["TrangThai"].Value); // Chuyển đổi thành bool
-
-                // Hiển thị giá trị trong các điều khiển trên form
-                txtMaNV.Text = manv;
-                txtEmail.Text = gmail;
-                txtDiaChi.Text = diachi;
-                txtHoVaTen.Text = hoten;
-                cbVaiTro.Text = tenvaitro;
-
-                // Thiết lập trạng thái của radio button dựa trên giá trị từ DataGridView
-                if (trangthai)
-                {
-                    rdoHoatDong.Checked = true; // Nếu trạng thái là true, chọn radio button "Hoạt động"
-                    rdoKhongHoatDong.Checked = false; // Đảm bảo radio button khác không được chọn
-                }
-                else
-                {
-                    rdoKhongHoatDong.Checked = true; // Nếu trạng thái là false, chọn radio button "Không hoạt động"
-                    rdoHoatDong.Checked = false; // Đảm bảo radio button khác không được chọn
-                }
-            }
-        }
-
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             Reset();
@@ -409,6 +373,43 @@ namespace UIDuAn1
 
                 dtgThongTinNV.DataSource = filteredResult.ToList();
                 Reset();
+            }
+
+        }
+
+        private void dtgThongTinNV_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Lấy hàng được chọn từ DataGridView
+                DataGridViewRow selectRow = dtgThongTinNV.Rows[e.RowIndex];
+
+                // Lấy giá trị từ các ô trong hàng
+                string manv = selectRow.Cells["MaNhanVien"].Value.ToString();
+                string hoten = selectRow.Cells["HoTen"].Value.ToString();
+                string gmail = selectRow.Cells["Gmail"].Value.ToString();
+                string diachi = selectRow.Cells["DiaChi"].Value.ToString();
+                string tenvaitro = selectRow.Cells["TenVaiTro"].Value.ToString();
+                bool trangthai = Convert.ToBoolean(selectRow.Cells["TrangThai"].Value); // Chuyển đổi thành bool
+
+                // Hiển thị giá trị trong các điều khiển trên form
+                txtMaNV.Text = manv;
+                txtEmail.Text = gmail;
+                txtDiaChi.Text = diachi;
+                txtHoVaTen.Text = hoten;
+                cbVaiTro.Text = tenvaitro;
+
+                // Thiết lập trạng thái của radio button dựa trên giá trị từ DataGridView
+                if (trangthai)
+                {
+                    rdoHoatDong.Checked = true; // Nếu trạng thái là true, chọn radio button "Hoạt động"
+                    rdoKhongHoatDong.Checked = false; // Đảm bảo radio button khác không được chọn
+                }
+                else
+                {
+                    rdoKhongHoatDong.Checked = true; // Nếu trạng thái là false, chọn radio button "Không hoạt động"
+                    rdoHoatDong.Checked = false; // Đảm bảo radio button khác không được chọn
+                }
             }
 
         }

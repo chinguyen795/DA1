@@ -114,31 +114,6 @@ namespace UIDuAn1
             txtSoTien.Clear();
             cbMaNV.SelectedIndex = -1;
         }
-        private void dtgKhachHang_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                // Lấy hàng được chọn
-                var selectedRow = dtgKhachHang.Rows[e.RowIndex];
-
-                // Lấy dữ liệu từ hàng được chọn
-                string makhachhang = selectedRow.Cells["MaKhachHang"].Value.ToString();
-                string taikhoan = selectedRow.Cells["TaiKhoan"].Value.ToString();
-                string matkhau = selectedRow.Cells["MatKhau"].Value.ToString();
-                decimal sotien = Convert.ToDecimal(selectedRow.Cells["SoTien"].Value);
-
-                // Điền dữ liệu vào các trường trên form
-                txtMaKhachHang.Text = makhachhang;
-                txtTaiKhoan.Text = taikhoan;
-                txtMatkhau.Text = matkhau;
-                txtSoTien.Text = sotien.ToString();
-
-                // Chọn giá trị trong các ComboBox
-                cbMaNV.SelectedValue = selectedRow.Cells["MaNhanVien"].Value.ToString();
-            }
-
-        }
-
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             Reset();
@@ -361,8 +336,33 @@ namespace UIDuAn1
                 }
             }
         }
+
+        private void dtgKhachHang_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Lấy hàng được chọn
+                var selectedRow = dtgKhachHang.Rows[e.RowIndex];
+
+                // Lấy dữ liệu từ hàng được chọn
+                string makhachhang = selectedRow.Cells["MaKhachHang"].Value.ToString();
+                string taikhoan = selectedRow.Cells["TaiKhoan"].Value.ToString();
+                string matkhau = selectedRow.Cells["MatKhau"].Value.ToString();
+                decimal sotien = Convert.ToDecimal(selectedRow.Cells["SoTien"].Value);
+
+                // Điền dữ liệu vào các trường trên form
+                txtMaKhachHang.Text = makhachhang;
+                txtTaiKhoan.Text = taikhoan;
+                txtMatkhau.Text = matkhau;
+                txtSoTien.Text = sotien.ToString();
+
+                // Chọn giá trị trong các ComboBox
+                cbMaNV.SelectedValue = selectedRow.Cells["MaNhanVien"].Value.ToString();
+            }
+        }
     }
-    }
+
+}
 
 
 

@@ -421,58 +421,6 @@ namespace UIDuAn1
                 ResetForm();
             }
         }
-
-        private void dtgHoaDon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                // Lấy hàng được chọn
-                var selectedRow = dtgHoaDon.Rows[e.RowIndex];
-
-                // Lấy dữ liệu từ hàng được chọn
-                string maHoaDon = selectedRow.Cells["MaHoaDon"].Value.ToString();
-                DateTime ngayLap = Convert.ToDateTime(selectedRow.Cells["NgayLap"].Value);
-                decimal triGia = Convert.ToDecimal(selectedRow.Cells["TriGia"].Value);
-                string tenNhanVien = selectedRow.Cells["HoTen"].Value.ToString();
-                string taiKhoanKhachHang = selectedRow.Cells["TaiKhoan"].Value.ToString();
-                
-
-                // Điền dữ liệu vào các trường trên form
-                txtMaHoaDon.Text = maHoaDon;
-                dtbNgayLap.Value = ngayLap;
-                txtTriGia.Text = triGia.ToString();
-
-                // Chọn giá trị trong các ComboBox
-                cbMaNV.SelectedValue = selectedRow.Cells["MaNhanVien"].Value.ToString();
-                cbMaKhachHang.SelectedValue = selectedRow.Cells["MaKhachHang"].Value.ToString();
-
-                // Lấy chi tiết của hóa đơn đã chọn
-                using (var context = new QUANLYQUANNETContext())
-                {
-                    var hoaDonChiTiet = context.HoaDonChiTiet.FirstOrDefault(hdc => hdc.MaHoaDon == maHoaDon);
-                    if (hoaDonChiTiet != null)
-                    {
-                        cboMaMonAn.SelectedValue = hoaDonChiTiet.MaMonAn;
-                        txtSoLuongmonAn.Text = hoaDonChiTiet.SoLuongMon.ToString();
-                    }
-                }
-                if (cboMaMonAn.SelectedIndex != -1)
-                {
-                    string maMonAn = cboMaMonAn.SelectedValue.ToString();
-
-                    using (var context = new QUANLYQUANNETContext())
-                    {
-                        var monAn = context.ThucDon.FirstOrDefault(ma => ma.MaMonAn == maMonAn);
-                        if (monAn != null)
-                        {
-                            giaMonAnHienTai = monAn.Gia;
-                            TinhTriGiaHoaDon();
-                        }
-                    }
-                }
-            }
-        }
-
         private void UC_HoaDon_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -513,6 +461,58 @@ namespace UIDuAn1
         private void txtSoLuongmonAn_TextChanged(object sender, EventArgs e)
         {
             TinhTriGiaHoaDon();
+        }
+
+        private void dtgHoaDon_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Lấy hàng được chọn
+                var selectedRow = dtgHoaDon.Rows[e.RowIndex];
+
+                // Lấy dữ liệu từ hàng được chọn
+                string maHoaDon = selectedRow.Cells["MaHoaDon"].Value.ToString();
+                DateTime ngayLap = Convert.ToDateTime(selectedRow.Cells["NgayLap"].Value);
+                decimal triGia = Convert.ToDecimal(selectedRow.Cells["TriGia"].Value);
+                string tenNhanVien = selectedRow.Cells["HoTen"].Value.ToString();
+                string taiKhoanKhachHang = selectedRow.Cells["TaiKhoan"].Value.ToString();
+
+
+                // Điền dữ liệu vào các trường trên form
+                txtMaHoaDon.Text = maHoaDon;
+                dtbNgayLap.Value = ngayLap;
+                txtTriGia.Text = triGia.ToString();
+
+                // Chọn giá trị trong các ComboBox
+                cbMaNV.SelectedValue = selectedRow.Cells["MaNhanVien"].Value.ToString();
+                cbMaKhachHang.SelectedValue = selectedRow.Cells["MaKhachHang"].Value.ToString();
+
+                // Lấy chi tiết của hóa đơn đã chọn
+                using (var context = new QUANLYQUANNETContext())
+                {
+                    var hoaDonChiTiet = context.HoaDonChiTiet.FirstOrDefault(hdc => hdc.MaHoaDon == maHoaDon);
+                    if (hoaDonChiTiet != null)
+                    {
+                        cboMaMonAn.SelectedValue = hoaDonChiTiet.MaMonAn;
+                        txtSoLuongmonAn.Text = hoaDonChiTiet.SoLuongMon.ToString();
+                    }
+                }
+                if (cboMaMonAn.SelectedIndex != -1)
+                {
+                    string maMonAn = cboMaMonAn.SelectedValue.ToString();
+
+                    using (var context = new QUANLYQUANNETContext())
+                    {
+                        var monAn = context.ThucDon.FirstOrDefault(ma => ma.MaMonAn == maMonAn);
+                        if (monAn != null)
+                        {
+                            giaMonAnHienTai = monAn.Gia;
+                            TinhTriGiaHoaDon();
+                        }
+                    }
+                }
+            }
+
         }
     }
 }
