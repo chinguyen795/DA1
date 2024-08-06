@@ -219,6 +219,7 @@ namespace UIDuAn1
                     MaKhachHang = cbMaKhachHang.SelectedValue.ToString()
                 };
 
+                monAn.SoLuong -= soLuongMonAn;
                 context.HoaDonChiTiet.Add(newHoaDonChiTiet);
 
                 context.SaveChanges();
@@ -236,7 +237,7 @@ namespace UIDuAn1
 
                 using (var context = new QUANLYQUANNETContext())
                 {
-                    HoaDon suaHoaDon = context.HoaDon.FirstOrDefault(hd => hd.MaHoaDon == maHoaDonSelected);
+                    var suaHoaDon = context.HoaDon.FirstOrDefault(hd => hd.MaHoaDon == maHoaDonSelected);
                     if (suaHoaDon == null)
                     {
                         MessageBox.Show("Mã hóa đơn không tồn tại");
@@ -253,16 +254,41 @@ namespace UIDuAn1
                         return;
                     }
 
+                    int newSoLuongMonAn = int.Parse(txtSoLuongmonAn.Text);
+                    string newMaMonAn = cboMaMonAn.SelectedValue.ToString();
+                    var monAnMoi = context.ThucDon.FirstOrDefault(ma => ma.MaMonAn == newMaMonAn);
+
+                    if (monAnMoi == null || newSoLuongMonAn > monAnMoi.SoLuong)
+                    {
+                        MessageBox.Show("Số lượng món ăn trong hóa đơn vượt quá số lượng trong kho.");
+                        return;
+                    }
+
                     suaHoaDon.NgayLap = dtbNgayLap.Value;
                     suaHoaDon.TriGia = decimal.Parse(txtTriGia.Text);
                     suaHoaDon.MaNhanVien = cbMaNV.SelectedValue.ToString();
 
                     var suaHoaDonChiTiet = context.HoaDonChiTiet.FirstOrDefault(hdc => hdc.MaHoaDon == maHoaDonSelected);
+
                     if (suaHoaDonChiTiet != null)
                     {
-                        suaHoaDonChiTiet.MaMonAn = cboMaMonAn.SelectedValue.ToString();
-                        suaHoaDonChiTiet.SoLuongMon = int.Parse(txtSoLuongmonAn.Text);
+                        string oldMaMonAn = suaHoaDonChiTiet.MaMonAn;
+                        int oldSoLuongMonAn = suaHoaDonChiTiet.SoLuongMon;
+
+                        var monAnCu = context.ThucDon.FirstOrDefault(ma => ma.MaMonAn == oldMaMonAn);
+
+                        // Trả lại số lượng món ăn cũ vào kho
+                        if (monAnCu != null)
+                        {
+                            monAnCu.SoLuong += oldSoLuongMonAn;
+                        }
+
+                        suaHoaDonChiTiet.MaMonAn = newMaMonAn;
+                        suaHoaDonChiTiet.SoLuongMon = newSoLuongMonAn;
                         suaHoaDonChiTiet.MaKhachHang = cbMaKhachHang.SelectedValue.ToString();
+
+                        // Trừ số lượng món ăn mới từ kho
+                        monAnMoi.SoLuong -= newSoLuongMonAn;
                     }
 
                     context.SaveChanges();
