@@ -261,42 +261,6 @@ namespace UIDuAn1
             }
 
         }
-
-        private void dtgThucDon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectRow = dtgThucDon.Rows[e.RowIndex];
-
-                string matd = selectRow.Cells["MaMonAn"].Value.ToString();
-                string tentd = selectRow.Cells["TenMonAn"].Value.ToString();
-                string soluong = selectRow.Cells["SoLuong"].Value.ToString();
-                string gia = selectRow.Cells["Gia"].Value.ToString();
-                bool tinhtrang = (bool)selectRow.Cells["TinhTrang"].Value;
-                byte[] imageData = (byte[])selectRow.Cells["HinhAnh"].Value;
-                cbMaNV.SelectedValue = selectRow.Cells["MaNhanVien"].Value.ToString();
-
-                txtMaMonAn.Text = matd;
-                txtTenMonAn.Text = tentd;
-                txtSoluongMon.Text = soluong;
-                txtGiaMonAn.Text = gia;
-                if (tinhtrang)
-                {
-                    rdoConMonAn.Checked = true;
-                }
-                else
-                {
-                    rdoHetMonAn.Checked = true;
-                }
-
-                using (MemoryStream ms = new MemoryStream(imageData))
-                {
-                    pcChenAnh.Image = Image.FromStream(ms);
-                }
-
-            }
-        }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (dtgThucDon.SelectedRows.Count > 0)
@@ -422,6 +386,42 @@ namespace UIDuAn1
 
                 dtgThucDon.DataSource = query.ToList();
                 reset();
+            }
+        }
+
+        private void dtgThucDon_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectRow = dtgThucDon.Rows[e.RowIndex];
+
+                string matd = selectRow.Cells["MaMonAn"].Value.ToString();
+                string tentd = selectRow.Cells["TenMonAn"].Value.ToString();
+                string soluong = selectRow.Cells["SoLuong"].Value.ToString();
+                string gia = selectRow.Cells["Gia"].Value.ToString();
+                bool tinhtrang = (bool)selectRow.Cells["TinhTrang"].Value;
+                byte[] imageData = (byte[])selectRow.Cells["HinhAnh"].Value;
+                cbMaNV.SelectedValue = selectRow.Cells["MaNhanVien"].Value.ToString();
+
+                txtMaMonAn.Text = matd;
+                txtTenMonAn.Text = tentd;
+                txtSoluongMon.Text = soluong;
+                txtGiaMonAn.Text = gia;
+                if (tinhtrang)
+                {
+                    rdoConMonAn.Checked = true;
+                }
+                else
+                {
+                    rdoHetMonAn.Checked = true;
+                }
+
+                using (MemoryStream ms = new MemoryStream(imageData))
+                {
+                    pcChenAnh.Image = Image.FromStream(ms);
+                }
+
             }
         }
     }
