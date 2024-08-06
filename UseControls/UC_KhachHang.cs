@@ -85,7 +85,8 @@ namespace UIDuAn1
                                 kh.TaiKhoan,
                                 kh.MatKhau,
                                 kh.SoTien,
-                                NhanVien.MaNhanVien,
+                                NhanVien.HoTen,
+                                NhanVien.MaNhanVien
                             };
 
                 dtgKhachHang.DataSource = query.ToList();
@@ -94,14 +95,17 @@ namespace UIDuAn1
                 dtgKhachHang.Columns[1].HeaderText = "Tài Khoản";
                 dtgKhachHang.Columns[2].HeaderText = "Mật Khẩu";
                 dtgKhachHang.Columns[3].HeaderText = "Số Tiền";
-                dtgKhachHang.Columns[4].HeaderText = "Mã Nhân Viên";
+                dtgKhachHang.Columns[4].HeaderText = "Tên Nhân Viên";
+                dtgKhachHang.Columns[5].Visible = false;
             }
         }
 
         private void UC_KhachHang_Load(object sender, EventArgs e)
         {
             LoadData();
+            dtgKhachHang.CellFormatting += dtgKhachHang_CellFormatting;
         }
+    
         private void Reset()
         {
             txtMaKhachHang.Clear();
@@ -112,24 +116,27 @@ namespace UIDuAn1
         }
         private void dtgKhachHang_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex >= 0)
             {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow selectRow = dtgKhachHang.Rows[e.RowIndex];
+                // Lấy hàng được chọn
+                var selectedRow = dtgKhachHang.Rows[e.RowIndex];
 
-                    string makh = selectRow.Cells["MaKhachHang"].Value.ToString();
-                    string taikhoan = selectRow.Cells["TaiKhoan"].Value.ToString();
-                    string matkhau = selectRow.Cells["MatKhau"].Value.ToString();
-                    string sotien = selectRow.Cells["SoTien"].Value.ToString();
-                    string manv = selectRow.Cells["MaNhanVien"].Value.ToString();
+                // Lấy dữ liệu từ hàng được chọn
+                string makhachhang = selectedRow.Cells["MaKhachHang"].Value.ToString();
+                string taikhoan = selectedRow.Cells["TaiKhoan"].Value.ToString();
+                string matkhau = selectedRow.Cells["MatKhau"].Value.ToString();
+                decimal sotien = Convert.ToDecimal(selectedRow.Cells["SoTien"].Value);
 
-                    txtMaKhachHang.Text = makh;
-                    txtTaiKhoan.Text = taikhoan;
-                    txtMatkhau.Text = matkhau;
-                    txtSoTien.Text = sotien;
-                    cbMaNV.Text = manv;
-                }
+                // Điền dữ liệu vào các trường trên form
+                txtMaKhachHang.Text = makhachhang;
+                txtTaiKhoan.Text = taikhoan;
+                txtMatkhau.Text = matkhau;
+                txtSoTien.Text = sotien.ToString();
+
+                // Chọn giá trị trong các ComboBox
+                cbMaNV.SelectedValue = selectedRow.Cells["MaNhanVien"].Value.ToString();
             }
+
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -166,20 +173,24 @@ namespace UIDuAn1
         {
             using (var context = new QUANLYQUANNETContext())
             {
-                int sotien;
-                string pattern = @"^[a-zA-Z0-9]+$"; // Chỉ cho phép chữ cái và số
-
+                decimal sotien;
                 // Kiểm tra các trường bắt buộc
                 if (string.IsNullOrWhiteSpace(txtTaiKhoan.Text) ||
-                    !Regex.IsMatch(txtTaiKhoan.Text, pattern) || // Kiểm tra ký tự đặc biệt trong tài khoản
                     string.IsNullOrWhiteSpace(txtMatkhau.Text) ||
                     txtMatkhau.Text.Length < 9 || // Kiểm tra mật khẩu không dưới 9 ký tự
-                    !int.TryParse(txtSoTien.Text, out sotien) ||
+                    !decimal.TryParse(txtSoTien.Text, out sotien) || // Kiểm tra số tiền là số hợp lệ
                     sotien <= 0) // Kiểm tra số tiền phải lớn hơn 0
                 {
                     MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin. " +
-                                    "Tài khoản không được chứa ký tự đặc biệt. " +
-                                    "Mật khẩu phải có ít nhất 9 ký tự. Số tiền phải lớn hơn 0.");
+                                    "Mật khẩu phải có ít nhất 9 ký tự. Số tiền phải là số và lớn hơn 0.");
+                    return;
+                }
+
+                // Kiểm tra xem tài khoản đã tồn tại chưa
+                bool accountExists = context.KhachHang.Any(kh => kh.TaiKhoan == txtTaiKhoan.Text);
+                if (accountExists)
+                {
+                    MessageBox.Show("Tài khoản đã tồn tại. Vui lòng chọn tài khoản khác.");
                     return;
                 }
 
@@ -203,9 +214,10 @@ namespace UIDuAn1
                     LoadData();
                     Reset();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi");
+                    // Hiển thị thông tin lỗi cụ thể hơn
+                    MessageBox.Show("Lỗi: " + ex.Message);
                 }
             }
         }
@@ -219,43 +231,65 @@ namespace UIDuAn1
 
                 using (var context = new QUANLYQUANNETContext())
                 {
-                    int sotien;
+                    decimal sotien;
+                    // Tìm khách hàng theo mã khách hàng đã chọn
                     KhachHang SuaKH = context.KhachHang.FirstOrDefault(c => c.MaKhachHang == MaSelected);
                     if (SuaKH == null)
                     {
-                        MessageBox.Show("Mã khách hàng không tồn tại");
+                        MessageBox.Show("Mã khách hàng không tồn tại.");
                         return;
                     }
 
                     // Kiểm tra các trường thông tin bắt buộc
-                    if (
+                    if (string.IsNullOrWhiteSpace(txtTaiKhoan.Text) ||
                         string.IsNullOrWhiteSpace(txtMatkhau.Text) ||
-                        string.IsNullOrWhiteSpace(txtTaiKhoan.Text) ||
                         string.IsNullOrWhiteSpace(txtSoTien.Text) ||
-                        !int.TryParse(txtSoTien.Text, out sotien)
-                        )
-
+                        cbMaNV.SelectedIndex == -1 ||
+                        !decimal.TryParse(txtSoTien.Text, out sotien) ||
+                        sotien <= 0) // Kiểm tra số tiền phải lớn hơn 0
                     {
-                        MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
+                        MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin. Số tiền phải lớn hơn 0.");
                         return;
                     }
-                    // Cập nhật thông tin sản phẩm
+
+                    // Kiểm tra tài khoản mới có bị trùng lặp không
+                    bool accountExists = context.KhachHang
+                        .Any(kh => kh.TaiKhoan == txtTaiKhoan.Text && kh.MaKhachHang != MaSelected);
+                    if (accountExists)
+                    {
+                        MessageBox.Show("Tài khoản đã tồn tại. Vui lòng chọn tài khoản khác.");
+                        return;
+                    }
+
+                    // Cập nhật thông tin khách hàng
                     SuaKH.TaiKhoan = txtTaiKhoan.Text;
                     SuaKH.MatKhau = txtMatkhau.Text;
-                    SuaKH.SoTien = int.Parse(txtSoTien.Text);
-                    SuaKH.MaNhanVien = cbMaNV.SelectedValue.ToString();
+                    SuaKH.SoTien = sotien;
+                    SuaKH.MaNhanVien = cbMaNV.SelectedValue.ToString(); // Dùng SelectedValue thay vì Text
 
-                    context.SaveChanges();
-                    MessageBox.Show("Cập nhật thành công");
+                    try
+                    {
+                        // Lưu thay đổi vào cơ sở dữ liệu
+                        context.SaveChanges();
+                        MessageBox.Show("Cập nhật thành công.");
 
-                    Reset();
-                    LoadData();
+                        // Làm mới dữ liệu trên form và reset các điều khiển
+                        LoadData();
+                        Reset();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Hiển thị thông tin lỗi cụ thể
+                        MessageBox.Show("Lỗi khi cập nhật: " + ex.Message);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn sản phẩm cần cập nhật");
+                MessageBox.Show("Vui lòng chọn khách hàng cần cập nhật.");
             }
+
+
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
@@ -316,8 +350,20 @@ namespace UIDuAn1
                 Reset();
             }
         }
+
+        private void dtgKhachHang_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == dtgKhachHang.Columns["MatKhau"].Index) // Thay đổi theo tên cột hoặc chỉ số cột của mật khẩu
+            {
+                if (e.Value != null)
+                {
+                    e.Value = new string('*', e.Value.ToString().Length); // Thay thế mật khẩu bằng dấu '*'
+                }
+            }
+        }
     }
-}
+    }
+
 
 
 
