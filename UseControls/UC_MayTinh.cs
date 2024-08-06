@@ -62,39 +62,6 @@ namespace UIDuAn1
                 }
             }
         }
-
-        private void dtgMayTinh_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectRow = dtgMayTinh.Rows[e.RowIndex];
-
-                string MaMay = selectRow.Cells["MaMay"].Value.ToString();
-                string CPU = selectRow.Cells["CPU"].Value.ToString();
-                string GPU = selectRow.Cells["GPU"].Value.ToString();
-                string RAM = selectRow.Cells["RAM"].Value.ToString();
-                string Giatien = selectRow.Cells["GiaTien"].Value.ToString();
-                bool tinhTrang = (bool)selectRow.Cells["TinhTrang"].Value;
-                cbMaNV.SelectedValue = selectRow.Cells["MaNhanVien"].Value.ToString();
-
-                txtMaMayTinh.Text = MaMay;
-                txtCPU.Text = CPU;
-                txtGPU.Text = GPU;
-                txtRAM.Text = RAM;
-                txtGiaTien.Text = Giatien;
-                if (tinhTrang)
-                {
-                    rdoHoatDong.Checked = true;
-                }
-                else
-                {
-                    rdoKhongHoatDong.Checked = true;
-                }
-
-                
-
-            }
-        }
         private void LoadData()
         {
             using (var context = new QUANLYQUANNETContext())
@@ -387,6 +354,36 @@ namespace UIDuAn1
         {
             LoadData();
             
+        }
+
+        private void dtgMayTinh_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectRow = dtgMayTinh.Rows[e.RowIndex];
+
+                string MaMay = selectRow.Cells["MaMay"].Value.ToString();
+                string CPU = selectRow.Cells["CPU"].Value.ToString();
+                string GPU = selectRow.Cells["GPU"].Value.ToString();
+                string RAM = selectRow.Cells["RAM"].Value.ToString();
+                string Giatien = selectRow.Cells["GiaTien"].Value.ToString();
+                bool tinhTrang = (bool)selectRow.Cells["TinhTrang"].Value;
+                cbMaNV.SelectedValue = selectRow.Cells["MaNhanVien"].Value.ToString();
+
+                txtMaMayTinh.Text = MaMay;
+                txtCPU.Text = CPU;
+                txtGPU.Text = GPU;
+                txtRAM.Text = RAM;
+                txtGiaTien.Text = Giatien;
+                if (tinhTrang)
+                {
+                    rdoHoatDong.Checked = true;
+                }
+                else
+                {
+                    rdoKhongHoatDong.Checked = true;
+                }
+            }
         }
     }
 }

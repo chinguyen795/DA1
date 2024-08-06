@@ -361,8 +361,7 @@ namespace UIDuAn1
                 ResetForm();
             }
         }
-
-        private void dtgCongViec_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dtgCongViec_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
             {

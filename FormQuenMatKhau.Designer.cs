@@ -94,11 +94,11 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(119, 123);
+            this.label3.Location = new System.Drawing.Point(106, 123);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 31);
+            this.label3.Size = new System.Drawing.Size(198, 31);
             this.label3.TabIndex = 139;
-            this.label3.Text = "Đổi mật khẩu";
+            this.label3.Text = "Quên mật khẩu";
             // 
             // txtEmail
             // 
@@ -113,7 +113,7 @@
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(55, 208);
+            this.txtEmail.Location = new System.Drawing.Point(54, 208);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
