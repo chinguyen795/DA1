@@ -71,7 +71,7 @@ namespace UIDuAn1
                 MessageBox.Show("Vui lòng nhập số tháng hợp lệ (1-12).", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            
             using (var context = new QUANLYQUANNETContext())
             {
                 if (selectedOption == "Lương phải trả cho nhân viên theo tháng")

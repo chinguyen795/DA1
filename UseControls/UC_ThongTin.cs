@@ -104,6 +104,17 @@ namespace UIDuAn1
         {
             using (var context = new QUANLYQUANNETContext())
             {
+                var vaiTros = context.VaiTro.Select(vt => new
+                {
+                    mavt = vt.MaVaiTro,
+                    tenvt = vt.TenVaiTro,
+                    DisplayText = $"{vt.MaVaiTro} | {vt.TenVaiTro}"
+                }).ToList();
+
+                cbVaiTro.DataSource = vaiTros;
+                cbVaiTro.DisplayMember = "DisplayText";
+                cbVaiTro.ValueMember = "mavt";
+
                 var query = from nv in context.NhanVien
                             select new
                             {
@@ -112,8 +123,13 @@ namespace UIDuAn1
                                 nv.Gmail,
                                 nv.DiaChi,
                                 nv.TenVaiTro,
+                                nv.MaVaiTro,
                                 nv.TrangThai
                             };
+
+                int count = context.NhanVien.Count();
+                string newMaNhanVien = $"NV{(count + 1).ToString("D3")}";
+                txtMaNV.Text = newMaNhanVien;
 
                 dtgThongTinNV.DataSource = query.ToList();
 
@@ -122,12 +138,10 @@ namespace UIDuAn1
                 dtgThongTinNV.Columns[2].HeaderText = "Email";
                 dtgThongTinNV.Columns[3].HeaderText = "Địa chỉ";
                 dtgThongTinNV.Columns[4].HeaderText = "Vai trò";
-                dtgThongTinNV.Columns[5].HeaderText = "Trạng Thái";
+                dtgThongTinNV.Columns[5].HeaderText = "Mã Vai Trò";
+                dtgThongTinNV.Columns[6].HeaderText = "Trạng Thái";
             }
         }
-
-
-
         private void UC_ThongTin_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -159,7 +173,7 @@ namespace UIDuAn1
                         .Where(x => !string.IsNullOrEmpty(x))
                         .Select(int.Parse)
                         .DefaultIfEmpty(0).Max();
-            return $"NV{(maxID + 1).ToString("D2")}";
+            return $"NV{(maxID + 1).ToString("D3")}";
         }
 
 
@@ -174,6 +188,7 @@ namespace UIDuAn1
                 // Kiểm tra các trường bắt buộc
                 string tennv = txtHoVaTen.Text;
                 string diachi = txtDiaChi.Text;
+                string maVaiTro = cbVaiTro.SelectedValue.ToString();
                 if (string.IsNullOrWhiteSpace(tennv) ||
                     string.IsNullOrWhiteSpace(diachi) ||
                     string.IsNullOrWhiteSpace(email))
@@ -218,6 +233,7 @@ namespace UIDuAn1
                     HoTen = tennv,
                     Gmail = email,
                     DiaChi = diachi,
+                    MaVaiTro = maVaiTro,
                     TrangThai = tinhtrang,
                     TenVaiTro = cbVaiTro.Text,
                     MatKhau = GenerateRandomPassword()
@@ -226,7 +242,7 @@ namespace UIDuAn1
                 try
                 {
                     SendEmail(newNV.Gmail, "Mật khẩu mới", $"Mật khẩu mới của bạn là: {newNV.MatKhau}");
-                    // Thêm nhân viên vào cơ sở dữ liệu
+                    // Thêm nhân viên mới vào cơ sở dữ liệu
                     context.NhanVien.Add(newNV);
                     context.SaveChanges();
 
@@ -236,80 +252,107 @@ namespace UIDuAn1
                 }
                 catch (Exception ex)
                 {
-                    // Hiển thị thông tin lỗi cụ thể hơn
-                    MessageBox.Show("Lỗi: " + ex.Message);
+                    MessageBox.Show("Đã có lỗi xảy ra: " + ex.Message);
                 }
             }
-
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (dtgThongTinNV.SelectedRows.Count > 0)
+            using (var context = new QUANLYQUANNETContext())
             {
-                int selectedRowIndex = dtgThongTinNV.SelectedRows[0].Index;
-                string MaSelected = dtgThongTinNV.Rows[selectedRowIndex].Cells["MaNhanVien"].Value.ToString();
+                string maNV = txtMaNV.Text;
 
-                using (var context = new QUANLYQUANNETContext())
+                var nhanVien = context.NhanVien.SingleOrDefault(nv => nv.MaNhanVien == maNV);
+                if (nhanVien == null)
                 {
-                    // Lấy thông tin từ các điều khiển trên form
-                    string tennv = txtHoVaTen.Text;
-                    string diachi = txtDiaChi.Text;
-                    string email = txtEmail.Text;
-                    string tenvaitro = cbVaiTro.Text;
-                    bool tinhtrang = rdoHoatDong.Checked;
+                    MessageBox.Show("Không tìm thấy nhân viên cần sửa");
+                    return;
+                }
 
-                    // Tìm nhân viên cần cập nhật
-                    NhanVien SuaNV = context.NhanVien.FirstOrDefault(c => c.MaNhanVien == MaSelected);
-                    if (SuaNV == null)
+                // Kiểm tra các trường bắt buộc
+                string tennv = txtHoVaTen.Text;
+                string diachi = txtDiaChi.Text;
+                string email = txtEmail.Text;
+                string maVaiTro = cbVaiTro.SelectedValue.ToString();
+
+                if (string.IsNullOrWhiteSpace(tennv) ||
+                    string.IsNullOrWhiteSpace(diachi) ||
+                    string.IsNullOrWhiteSpace(email))
+                {
+                    MessageBox.Show("Không để trống thông tin");
+                    return;
+                }
+
+                // Kiểm tra kí tự đặc biệt trong tên nhân viên
+                if (!Regex.IsMatch(tennv, "^[a-zA-ZÀ-ỹ ]+$"))
+                {
+                    MessageBox.Show("Tên nhân viên không được chứa ký tự đặc biệt");
+                    return;
+                }
+
+                // Kiểm tra định dạng email
+                if (!email.EndsWith("@gmail.com"))
+                {
+                    MessageBox.Show("Email phải có đuôi @gmail.com");
+                    return;
+                }
+
+                // Kiểm tra email trùng lặp
+                if (context.NhanVien.Any(nv => nv.Gmail == email && nv.MaNhanVien != maNV))
+                {
+                    MessageBox.Show("Email đã tồn tại, vui lòng nhập email khác");
+                    return;
+                }
+
+                // Kiểm tra tình trạng
+                if (!rdoHoatDong.Checked && !rdoKhongHoatDong.Checked)
+                {
+                    MessageBox.Show("Vui lòng chọn tình trạng");
+                    return;
+                }
+                bool tinhtrang = rdoHoatDong.Checked;
+
+                // Nếu email thay đổi, tạo mật khẩu mới và gửi email
+                if (nhanVien.Gmail != email)
+                {
+                    string newPassword = GenerateRandomPassword();
+                    nhanVien.MatKhau = newPassword;
+
+                    try
                     {
-                        MessageBox.Show("Mã nhân viên không tồn tại");
+                        SendEmail(email, "Mật khẩu mới", $"Mật khẩu mới của bạn là: {newPassword}");
+                        MessageBox.Show("Mật khẩu đã được gửi đến email của nhân viên vừa cập nhật");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi gửi email: " + ex.Message);
                         return;
                     }
+                }
 
-                    // Kiểm tra các trường thông tin bắt buộc
-                    if (string.IsNullOrWhiteSpace(tennv) ||
-                        string.IsNullOrWhiteSpace(diachi) ||
-                        string.IsNullOrWhiteSpace(email) ||
-                        !Regex.IsMatch(tennv, "^[a-zA-ZÀ-ỹ ]+$") ||
-                        !Regex.IsMatch(diachi, "^[a-zA-ZÀ-ỹ ]+$") ||
-                        cbVaiTro.SelectedIndex == -1)
-                    {
-                        MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
-                        return;
-                    }
+                // Cập nhật thông tin nhân viên
+                nhanVien.HoTen = tennv;
+                nhanVien.DiaChi = diachi;
+                nhanVien.Gmail = email;
+                nhanVien.MaVaiTro = maVaiTro;
+                nhanVien.TenVaiTro = cbVaiTro.Text;
+                nhanVien.TrangThai = tinhtrang;
 
-                    // Kiểm tra email có đuôi @gmail.com
-                    if (!email.EndsWith("@gmail.com"))
-                    {
-                        MessageBox.Show("Email phải có đuôi @gmail.com");
-                        return;
-                    }
-
-                    // Cập nhật thông tin của nhân viên
-                    SuaNV.Gmail = email;
-                    SuaNV.HoTen = tennv;
-                    SuaNV.DiaChi = diachi;
-                    SuaNV.TrangThai = tinhtrang;
-                    SuaNV.TenVaiTro = tenvaitro;
-
-                    // Lưu thay đổi vào cơ sở dữ liệu
+                try
+                {
                     context.SaveChanges();
                     MessageBox.Show("Cập nhật thành công");
-
-                    // Làm mới dữ liệu trên form và reset các điều khiển
                     LoadData();
                     Reset();
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Đã có lỗi xảy ra: " + ex.Message);
+                }
             }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn nhân viên cần cập nhật");
-            }
-
-
-
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
@@ -389,7 +432,7 @@ namespace UIDuAn1
                 string hoten = selectRow.Cells["HoTen"].Value.ToString();
                 string gmail = selectRow.Cells["Gmail"].Value.ToString();
                 string diachi = selectRow.Cells["DiaChi"].Value.ToString();
-                string tenvaitro = selectRow.Cells["TenVaiTro"].Value.ToString();
+                cbVaiTro.SelectedValue = selectRow.Cells["MaVaiTro"].Value.ToString();
                 bool trangthai = Convert.ToBoolean(selectRow.Cells["TrangThai"].Value); // Chuyển đổi thành bool
 
                 // Hiển thị giá trị trong các điều khiển trên form
@@ -397,7 +440,6 @@ namespace UIDuAn1
                 txtEmail.Text = gmail;
                 txtDiaChi.Text = diachi;
                 txtHoVaTen.Text = hoten;
-                cbVaiTro.Text = tenvaitro;
 
                 // Thiết lập trạng thái của radio button dựa trên giá trị từ DataGridView
                 if (trangthai)
@@ -415,10 +457,3 @@ namespace UIDuAn1
         }
     }
 }
-    
-
-
-
-
-
-
