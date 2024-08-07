@@ -23,7 +23,7 @@ namespace Ui_DuAn
             Application.Exit();
         }
         private bool ispasswordShow = false;
-        // Class dùng để lưu thông tin đăng nhập
+        // dùng để lưu thông tin đăng nhập
         public class CurrentUser
         {
             private static CurrentUser _instance;

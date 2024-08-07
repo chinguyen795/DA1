@@ -159,7 +159,7 @@ namespace UIDuAn1
                         .Where(x => !string.IsNullOrEmpty(x))
                         .Select(int.Parse)
                         .DefaultIfEmpty(0).Max();
-            return $"NV{(maxID + 1).ToString("D2")}";
+            return $"NV{(maxID + 1).ToString("D3")}";
         }
 
 
