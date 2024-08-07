@@ -508,10 +508,6 @@
             this.cbVaiTro.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbVaiTro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbVaiTro.ItemHeight = 30;
-            this.cbVaiTro.Items.AddRange(new object[] {
-            "Admin",
-            "TruongCa",
-            "NhanVien"});
             this.cbVaiTro.Location = new System.Drawing.Point(780, 112);
             this.cbVaiTro.Name = "cbVaiTro";
             this.cbVaiTro.Size = new System.Drawing.Size(208, 36);
