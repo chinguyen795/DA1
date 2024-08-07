@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,16 +16,90 @@ namespace UIDuAn1
     public partial class UC_HoaDon : UserControl
     {
         private string currentUserRole;
+        private PrintDocument printDocument1;
+        private PrintDialog printDialog1;
         public UC_HoaDon(string userRole)
         {
             currentUserRole = userRole;
             InitializeComponent();
             checkVaiTro();
             dtbNgayLap.Value = DateTime.Now;
+            InitializePrintComponents();
 
             this.cboMaMonAn.SelectedIndexChanged += new System.EventHandler(this.cboMaMonAn_SelectedIndexChanged);
             this.txtSoLuongmonAn.TextChanged += new System.EventHandler(this.txtSoLuongmonAn_TextChanged);
         }
+        private void InitializePrintComponents()
+        {
+            // Khởi tạo các thành phần in ấn
+            printDocument1 = new PrintDocument();
+            printDialog1 = new PrintDialog();
+
+            // Thêm sự kiện PrintPage
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+        }
+        private void btnInHD_Click(object sender, EventArgs e)
+        {
+            // Hiển thị hộp thoại in và in nếu người dùng nhấn OK
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                printDocument1.Print();
+            }
+        }
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            // Lấy thông tin hóa đơn cần in từ các thành phần giao diện
+            string maHoaDon = txtMaHoaDon.Text;
+            DateTime ngayLap = dtbNgayLap.Value;
+            string triGia = txtTriGia.Text;
+            string nhanVien = cbMaNV.Text;
+            string khachHang = cbMaKhachHang.Text;
+            string monAn = cboMaMonAn.Text;
+            string soLuongMonAn = txtSoLuongmonAn.Text;
+
+            // Định dạng nội dung in
+            Font font = new Font("Arial", 12);
+            float lineHeight = font.GetHeight(e.Graphics);
+            float yLineTop = e.MarginBounds.Top;
+
+            // Thêm ảnh vào trang in và thay đổi kích thước
+            Image logo = Image.FromFile("G:\\DuAn1\\IMG\\go_icon_13092811.png");
+            float imgWidth = logo.Width * 0.5f; // Giảm kích thước logo xuống còn 50%
+            float imgHeight = logo.Height * 0.5f; // Giảm kích thước logo xuống còn 50%
+            float imgX = (e.MarginBounds.Left + e.MarginBounds.Right) / 2 - imgWidth / 2; // Căn giữa logo
+            float imgY = yLineTop;
+            e.Graphics.DrawImage(logo, imgX, imgY, imgWidth, imgHeight);
+            yLineTop += imgHeight + 20;
+
+            // Căn giữa chữ "HÓA ĐƠN"
+            string title = "HÓA ĐƠN";
+            Font titleFont = new Font("Arial", 18, FontStyle.Bold);
+            SizeF titleSize = e.Graphics.MeasureString(title, titleFont);
+            float titleX = (e.MarginBounds.Left + e.MarginBounds.Right) / 2 - titleSize.Width / 2;
+            e.Graphics.DrawString(title, titleFont, Brushes.Black, titleX, yLineTop);
+            yLineTop += titleSize.Height * 2;
+
+            // In các thông tin hóa đơn
+            e.Graphics.DrawString($"Mã Hóa Đơn: {maHoaDon}", font, Brushes.Black, e.MarginBounds.Left, yLineTop);
+            yLineTop += lineHeight;
+            e.Graphics.DrawString($"Ngày Lập: {ngayLap.ToShortDateString()} {ngayLap.ToShortTimeString()}", font, Brushes.Black, e.MarginBounds.Left, yLineTop);
+            yLineTop += lineHeight;
+            yLineTop += lineHeight;
+            e.Graphics.DrawString($"Nhân Viên: {nhanVien}", font, Brushes.Black, e.MarginBounds.Left, yLineTop);
+            yLineTop += lineHeight;
+            e.Graphics.DrawString($"Khách Hàng: {khachHang}", font, Brushes.Black, e.MarginBounds.Left, yLineTop);
+            yLineTop += lineHeight;
+            e.Graphics.DrawString($"Món Ăn: {monAn}", font, Brushes.Black, e.MarginBounds.Left, yLineTop);
+            yLineTop += lineHeight;
+            e.Graphics.DrawString($"Số Lượng: {soLuongMonAn}", font, Brushes.Black, e.MarginBounds.Left, yLineTop);
+            float lineX1 = e.MarginBounds.Left;
+            float lineX2 = e.MarginBounds.Right;
+            float lineY = yLineTop + lineHeight;
+            e.Graphics.DrawLine(Pens.Black, lineX1, lineY, lineX2, lineY);
+            yLineTop += lineHeight * 2;
+            e.Graphics.DrawString($"Thanh toán: {triGia}", font, Brushes.Black, e.MarginBounds.Left, yLineTop);
+        }
+
         private void checkVaiTro()
         {
             using (var context = new QUANLYQUANNETContext())
@@ -514,5 +589,6 @@ namespace UIDuAn1
             }
 
         }
+
     }
 }
