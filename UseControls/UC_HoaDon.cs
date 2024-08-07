@@ -22,8 +22,8 @@ namespace UIDuAn1
             checkVaiTro();
             dtbNgayLap.Value = DateTime.Now;
 
-            this.cboMaMonAn.SelectedIndexChanged += new System.EventHandler(this.cboMaMonAn_SelectedIndexChanged);
-            this.txtSoLuongmonAn.TextChanged += new System.EventHandler(this.txtSoLuongmonAn_TextChanged);
+            /*this.cboMaMonAn.SelectedIndexChanged += new System.EventHandler(this.cboMaMonAn_SelectedIndexChanged);
+            this.txtSoLuongmonAn.TextChanged += new System.EventHandler(this.txtSoLuongmonAn_TextChanged);*/
         }
         private void checkVaiTro()
         {
@@ -63,7 +63,7 @@ namespace UIDuAn1
                 }
             }
         }
-        private void LoadComboboxData(QUANLYQUANNETContext db)
+/*        private void LoadComboboxData(QUANLYQUANNETContext db)
         {
             var nvQuery = from nv in db.NhanVien
                           select nv;
@@ -91,17 +91,20 @@ namespace UIDuAn1
             using (var context = new QUANLYQUANNETContext())
             {
                 // Load data for comboboxes
-                var nhanViens = context.NhanVien.Select(nv => new {
+                var nhanViens = context.NhanVien.Select(nv => new
+                {
                     MaNV = nv.MaNhanVien,
                     DisplayText = $"{nv.MaNhanVien} | {nv.HoTen}"
                 }).ToList();
 
-                var khachHangs = context.KhachHang.Select(kh => new {
+                var khachHangs = context.KhachHang.Select(kh => new
+                {
                     MaKH = kh.MaKhachHang,
                     DisplayText = $"{kh.MaKhachHang} | {kh.TaiKhoan}"
                 }).ToList();
 
-                var monAns = context.ThucDon.Select(ma => new {
+                var monAns = context.ThucDon.Select(ma => new
+                {
                     MaMonAn = ma.MaMonAn,
                     TenMonAn = ma.TenMonAn
                 }).ToList();
@@ -152,16 +155,16 @@ namespace UIDuAn1
                 dtgHoaDon.Columns[7].Visible = false;
                 dtgHoaDon.Columns[8].Visible = false;
             }
-        }
+        }*/
         private void dtgHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
         private void ResetForm()
         {
-            
-            dtbNgayLap.Value = DateTime.Now;
-            txtTriGia.Clear();
+
+           /* dtbNgayLap.Value = DateTime.Now;
+            txtThanhTien.Clear();
             cbMaNV.SelectedIndex = -1;
             cbMaKhachHang.SelectedIndex = -1;
             cboMaMonAn.SelectedIndex = -1;
@@ -172,14 +175,14 @@ namespace UIDuAn1
                 int count = context.HoaDon.Count();
                 string newMaHoaDon = $"HD{(count + 1).ToString("D3")}";
                 txtMaHoaDon.Text = newMaHoaDon;
-            }
+            }*/
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            using (var context = new QUANLYQUANNETContext())
+/*            using (var context = new QUANLYQUANNETContext())
             {
-                if (string.IsNullOrWhiteSpace(txtTriGia.Text) ||
+                if (string.IsNullOrWhiteSpace(txtThanhTien.Text) ||
                     cbMaNV.SelectedIndex == -1 ||
                     cbMaKhachHang.SelectedIndex == -1 ||
                     cboMaMonAn.SelectedIndex == -1 ||
@@ -205,7 +208,7 @@ namespace UIDuAn1
                 {
                     MaHoaDon = newMaHoaDon,
                     NgayLap = dtbNgayLap.Value,
-                    TriGia = decimal.Parse(txtTriGia.Text),
+                    TriGia = decimal.Parse(txtThanhTien.Text),
                     MaNhanVien = cbMaNV.SelectedValue.ToString()
                 };
 
@@ -227,11 +230,11 @@ namespace UIDuAn1
                 LoadData();
                 ResetForm();
             }
-        }
+*/        }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (dtgHoaDon.SelectedRows.Count > 0)
+            /*if (dtgHoaDon.SelectedRows.Count > 0)
             {
                 string maHoaDonSelected = dtgHoaDon.SelectedRows[0].Cells["MaHoaDon"].Value.ToString();
 
@@ -244,7 +247,7 @@ namespace UIDuAn1
                         return;
                     }
 
-                    if (string.IsNullOrWhiteSpace(txtTriGia.Text) ||
+                    if (string.IsNullOrWhiteSpace(txtThanhTien.Text) ||
                         cbMaNV.SelectedIndex == -1 ||
                         cbMaKhachHang.SelectedIndex == -1 ||
                         cboMaMonAn.SelectedIndex == -1 ||
@@ -265,7 +268,7 @@ namespace UIDuAn1
                     }
 
                     suaHoaDon.NgayLap = dtbNgayLap.Value;
-                    suaHoaDon.TriGia = decimal.Parse(txtTriGia.Text);
+                    suaHoaDon.TriGia = decimal.Parse(txtThanhTien.Text);
                     suaHoaDon.MaNhanVien = cbMaNV.SelectedValue.ToString();
 
                     var suaHoaDonChiTiet = context.HoaDonChiTiet.FirstOrDefault(hdc => hdc.MaHoaDon == maHoaDonSelected);
@@ -300,12 +303,12 @@ namespace UIDuAn1
             else
             {
                 MessageBox.Show("Vui lòng chọn hóa đơn cần cập nhật");
-            }
+            }*/
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Thông báo",
+           /* DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Thông báo",
     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
@@ -385,7 +388,7 @@ namespace UIDuAn1
                 {
                     MessageBox.Show("Vui lòng chọn hóa đơn cần xóa.");
                 }
-            }
+            }*/
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -395,7 +398,7 @@ namespace UIDuAn1
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            using (var context = new QUANLYQUANNETContext())
+           /* using (var context = new QUANLYQUANNETContext())
             {
                 string timKiem = txtTimKiem.Text.Trim();
 
@@ -419,18 +422,18 @@ namespace UIDuAn1
 
                 dtgHoaDon.DataSource = query.ToList();
                 ResetForm();
-            }
+            }*/
         }
         private void UC_HoaDon_Load(object sender, EventArgs e)
         {
-            LoadData();
-            TinhTriGiaHoaDon();
-            
+          /*  LoadData();
+            TinhTriGiaHoaDon();*/
+
         }
         private decimal giaMonAnHienTai = 0;
         private void cboMaMonAn_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboMaMonAn.SelectedIndex != -1)
+            /*if (cboMaMonAn.SelectedIndex != -1)
             {
                 string maMonAn = cboMaMonAn.SelectedValue.ToString();
 
@@ -443,29 +446,29 @@ namespace UIDuAn1
                         TinhTriGiaHoaDon();
                     }
                 }
-            }
+            }*/
         }
-        private void TinhTriGiaHoaDon()
+       /* private void TinhTriGiaHoaDon()
         {
             if (int.TryParse(txtSoLuongmonAn.Text, out int soLuong) && giaMonAnHienTai > 0)
             {
                 decimal triGia = giaMonAnHienTai * soLuong;
-                txtTriGia.Text = triGia.ToString();
+                txtThanhTien.Text = triGia.ToString();
             }
             else
             {
-                txtTriGia.Clear();
+                txtThanhTien.Clear();
             }
-        }
+        }*/
 
         private void txtSoLuongmonAn_TextChanged(object sender, EventArgs e)
         {
-            TinhTriGiaHoaDon();
+            /*TinhTriGiaHoaDon();*/
         }
 
         private void dtgHoaDon_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0)
+           /* if (e.RowIndex >= 0)
             {
                 // Lấy hàng được chọn
                 var selectedRow = dtgHoaDon.Rows[e.RowIndex];
@@ -481,7 +484,7 @@ namespace UIDuAn1
                 // Điền dữ liệu vào các trường trên form
                 txtMaHoaDon.Text = maHoaDon;
                 dtbNgayLap.Value = ngayLap;
-                txtTriGia.Text = triGia.ToString();
+                txtThanhTien.Text = triGia.ToString();
 
                 // Chọn giá trị trong các ComboBox
                 cbMaNV.SelectedValue = selectedRow.Cells["MaNhanVien"].Value.ToString();
@@ -511,7 +514,7 @@ namespace UIDuAn1
                         }
                     }
                 }
-            }
+            }*/
 
         }
     }

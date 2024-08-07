@@ -88,7 +88,9 @@ namespace UIDuAn1
                                 NhanVien.HoTen,
                                 NhanVien.MaNhanVien
                             };
-
+                int count = context.KhachHang.Count();
+                string newKH = $"KH{(count + 1).ToString("D3")}";
+                txtMaKhachHang.Text = newKH;
                 dtgKhachHang.DataSource = query.ToList();
 
                 dtgKhachHang.Columns[0].HeaderText = "Mã Khách Hàng";

@@ -149,7 +149,19 @@ namespace Ui_DuAn
             guna2ShadowForm1.SetShadowForm(this);
         }
 
-        private void pnSlideContainer_tick(object sender, EventArgs e)
+        private void btnNhanVien_Click(object sender, EventArgs e)
+        {
+            tmNhanVien.Start();
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Close();
+        }
+
+        private void slideTimer_Tick(object sender, EventArgs e)
         {
             if (slideExpand)
             {
@@ -173,36 +185,8 @@ namespace Ui_DuAn
 
         private void tmNhanVien_Tick(object sender, EventArgs e)
         {
-            if (NhanVienCollapsed)
-            {
-                pnContainer.Height += 10;
-                if (pnContainer.Height == pnContainer.MaximumSize.Height)
-                {
-                    NhanVienCollapsed = false;
-                    tmNhanVien.Stop();
-                }
-            }
-            else
-            {
-                pnContainer.Height -= 10;
-                if (pnContainer.Height == pnContainer.MinimumSize.Height)
-                {
-                    NhanVienCollapsed = true;
-                    tmNhanVien.Stop();
-                }
-            }
-        }
 
-        private void btnNhanVien_Click(object sender, EventArgs e)
-        {
-            tmNhanVien.Start();
-        }
-
-        private void btnDangXuat_Click(object sender, EventArgs e)
-        {
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
-            this.Close();
         }
     }
+
 }
