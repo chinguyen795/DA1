@@ -125,19 +125,6 @@ namespace Ui_DuAn
             UC_HoaDon uC_HoaDon = new UC_HoaDon(currentUserRole);
             addUC(uC_HoaDon);
         }
-
-        private void btnThongTin_Click(object sender, EventArgs e)
-        {
-            UC_ThongTin uC_ThongTin = new UC_ThongTin(currentUserRole);
-            addUC(uC_ThongTin);
-        }
-
-        private void btnConViec_Click(object sender, EventArgs e)
-        {
-            UC_CongViec uC_CongViec = new UC_CongViec(currentUserRole);
-            addUC(uC_CongViec);
-        }
-
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
             UC_TaiKhoan uC_TaiKhoan = new UC_TaiKhoan();
@@ -185,8 +172,36 @@ namespace Ui_DuAn
 
         private void tmNhanVien_Tick(object sender, EventArgs e)
         {
+            if (NhanVienCollapsed)
+            {
+                pnContainer.Height += 10;
+                if (pnContainer.Height == pnContainer.MaximumSize.Height)
+                {
+                    NhanVienCollapsed = false;
+                    tmNhanVien.Stop();
+                }
+            }
+            else
+            {
+                pnContainer.Height -= 10;
+                if (pnContainer.Height == pnContainer.MinimumSize.Height)
+                {
+                    NhanVienCollapsed = true;
+                    tmNhanVien.Stop();
+                }
+            }
+        }
 
+        private void btnThongTin_Click(object sender, EventArgs e)
+        {
+            UC_ThongTin uC_ThongTin = new UC_ThongTin(currentUserRole);
+            addUC(uC_ThongTin);
+        }
+
+        private void btnConViec_Click(object sender, EventArgs e)
+        {
+            UC_CongViec uC_CongViec = new UC_CongViec(currentUserRole);
+            addUC(uC_CongViec);
         }
     }
-
 }

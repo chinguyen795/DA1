@@ -37,9 +37,7 @@
             this.dtbNgayLap = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtThanhTien = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtMaHoaDon = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTimKiem = new Guna.UI2.WinForms.Guna2TextBox();
@@ -68,7 +66,7 @@
             this.cbMaNV.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbMaNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbMaNV.ItemHeight = 30;
-            this.cbMaNV.Location = new System.Drawing.Point(392, 119);
+            this.cbMaNV.Location = new System.Drawing.Point(392, 129);
             this.cbMaNV.Name = "cbMaNV";
             this.cbMaNV.Size = new System.Drawing.Size(208, 36);
             this.cbMaNV.TabIndex = 93;
@@ -82,7 +80,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(388, 77);
+            this.label6.Location = new System.Drawing.Point(388, 87);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 20);
             this.label6.TabIndex = 92;
@@ -97,7 +95,7 @@
             this.dtbNgayLap.FillColor = System.Drawing.Color.Aqua;
             this.dtbNgayLap.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtbNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtbNgayLap.Location = new System.Drawing.Point(764, 119);
+            this.dtbNgayLap.Location = new System.Drawing.Point(764, 129);
             this.dtbNgayLap.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtbNgayLap.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtbNgayLap.Name = "dtbNgayLap";
@@ -125,31 +123,6 @@
             this.label12.Size = new System.Drawing.Size(999, 1);
             this.label12.TabIndex = 86;
             // 
-            // txtThanhTien
-            // 
-            this.txtThanhTien.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtThanhTien.AutoRoundedCorners = true;
-            this.txtThanhTien.BorderRadius = 16;
-            this.txtThanhTien.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtThanhTien.DefaultText = "";
-            this.txtThanhTien.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtThanhTien.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtThanhTien.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtThanhTien.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtThanhTien.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtThanhTien.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtThanhTien.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtThanhTien.Location = new System.Drawing.Point(21, 256);
-            this.txtThanhTien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtThanhTien.Name = "txtThanhTien";
-            this.txtThanhTien.PasswordChar = '\0';
-            this.txtThanhTien.PlaceholderText = "Thành tiền";
-            this.txtThanhTien.SelectedText = "";
-            this.txtThanhTien.Size = new System.Drawing.Size(211, 35);
-            this.txtThanhTien.TabIndex = 81;
-            // 
             // txtMaHoaDon
             // 
             this.txtMaHoaDon.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -166,7 +139,7 @@
             this.txtMaHoaDon.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMaHoaDon.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMaHoaDon.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaHoaDon.Location = new System.Drawing.Point(21, 120);
+            this.txtMaHoaDon.Location = new System.Drawing.Point(21, 130);
             this.txtMaHoaDon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMaHoaDon.Name = "txtMaHoaDon";
             this.txtMaHoaDon.PasswordChar = '\0';
@@ -175,21 +148,6 @@
             this.txtMaHoaDon.SelectedText = "";
             this.txtMaHoaDon.Size = new System.Drawing.Size(211, 35);
             this.txtMaHoaDon.TabIndex = 80;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(20, 213);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 20);
-            this.label5.TabIndex = 79;
-            this.label5.Text = "Thành tiền";
             // 
             // label2
             // 
@@ -200,7 +158,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(760, 77);
+            this.label2.Location = new System.Drawing.Point(760, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 20);
             this.label2.TabIndex = 78;
@@ -215,7 +173,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(17, 77);
+            this.label3.Location = new System.Drawing.Point(17, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 20);
             this.label3.TabIndex = 76;
@@ -253,9 +211,9 @@
             this.btnThem.AutoRoundedCorners = true;
             this.btnThem.BorderRadius = 21;
             this.btnThem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnThem.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThem.DisabledState.CustomBorderColor = System.Drawing.Color.Gainsboro;
+            this.btnThem.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnThem.DisabledState.FillColor2 = System.Drawing.Color.Gainsboro;
             this.btnThem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnThem.FillColor = System.Drawing.Color.SkyBlue;
             this.btnThem.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -277,9 +235,9 @@
             this.btnSua.AutoRoundedCorners = true;
             this.btnSua.BorderRadius = 21;
             this.btnSua.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSua.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSua.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSua.DisabledState.CustomBorderColor = System.Drawing.Color.Gainsboro;
+            this.btnSua.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnSua.DisabledState.FillColor2 = System.Drawing.Color.Gainsboro;
             this.btnSua.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSua.FillColor = System.Drawing.Color.SkyBlue;
             this.btnSua.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -301,9 +259,9 @@
             this.btnXoa.AutoRoundedCorners = true;
             this.btnXoa.BorderRadius = 21;
             this.btnXoa.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnXoa.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnXoa.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnXoa.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnXoa.DisabledState.CustomBorderColor = System.Drawing.Color.Gainsboro;
+            this.btnXoa.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnXoa.DisabledState.FillColor2 = System.Drawing.Color.Gainsboro;
             this.btnXoa.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnXoa.FillColor = System.Drawing.Color.SkyBlue;
             this.btnXoa.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -325,9 +283,9 @@
             this.btnLamMoi.AutoRoundedCorners = true;
             this.btnLamMoi.BorderRadius = 21;
             this.btnLamMoi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLamMoi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLamMoi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLamMoi.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLamMoi.DisabledState.CustomBorderColor = System.Drawing.Color.Gainsboro;
+            this.btnLamMoi.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnLamMoi.DisabledState.FillColor2 = System.Drawing.Color.Gainsboro;
             this.btnLamMoi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLamMoi.FillColor = System.Drawing.Color.SkyBlue;
             this.btnLamMoi.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -438,7 +396,7 @@
             this.btnThemMon.ForeColor = System.Drawing.Color.White;
             this.btnThemMon.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnThemMon.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
-            this.btnThemMon.Location = new System.Drawing.Point(392, 247);
+            this.btnThemMon.Location = new System.Drawing.Point(392, 342);
             this.btnThemMon.Name = "btnThemMon";
             this.btnThemMon.Size = new System.Drawing.Size(208, 44);
             this.btnThemMon.TabIndex = 146;
@@ -461,7 +419,7 @@
             this.btnInHD.ForeColor = System.Drawing.Color.White;
             this.btnInHD.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnInHD.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
-            this.btnInHD.Location = new System.Drawing.Point(764, 247);
+            this.btnInHD.Location = new System.Drawing.Point(764, 342);
             this.btnInHD.Name = "btnInHD";
             this.btnInHD.Size = new System.Drawing.Size(208, 44);
             this.btnInHD.TabIndex = 147;
@@ -485,9 +443,7 @@
             this.Controls.Add(this.dtbNgayLap);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.txtThanhTien);
             this.Controls.Add(this.txtMaHoaDon);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Name = "UC_HoaDon";
@@ -505,9 +461,7 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtbNgayLap;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private Guna.UI2.WinForms.Guna2TextBox txtThanhTien;
         private Guna.UI2.WinForms.Guna2TextBox txtMaHoaDon;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2TextBox txtTimKiem;

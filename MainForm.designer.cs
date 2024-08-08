@@ -51,7 +51,7 @@
             this.btnKhachHang = new Guna.UI2.WinForms.Guna2Button();
             this.btnHoaDon = new Guna.UI2.WinForms.Guna2Button();
             this.btnThongKe = new Guna.UI2.WinForms.Guna2Button();
-            this.pnMain = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnMain = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.pnSlideContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.pnContainer.SuspendLayout();
@@ -75,6 +75,7 @@
             // 
             // pnSlideContainer
             // 
+            this.pnSlideContainer.BackColor = System.Drawing.Color.Transparent;
             this.pnSlideContainer.Controls.Add(this.guna2PictureBox1);
             this.pnSlideContainer.Controls.Add(this.pnContainer);
             this.pnSlideContainer.Controls.Add(this.btnTaiKhoan);
@@ -89,7 +90,7 @@
             this.pnSlideContainer.Controls.Add(this.btnHoaDon);
             this.pnSlideContainer.Controls.Add(this.btnThongKe);
             this.pnSlideContainer.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnSlideContainer.FillColor = System.Drawing.Color.Blue;
+            this.pnSlideContainer.FillColor = System.Drawing.Color.RoyalBlue;
             this.pnSlideContainer.FillColor2 = System.Drawing.Color.CornflowerBlue;
             this.pnSlideContainer.FillColor3 = System.Drawing.Color.SlateGray;
             this.pnSlideContainer.FillColor4 = System.Drawing.Color.DarkTurquoise;
@@ -137,7 +138,7 @@
             this.btnConViec.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnConViec.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnConViec.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnConViec.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(166)))), ((int)(((byte)(231)))));
+            this.btnConViec.FillColor = System.Drawing.Color.Transparent;
             this.btnConViec.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConViec.ForeColor = System.Drawing.Color.White;
             this.btnConViec.HoverState.BorderColor = System.Drawing.Color.Navy;
@@ -153,17 +154,18 @@
             this.btnConViec.TabIndex = 14;
             this.btnConViec.Text = "Công việc";
             this.btnConViec.TextOffset = new System.Drawing.Point(8, 0);
+            this.btnConViec.Click += new System.EventHandler(this.btnConViec_Click);
             // 
             // btnThongTin
             // 
-            this.btnThongTin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(130)))), ((int)(((byte)(211)))));
+            this.btnThongTin.BackColor = System.Drawing.Color.Transparent;
             this.btnThongTin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(166)))), ((int)(((byte)(231)))));
             this.btnThongTin.CustomBorderThickness = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.btnThongTin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnThongTin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnThongTin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnThongTin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnThongTin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(166)))), ((int)(((byte)(231)))));
+            this.btnThongTin.FillColor = System.Drawing.Color.Transparent;
             this.btnThongTin.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThongTin.ForeColor = System.Drawing.Color.White;
             this.btnThongTin.HoverState.BorderColor = System.Drawing.Color.Navy;
@@ -179,13 +181,14 @@
             this.btnThongTin.TabIndex = 13;
             this.btnThongTin.Text = "Thông Tin";
             this.btnThongTin.TextOffset = new System.Drawing.Point(8, 0);
+            this.btnThongTin.Click += new System.EventHandler(this.btnThongTin_Click);
             // 
             // btnNhanVien
             // 
-            this.btnNhanVien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(166)))), ((int)(((byte)(231)))));
+            this.btnNhanVien.BackColor = System.Drawing.Color.Transparent;
             this.btnNhanVien.CustomBorderThickness = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.btnNhanVien.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNhanVien.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnNhanVien.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnNhanVien.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNhanVien.FillColor = System.Drawing.Color.Transparent;
             this.btnNhanVien.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -208,7 +211,7 @@
             // btnTaiKhoan
             // 
             this.btnTaiKhoan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnTaiKhoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(166)))), ((int)(((byte)(231)))));
+            this.btnTaiKhoan.BackColor = System.Drawing.Color.Transparent;
             this.btnTaiKhoan.CustomBorderThickness = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.btnTaiKhoan.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTaiKhoan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -295,7 +298,7 @@
             // btnDangXuat
             // 
             this.btnDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDangXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(166)))), ((int)(((byte)(231)))));
+            this.btnDangXuat.BackColor = System.Drawing.Color.Transparent;
             this.btnDangXuat.CustomBorderThickness = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.btnDangXuat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnDangXuat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -319,10 +322,10 @@
             // 
             // btnThucDon
             // 
-            this.btnThucDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(166)))), ((int)(((byte)(231)))));
+            this.btnThucDon.BackColor = System.Drawing.Color.Transparent;
             this.btnThucDon.CustomBorderThickness = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.btnThucDon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThucDon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnThucDon.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnThucDon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnThucDon.FillColor = System.Drawing.Color.Transparent;
             this.btnThucDon.Font = new System.Drawing.Font("Bahnschrift", 9F);
@@ -343,10 +346,10 @@
             // 
             // btnMayTinh
             // 
-            this.btnMayTinh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(166)))), ((int)(((byte)(231)))));
+            this.btnMayTinh.BackColor = System.Drawing.Color.Transparent;
             this.btnMayTinh.CustomBorderThickness = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.btnMayTinh.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMayTinh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnMayTinh.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnMayTinh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnMayTinh.FillColor = System.Drawing.Color.Transparent;
             this.btnMayTinh.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -368,10 +371,10 @@
             // 
             // btnKhachHang
             // 
-            this.btnKhachHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(166)))), ((int)(((byte)(231)))));
+            this.btnKhachHang.BackColor = System.Drawing.Color.Transparent;
             this.btnKhachHang.CustomBorderThickness = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.btnKhachHang.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnKhachHang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnKhachHang.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnKhachHang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnKhachHang.FillColor = System.Drawing.Color.Transparent;
             this.btnKhachHang.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -393,10 +396,10 @@
             // 
             // btnHoaDon
             // 
-            this.btnHoaDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(166)))), ((int)(((byte)(231)))));
+            this.btnHoaDon.BackColor = System.Drawing.Color.Transparent;
             this.btnHoaDon.CustomBorderThickness = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.btnHoaDon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnHoaDon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnHoaDon.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnHoaDon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnHoaDon.FillColor = System.Drawing.Color.Transparent;
             this.btnHoaDon.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -418,10 +421,10 @@
             // 
             // btnThongKe
             // 
-            this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(166)))), ((int)(((byte)(231)))));
+            this.btnThongKe.BackColor = System.Drawing.Color.Transparent;
             this.btnThongKe.CustomBorderThickness = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.btnThongKe.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThongKe.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnThongKe.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnThongKe.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnThongKe.FillColor = System.Drawing.Color.Transparent;
             this.btnThongKe.Font = new System.Drawing.Font("Bahnschrift", 9F);
@@ -444,6 +447,8 @@
             // pnMain
             // 
             this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMain.FillColor2 = System.Drawing.Color.RoyalBlue;
+            this.pnMain.FillColor3 = System.Drawing.Color.Honeydew;
             this.pnMain.Location = new System.Drawing.Point(205, 0);
             this.pnMain.Name = "pnMain";
             this.pnMain.Size = new System.Drawing.Size(999, 758);
@@ -492,6 +497,6 @@
         private Guna.UI2.WinForms.Guna2Button btnKhachHang;
         private Guna.UI2.WinForms.Guna2Button btnHoaDon;
         private Guna.UI2.WinForms.Guna2Button btnThongKe;
-        private Guna.UI2.WinForms.Guna2Panel pnMain;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel pnMain;
     }
 }

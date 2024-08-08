@@ -432,7 +432,7 @@ namespace UIDuAn1
                 string hoten = selectRow.Cells["HoTen"].Value.ToString();
                 string gmail = selectRow.Cells["Gmail"].Value.ToString();
                 string diachi = selectRow.Cells["DiaChi"].Value.ToString();
-                cbVaiTro.SelectedValue = selectRow.Cells["MaVaiTro"].Value.ToString();
+                cbVaiTro.SelectedValue = selectRow.Cells["TenVaiTro"].Value.ToString();
                 bool trangthai = Convert.ToBoolean(selectRow.Cells["TrangThai"].Value); // Chuyển đổi thành bool
 
                 // Hiển thị giá trị trong các điều khiển trên form
