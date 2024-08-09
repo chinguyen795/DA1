@@ -17,8 +17,9 @@ namespace UIDuAn1.Models
         public string MaHoaDon { get; set; }
         public DateTime NgayLap { get; set; }
         public string MaNhanVien { get; set; }
-        public decimal TriGia { get; set; }
+        public string MaKhachHang { get; set; }
 
+        public virtual KhachHang MaKhachHangNavigation { get; set; }
         public virtual NhanVien MaNhanVienNavigation { get; set; }
         public virtual ICollection<HoaDonChiTiet> HoaDonChiTiet { get; set; }
     }

@@ -68,7 +68,7 @@
             this.cbMaNV.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbMaNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbMaNV.ItemHeight = 30;
-            this.cbMaNV.Location = new System.Drawing.Point(396, 271);
+            this.cbMaNV.Location = new System.Drawing.Point(396, 246);
             this.cbMaNV.Name = "cbMaNV";
             this.cbMaNV.Size = new System.Drawing.Size(208, 36);
             this.cbMaNV.TabIndex = 115;
@@ -82,7 +82,7 @@
             this.lbMaNhanVien.BackColor = System.Drawing.Color.Transparent;
             this.lbMaNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMaNhanVien.ForeColor = System.Drawing.Color.Black;
-            this.lbMaNhanVien.Location = new System.Drawing.Point(392, 231);
+            this.lbMaNhanVien.Location = new System.Drawing.Point(392, 206);
             this.lbMaNhanVien.Name = "lbMaNhanVien";
             this.lbMaNhanVien.Size = new System.Drawing.Size(103, 20);
             this.lbMaNhanVien.TabIndex = 114;
@@ -174,7 +174,7 @@
             this.txtSoTien.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSoTien.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSoTien.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSoTien.Location = new System.Drawing.Point(23, 272);
+            this.txtSoTien.Location = new System.Drawing.Point(23, 247);
             this.txtSoTien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSoTien.Name = "txtSoTien";
             this.txtSoTien.PasswordChar = '\0';
@@ -218,7 +218,7 @@
             this.txtMaKhachHang.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaKhachHang.DefaultText = "";
             this.txtMaKhachHang.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtMaKhachHang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtMaKhachHang.DisabledState.FillColor = System.Drawing.Color.White;
             this.txtMaKhachHang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtMaKhachHang.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtMaKhachHang.Enabled = false;
@@ -259,7 +259,7 @@
             this.lbSoTien.BackColor = System.Drawing.Color.Transparent;
             this.lbSoTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSoTien.ForeColor = System.Drawing.Color.Black;
-            this.lbSoTien.Location = new System.Drawing.Point(19, 225);
+            this.lbSoTien.Location = new System.Drawing.Point(19, 200);
             this.lbSoTien.Name = "lbSoTien";
             this.lbSoTien.Size = new System.Drawing.Size(59, 20);
             this.lbSoTien.TabIndex = 100;

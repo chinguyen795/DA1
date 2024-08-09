@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIDuAn1;
 using UIDuAn1.Models;
-
 namespace Ui_DuAn
 {
     public partial class MainForm : Form

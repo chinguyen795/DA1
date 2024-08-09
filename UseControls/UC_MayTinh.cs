@@ -277,7 +277,7 @@ namespace UIDuAn1
                             {
                                 var oldRecord = new MayTinh
                                 {
-                                      // Nếu lớp MayTinh có thuộc tính TenMay
+                                    // Nếu lớp MayTinh có thuộc tính TenMay
                                     Cpu = record.Cpu,
                                     Gpu = record.Gpu,
                                     Ram = record.Ram,

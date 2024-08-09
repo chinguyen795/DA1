@@ -63,99 +63,99 @@ namespace UIDuAn1
                 }
             }
         }
-/*        private void LoadComboboxData(QUANLYQUANNETContext db)
-        {
-            var nvQuery = from nv in db.NhanVien
-                          select nv;
-
-            cbMaNV.DataSource = nvQuery.ToList();
-            cbMaNV.DisplayMember = "MaNhanVien";
-            cbMaNV.ValueMember = "MaNhanVien";
-
-            var khQuery = from kh in db.KhachHang
-                          select kh;
-
-            cbMaKhachHang.DataSource = khQuery.ToList();
-            cbMaKhachHang.DisplayMember = "MaKhachHang";
-            cbMaKhachHang.ValueMember = "MaKhachHang";
-
-            var maQuery = from ma in db.ThucDon
-                          select ma;
-
-            cboMaMonAn.DataSource = maQuery.ToList();
-            cboMaMonAn.DisplayMember = "MaMonAn";
-            cboMaMonAn.ValueMember = "MaMonAn";
-        }
-        private void LoadData()
-        {
-            using (var context = new QUANLYQUANNETContext())
-            {
-                // Load data for comboboxes
-                var nhanViens = context.NhanVien.Select(nv => new
+        /*        private void LoadComboboxData(QUANLYQUANNETContext db)
                 {
-                    MaNV = nv.MaNhanVien,
-                    DisplayText = $"{nv.MaNhanVien} | {nv.HoTen}"
-                }).ToList();
+                    var nvQuery = from nv in db.NhanVien
+                                  select nv;
 
-                var khachHangs = context.KhachHang.Select(kh => new
+                    cbMaNV.DataSource = nvQuery.ToList();
+                    cbMaNV.DisplayMember = "MaNhanVien";
+                    cbMaNV.ValueMember = "MaNhanVien";
+
+                    var khQuery = from kh in db.KhachHang
+                                  select kh;
+
+                    cbMaKhachHang.DataSource = khQuery.ToList();
+                    cbMaKhachHang.DisplayMember = "MaKhachHang";
+                    cbMaKhachHang.ValueMember = "MaKhachHang";
+
+                    var maQuery = from ma in db.ThucDon
+                                  select ma;
+
+                    cboMaMonAn.DataSource = maQuery.ToList();
+                    cboMaMonAn.DisplayMember = "MaMonAn";
+                    cboMaMonAn.ValueMember = "MaMonAn";
+                }
+                private void LoadData()
                 {
-                    MaKH = kh.MaKhachHang,
-                    DisplayText = $"{kh.MaKhachHang} | {kh.TaiKhoan}"
-                }).ToList();
+                    using (var context = new QUANLYQUANNETContext())
+                    {
+                        // Load data for comboboxes
+                        var nhanViens = context.NhanVien.Select(nv => new
+                        {
+                            MaNV = nv.MaNhanVien,
+                            DisplayText = $"{nv.MaNhanVien} | {nv.HoTen}"
+                        }).ToList();
 
-                var monAns = context.ThucDon.Select(ma => new
-                {
-                    MaMonAn = ma.MaMonAn,
-                    TenMonAn = ma.TenMonAn
-                }).ToList();
+                        var khachHangs = context.KhachHang.Select(kh => new
+                        {
+                            MaKH = kh.MaKhachHang,
+                            DisplayText = $"{kh.MaKhachHang} | {kh.TaiKhoan}"
+                        }).ToList();
 
-                cbMaNV.DataSource = nhanViens;
-                cbMaNV.DisplayMember = "DisplayText";
-                cbMaNV.ValueMember = "MaNV";
+                        var monAns = context.ThucDon.Select(ma => new
+                        {
+                            MaMonAn = ma.MaMonAn,
+                            TenMonAn = ma.TenMonAn
+                        }).ToList();
 
-                cbMaKhachHang.DataSource = khachHangs;
-                cbMaKhachHang.DisplayMember = "DisplayText";
-                cbMaKhachHang.ValueMember = "MaKH";
+                        cbMaNV.DataSource = nhanViens;
+                        cbMaNV.DisplayMember = "DisplayText";
+                        cbMaNV.ValueMember = "MaNV";
 
-                cboMaMonAn.DataSource = monAns;
-                cboMaMonAn.DisplayMember = "TenMonAn";
-                cboMaMonAn.ValueMember = "MaMonAn";
+                        cbMaKhachHang.DataSource = khachHangs;
+                        cbMaKhachHang.DisplayMember = "DisplayText";
+                        cbMaKhachHang.ValueMember = "MaKH";
 
-                var query = from hd in context.HoaDon
-                            join nv in context.NhanVien on hd.MaNhanVien equals nv.MaNhanVien
-                            join hdc in context.HoaDonChiTiet on hd.MaHoaDon equals hdc.MaHoaDon
-                            join kh in context.KhachHang on hdc.MaKhachHang equals kh.MaKhachHang
-                            join td in context.ThucDon on hdc.MaMonAn equals td.MaMonAn
-                            select new
-                            {
-                                hd.MaHoaDon,
-                                td.TenMonAn,
-                                kh.TaiKhoan,
-                                hdc.SoLuongMon,
-                                hd.TriGia,
-                                nv.HoTen,
-                                hd.NgayLap,
-                                hd.MaNhanVien,
-                                kh.MaKhachHang,
-                            };
+                        cboMaMonAn.DataSource = monAns;
+                        cboMaMonAn.DisplayMember = "TenMonAn";
+                        cboMaMonAn.ValueMember = "MaMonAn";
 
-                dtgHoaDon.DataSource = query.ToList();
+                        var query = from hd in context.HoaDon
+                                    join nv in context.NhanVien on hd.MaNhanVien equals nv.MaNhanVien
+                                    join hdc in context.HoaDonChiTiet on hd.MaHoaDon equals hdc.MaHoaDon
+                                    join kh in context.KhachHang on hdc.MaKhachHang equals kh.MaKhachHang
+                                    join td in context.ThucDon on hdc.MaMonAn equals td.MaMonAn
+                                    select new
+                                    {
+                                        hd.MaHoaDon,
+                                        td.TenMonAn,
+                                        kh.TaiKhoan,
+                                        hdc.SoLuongMon,
+                                        hd.TriGia,
+                                        nv.HoTen,
+                                        hd.NgayLap,
+                                        hd.MaNhanVien,
+                                        kh.MaKhachHang,
+                                    };
 
-                int count = context.HoaDon.Count();
-                string newMaHoaDon = $"HD{(count + 1).ToString("D3")}";
-                txtMaHoaDon.Text = newMaHoaDon;
+                        dtgHoaDon.DataSource = query.ToList();
 
-                dtgHoaDon.Columns[0].HeaderText = "Mã Hóa Đơn";
-                dtgHoaDon.Columns[1].HeaderText = "Tên Món Ăn";
-                dtgHoaDon.Columns[2].HeaderText = "Khách hàng";
-                dtgHoaDon.Columns[3].HeaderText = "Số Lượng Món";
-                dtgHoaDon.Columns[4].HeaderText = "Trị Giá";
-                dtgHoaDon.Columns[5].HeaderText = "Nhân Viên";
-                dtgHoaDon.Columns[6].HeaderText = "Ngày Lập";
-                dtgHoaDon.Columns[7].Visible = false;
-                dtgHoaDon.Columns[8].Visible = false;
-            }
-        }*/
+                        int count = context.HoaDon.Count();
+                        string newMaHoaDon = $"HD{(count + 1).ToString("D3")}";
+                        txtMaHoaDon.Text = newMaHoaDon;
+
+                        dtgHoaDon.Columns[0].HeaderText = "Mã Hóa Đơn";
+                        dtgHoaDon.Columns[1].HeaderText = "Tên Món Ăn";
+                        dtgHoaDon.Columns[2].HeaderText = "Khách hàng";
+                        dtgHoaDon.Columns[3].HeaderText = "Số Lượng Món";
+                        dtgHoaDon.Columns[4].HeaderText = "Trị Giá";
+                        dtgHoaDon.Columns[5].HeaderText = "Nhân Viên";
+                        dtgHoaDon.Columns[6].HeaderText = "Ngày Lập";
+                        dtgHoaDon.Columns[7].Visible = false;
+                        dtgHoaDon.Columns[8].Visible = false;
+                    }
+                }*/
         private void dtgHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -516,6 +516,23 @@ namespace UIDuAn1
                 }
             }*/
 
+        }
+
+
+
+
+
+
+        private void btnThemMon_Click(object sender, EventArgs e)
+        {
+            ThemMonAn themMonAn = new ThemMonAn();
+            themMonAn.Show();
+        }
+
+        private void btnInHD_Click(object sender, EventArgs e)
+        {
+            InHD inhd = new InHD();
+            inhd.Show();
         }
     }
 }

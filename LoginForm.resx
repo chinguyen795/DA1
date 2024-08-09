@@ -641,13 +641,10 @@
   <metadata name="sdf.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="guna2DragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>101, 17</value>
-  </metadata>
   <data name="resource.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAAnlJREFUWEftlTtrFGEUhmdNtLEx2K3NXmCF3VZs7MROsLAQQTs7LdWkCZjKOoWi
+        wAAADsABataJCQAAAnlJREFUWEftlTtrFGEUhmdNtLEx2K3NXmCF3VZs7MROsLAQQTs7LdWkCZjKOoWi
         tcafYekf0MZLYSpBsRIb8RLfZzjveOZzDZuwdnPgyXfmXN4z830zm6qzzg5io9GoGg6H+0LNUq0Y0BMr
         YjXAL6+paXoObVlEIMqARrw0x6OmVQsLW24K8lMdFWfETbEtngb4xMhRQy099GatmPIPK844C6yJdfFG
         7IlfsWYco4Zaeuhd/FhSUR5+VXwQHvROPBa3xJUA/5F4K1xHD71otG5irjkZhUdifSAs+FycF5xvXTse
@@ -664,7 +661,7 @@
   <data name="btnShowMkCu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAqFJREFUWEftlj9rk1EUxvNHHarioBCSIf/NCxmKmqFjwL0dtJ/AWZCutXYqdHeL
+        vwAADr8BOAVTJAAAAqFJREFUWEftlj9rk1EUxvNHHarioBCSIf/NCxmKmqFjwL0dtJ/AWZCutXYqdHeL
         dHGR7oU6uBT0AzjbTUoX9QOIFn1+5z335b7RhkZNQMgDh5xznnOee++5NyGFBRb4n1Ecs7mgNBwOL/GZ
         hjlM4v4aiJZTN0Op3+9fw/DTVAZq/9lGELMRt9vt261W62mz2Xyrz8+yM7cv5GRb1FAr0DO+6alQ9JEW
         JJzIDrTQD0z+J9kb+S8xfHIRfyBL6HWNqd9ItnsJPZHod9mZ/L1Go3EncGMow1FDLT30Bk421Sbs/iTy
@@ -2247,4 +2244,7 @@
         AxHgAAGJ8AABw/gAA/P8AAf//wAf//////8=
 </value>
   </data>
+  <metadata name="guna2DragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>101, 17</value>
+  </metadata>
 </root>

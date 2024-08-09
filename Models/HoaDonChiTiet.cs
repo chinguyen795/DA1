@@ -11,11 +11,10 @@ namespace UIDuAn1.Models
     {
         public string MaHoaDon { get; set; }
         public string MaMonAn { get; set; }
-        public string MaKhachHang { get; set; }
+        public decimal TriGia { get; set; }
         public int SoLuongMon { get; set; }
 
         public virtual HoaDon MaHoaDonNavigation { get; set; }
-        public virtual KhachHang MaKhachHangNavigation { get; set; }
         public virtual ThucDon MaMonAnNavigation { get; set; }
     }
 }

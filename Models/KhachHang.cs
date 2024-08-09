@@ -11,7 +11,7 @@ namespace UIDuAn1.Models
     {
         public KhachHang()
         {
-            HoaDonChiTiet = new HashSet<HoaDonChiTiet>();
+            HoaDon = new HashSet<HoaDon>();
         }
 
         public string MaKhachHang { get; set; }
@@ -21,6 +21,6 @@ namespace UIDuAn1.Models
         public string MaNhanVien { get; set; }
 
         public virtual NhanVien MaNhanVienNavigation { get; set; }
-        public virtual ICollection<HoaDonChiTiet> HoaDonChiTiet { get; set; }
+        public virtual ICollection<HoaDon> HoaDon { get; set; }
     }
 }

@@ -73,7 +73,8 @@ namespace UIDuAn1
         {
             using (var context = new QUANLYQUANNETContext())
             {
-                var nhanViens = context.NhanVien.Select(nv => new {
+                var nhanViens = context.NhanVien.Select(nv => new
+                {
                     MaNv = nv.MaNhanVien,
                     TenNv = nv.HoTen,
                     DisplayText = $"{nv.MaNhanVien} | {nv.HoTen}"
@@ -93,7 +94,7 @@ namespace UIDuAn1
                                 CL.ViPham,
                                 CL.NgayLam,
                                 NhanVien.HoTen,
-                                
+
                             };
 
                 dtgCongViec.DataSource = query.ToList();
@@ -104,7 +105,7 @@ namespace UIDuAn1
                 dtgCongViec.Columns[3].HeaderText = "Vi phạm";
                 dtgCongViec.Columns[4].HeaderText = "Ngày đăng ký";
                 dtgCongViec.Columns[5].HeaderText = "Tên nhân viên";
-                
+
 
                 int count = context.CaLam.Count();
                 string newMaCa = $"CA{(count + 1).ToString("D3")}"; // Tạo mã ca làm mới dựa trên số lượng hiện tại
@@ -112,12 +113,12 @@ namespace UIDuAn1
                 // Hiển thị mã ca làm mới trên form
                 txtMaCaLam.Text = newMaCa;
             }
-            
+
         }
 
         private void ResetForm()
         {
-             
+
             txtThoiGianLam.Clear();
             txtViPham.Clear();
             cbMaNV.SelectedIndex = -1; // Clear selection in ComboBox for employees
@@ -197,7 +198,7 @@ namespace UIDuAn1
                     ViPham = txtViPham.Text,
                     MaNhanVien = cbMaNV.SelectedValue.ToString(),
                     NgayLam = DateTime.Now,
-                    
+
                 };
 
                 context.CaLam.Add(newCaLam);

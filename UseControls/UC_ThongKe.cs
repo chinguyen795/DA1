@@ -71,7 +71,7 @@ namespace UIDuAn1
                 MessageBox.Show("Vui lòng nhập số tháng hợp lệ (1-12).", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+
             using (var context = new QUANLYQUANNETContext())
             {
                 if (selectedOption == "Lương phải trả cho nhân viên theo tháng")
@@ -140,10 +140,10 @@ namespace UIDuAn1
 
                     dtgKhachHang.DataSource = hoaDons;
 
-                    decimal totalRevenue = hoaDons.Sum(hd => hd.TriGia);
+                    /*decimal totalRevenue = hoaDons.Sum(hd => hd.TriGia);
 
                     lbThongTin2.Text = $"Doanh thu tháng {month}: {totalRevenue.ToString()}";
-                    lbThongTin3.Text = "Hệ số lương: 1:10000";
+                    lbThongTin3.Text = "Hệ số lương: 1:10000";*/
                 }
                 else if (selectedOption == "Món ăn được mua nhiều nhất theo tháng")
                 {

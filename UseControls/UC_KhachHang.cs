@@ -8,8 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UIDuAn1.Models;
 using System.Text.RegularExpressions;
+using UIDuAn1.Models;
 
 namespace UIDuAn1
 {

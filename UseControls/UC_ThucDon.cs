@@ -132,9 +132,9 @@ namespace UIDuAn1
             rdoHetMonAn.Checked = false;
         }
 
-        private string GenerateNewMaMonAn()
+       private string GenerateNewMaMonAn()
         {
-            using (var context = new QUANLYQUANNETContext())
+           using (var context = new QUANLYQUANNETContext())
             {
                 var existingMaMonAn = context.ThucDon
                     .Select(td => int.Parse(td.MaMonAn.Substring(2)))
@@ -182,7 +182,7 @@ namespace UIDuAn1
                     return;
                 }
 
-                
+
 
                 // Tạo mã món ăn mới
                 string newCustomerID = GenerateNewMaMonAn();
@@ -342,16 +342,17 @@ namespace UIDuAn1
 
                         if (DeleteTD != null)
                         {
-                            try {
-                            context.ThucDon.Remove(DeleteTD);
-                            context.SaveChanges();
-                            MessageBox.Show("Xóa thành công");
-                            LoadData();
-                            reset();
+                            try
+                            {
+                                context.ThucDon.Remove(DeleteTD);
+                                context.SaveChanges();
+                                MessageBox.Show("Xóa thành công");
+                                LoadData();
+                                reset();
                             }
                             catch (Exception ex)
                             {
-                            MessageBox.Show("Không thể xoá vì còn liên kết với dữ liệu khác (hoá đơn)");
+                                MessageBox.Show("Không thể xoá vì còn liên kết với dữ liệu khác (hoá đơn)");
                             }
                         }
                     }
