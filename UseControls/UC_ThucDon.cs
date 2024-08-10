@@ -132,9 +132,9 @@ namespace UIDuAn1
             rdoHetMonAn.Checked = false;
         }
 
-       private string GenerateNewMaMonAn()
+        private string GenerateNewMaMonAn()
         {
-           using (var context = new QUANLYQUANNETContext())
+            using (var context = new QUANLYQUANNETContext())
             {
                 var existingMaMonAn = context.ThucDon
                     .Select(td => int.Parse(td.MaMonAn.Substring(2)))

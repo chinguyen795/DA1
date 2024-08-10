@@ -104,6 +104,7 @@
             this.btnTimKiem.Size = new System.Drawing.Size(147, 44);
             this.btnTimKiem.TabIndex = 155;
             this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // dtgHD
             // 
@@ -290,6 +291,7 @@
             this.Name = "InHD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InHD";
+            this.Load += new System.EventHandler(this.InHD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgHD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgHDCT)).EndInit();
             this.ResumeLayout(false);

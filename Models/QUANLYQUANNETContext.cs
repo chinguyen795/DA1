@@ -42,7 +42,7 @@ namespace UIDuAn1.Models
             modelBuilder.Entity<CaLam>(entity =>
             {
                 entity.HasKey(e => e.MaCa)
-                    .HasName("PK__CaLam__27258E7B509EDEDA");
+                    .HasName("PK__CaLam__27258E7B5E121F10");
 
                 entity.Property(e => e.MaCa).HasMaxLength(10);
 
@@ -68,7 +68,7 @@ namespace UIDuAn1.Models
             modelBuilder.Entity<HoaDon>(entity =>
             {
                 entity.HasKey(e => e.MaHoaDon)
-                    .HasName("PK__HoaDon__835ED13BA820ACA4");
+                    .HasName("PK__HoaDon__835ED13BE6D63D1F");
 
                 entity.Property(e => e.MaHoaDon).HasMaxLength(10);
 
@@ -97,12 +97,18 @@ namespace UIDuAn1.Models
 
             modelBuilder.Entity<HoaDonChiTiet>(entity =>
             {
-                entity.HasKey(e => new { e.MaHoaDon, e.MaMonAn })
-                    .HasName("PK__HoaDonCh__C84FA059F2F43FDB");
+                entity.HasKey(e => e.MaHoaDonChiTiet)
+                    .HasName("PK__HoaDonCh__6C2FD0CEDDA0ECEA");
 
-                entity.Property(e => e.MaHoaDon).HasMaxLength(10);
+                entity.Property(e => e.MaHoaDonChiTiet).HasMaxLength(10);
 
-                entity.Property(e => e.MaMonAn).HasMaxLength(10);
+                entity.Property(e => e.MaHoaDon)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.MaMonAn)
+                    .IsRequired()
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.TriGia).HasColumnType("money");
 
@@ -122,7 +128,7 @@ namespace UIDuAn1.Models
             modelBuilder.Entity<KhachHang>(entity =>
             {
                 entity.HasKey(e => e.MaKhachHang)
-                    .HasName("PK__KhachHan__88D2F0E5293502E6");
+                    .HasName("PK__KhachHan__88D2F0E5AD4BC6D4");
 
                 entity.Property(e => e.MaKhachHang).HasMaxLength(10);
 
@@ -147,7 +153,7 @@ namespace UIDuAn1.Models
             modelBuilder.Entity<MayTinh>(entity =>
             {
                 entity.HasKey(e => e.MaMay)
-                    .HasName("PK__MayTinh__3A5BBB41066D3B41");
+                    .HasName("PK__MayTinh__3A5BBB41E63E3D02");
 
                 entity.Property(e => e.MaMay).HasMaxLength(10);
 
@@ -179,7 +185,7 @@ namespace UIDuAn1.Models
             modelBuilder.Entity<NhanVien>(entity =>
             {
                 entity.HasKey(e => e.MaNhanVien)
-                    .HasName("PK__NhanVien__77B2CA473610E13F");
+                    .HasName("PK__NhanVien__77B2CA47034E4DE4");
 
                 entity.Property(e => e.MaNhanVien).HasMaxLength(10);
 
@@ -212,7 +218,7 @@ namespace UIDuAn1.Models
             modelBuilder.Entity<ThucDon>(entity =>
             {
                 entity.HasKey(e => e.MaMonAn)
-                    .HasName("PK__ThucDon__B11716254228E125");
+                    .HasName("PK__ThucDon__B117162557F2B3C4");
 
                 entity.Property(e => e.MaMonAn).HasMaxLength(10);
 
@@ -237,7 +243,7 @@ namespace UIDuAn1.Models
             modelBuilder.Entity<VaiTro>(entity =>
             {
                 entity.HasKey(e => e.MaVaiTro)
-                    .HasName("PK__VaiTro__C24C41CF00F33CCF");
+                    .HasName("PK__VaiTro__C24C41CF689D11C2");
 
                 entity.Property(e => e.MaVaiTro).HasMaxLength(10);
 

@@ -9,6 +9,7 @@ namespace UIDuAn1.Models
 {
     public partial class HoaDonChiTiet
     {
+        public string MaHoaDonChiTiet { get; set; }
         public string MaHoaDon { get; set; }
         public string MaMonAn { get; set; }
         public decimal TriGia { get; set; }
