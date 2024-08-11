@@ -73,6 +73,7 @@ namespace UIDuAn1
             txtTongGia.Clear();
             cboMaHD.SelectedIndex = -1;
             cboMonAn.SelectedIndex = -1;
+            txtTongTien.Clear();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -117,8 +118,8 @@ namespace UIDuAn1
                     context.SaveChanges();
                     MessageBox.Show("Thêm thành công");
 
-                    LoadData(); // Tải lại dữ liệu sau khi thêm thành công
-                    reset(); // Reset các trường nhập liệu
+                    string maHoaDon = cboMaHD.SelectedValue.ToString();
+                    LoadHDCTByMaHD(maHoaDon); // Tải lại dữ liệu sau khi thêm thành công
 
                     // Tìm món ăn trong thực đơn
                     var monAn = context.ThucDon.FirstOrDefault(ma => ma.MaMonAn == newHDCT.MaMonAn);
@@ -136,57 +137,14 @@ namespace UIDuAn1
 
                         // Lưu thay đổi vào cơ sở dữ liệu
                         context.SaveChanges();
-               
 
-                        LoadData(); // Tải lại dữ liệu sau khi thêm thành công
-                        reset(); // Reset các trường nhập liệu
+
+                        CalculateTotalAllThePrice();
                     }
                     else
                     {
                         MessageBox.Show("Không tìm thấy món ăn trong thực đơn.");
                     }
-
-
-                    var hoaDon = context.HoaDon.FirstOrDefault(hd => hd.MaHoaDon == newHDCT.MaHoaDon);
-
-                    if (hoaDon != null)
-                    {
-                        // 2. Lấy thông tin khách hàng từ hóa đơn
-                        var khachHang = context.KhachHang.FirstOrDefault(kh => kh.MaKhachHang == hoaDon.MaKhachHang);
-
-                        if (khachHang != null)
-                        {
-                            // 3. Tính tổng trị giá của HDCT
-                            // Giả sử mỗi HDCT có thuộc tính GiaTri (trị giá của món ăn)
-                            var giaTriHDCT = newHDCT.SoLuongMon * newHDCT.TriGia;
-
-                            // 4. Trừ tiền từ khách hàng
-                            khachHang.SoTien -= giaTriHDCT;
-
-                            if (khachHang.SoTien < 0)
-                            {
-                                MessageBox.Show("Số tiền trong tài khoản khách hàng không đủ.");
-                                return;
-                            }
-
-                            // 5. Lưu thay đổi vào cơ sở dữ liệu
-                            context.SaveChanges();
-                            MessageBox.Show("Trừ tiền thành công");
-
-                            // Tải lại dữ liệu và reset các trường nhập liệu
-                            LoadData();
-                            reset();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không tìm thấy khách hàng.");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy hóa đơn.");
-                    }
-
 
 
                 }
@@ -246,10 +204,15 @@ namespace UIDuAn1
             if (cboMaHD.Items.Count > 0)
             {
                 cboMaHD.SelectedIndex = 0;
+                string maHoaDon = cboMaHD.SelectedValue.ToString();
+                LoadHDCTByMaHD(maHoaDon);
+                CalculateTotalAllThePrice(); // Cập nhật tổng tiền cho mã hóa đơn được chọn
             }
-
-            // Tính tổng tiền cho mã hóa đơn được chọn (nếu có)
-            CalculateTotalAllThePrice();
+            else
+            {
+                dtgHDCT.DataSource = null; // Xóa dữ liệu khi không có mã hóa đơn
+                txtTongTien.Clear(); // Xóa tổng tiền
+            }
         }
 
         private void CalculateTotalPrice()
@@ -306,6 +269,34 @@ namespace UIDuAn1
             }
         }
 
+        private void LoadHDCTByMaHD(string maHoaDon)
+        {
+            using (var context = new QUANLYQUANNETContext())
+            {
+                var query = from hdct in context.HoaDonChiTiet
+                            join td in context.ThucDon on hdct.MaMonAn equals td.MaMonAn
+                            where hdct.MaHoaDon == maHoaDon
+                            select new
+                            {
+                                hdct.MaHoaDon,
+                                hdct.MaMonAn,
+                                td.TenMonAn,
+                                hdct.SoLuongMon,
+                                hdct.TriGia,
+                                hdct.MaHoaDonChiTiet,
+                            };
+
+                dtgHDCT.DataSource = query.ToList();
+
+                dtgHDCT.Columns[0].HeaderText = "Mã hóa đơn";
+                dtgHDCT.Columns[1].Visible = false;
+                dtgHDCT.Columns[2].HeaderText = "Món ăn";
+                dtgHDCT.Columns[3].HeaderText = "Số lượng món";
+                dtgHDCT.Columns[4].HeaderText = "Số tiền";
+                dtgHDCT.Columns[5].Visible = false;
+            }
+        }
+
         private void dtgHDCT_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -338,6 +329,18 @@ namespace UIDuAn1
         private void cboMaHD_SelectedIndexChanged(object sender, EventArgs e)
         {
             CalculateTotalAllThePrice();
+
+            if (cboMaHD.SelectedIndex != -1)
+            {
+                string maHoaDon = cboMaHD.SelectedValue.ToString();
+                LoadHDCTByMaHD(maHoaDon);
+                CalculateTotalAllThePrice(); // Cập nhật tổng tiền cho mã hóa đơn được chọn
+            }
+            else
+            {
+                dtgHDCT.DataSource = null; // Xóa dữ liệu khi không có mã hóa đơn được chọn
+                txtTongTien.Clear(); // Xóa tổng tiền
+            }
         }
     }
 }
