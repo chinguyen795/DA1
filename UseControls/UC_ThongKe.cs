@@ -127,23 +127,29 @@ namespace UIDuAn1
                 }
                 else if (selectedOption == "Doanh thu của tháng")
                 {
-                    var hoaDons = context.HoaDon
-                        .Where(hd => hd.NgayLap.Month == month)
+                    var hoaDonChiTiets = context.HoaDonChiTiet
+                        .Join(context.HoaDon,
+                             hdct => hdct.MaHoaDon,
+                             hd => hd.MaHoaDon,
+                             (hdct, hd) => new { hdct.MaHoaDon, hd.NgayLap, hdct.TriGia })
+                        .Where(hdct => hdct.NgayLap.Month == month)
                         .ToList();
 
-                    if (hoaDons.Count == 0)
+                    if (hoaDonChiTiets.Count == 0)
                     {
                         lbThongTin2.Text = "Không có dữ liệu.";
                         lbThongTin3.Text = string.Empty;
                         return;
                     }
 
-                    dtgKhachHang.DataSource = hoaDons;
+                    dtgKhachHang.DataSource = hoaDonChiTiets;
 
-                    /*decimal totalRevenue = hoaDons.Sum(hd => hd.TriGia);
+                    decimal tongTriGia = hoaDonChiTiets.Sum(hdct => hdct.TriGia);
 
-                    lbThongTin2.Text = $"Doanh thu tháng {month}: {totalRevenue.ToString()}";
-                    lbThongTin3.Text = "Hệ số lương: 1:10000";*/
+                    lbThongTin2.Text = $"Tổng trị giá tháng {month}: {tongTriGia.ToString()}";
+                    lbThongTin3.Text = "Hệ số lương: 1:10000";
+
+
                 }
                 else if (selectedOption == "Món ăn được mua nhiều nhất theo tháng")
                 {
@@ -199,11 +205,19 @@ namespace UIDuAn1
                         return;
                     }
 
-                    dtgKhachHang.DataSource = intermediateData;
+                    // Sắp xếp intermediateData theo số lượng từ lớn đến bé
+                    var sortedData = intermediateData
+                        .OrderByDescending(hdct => hdct.SoLuongMon)
+                        .ToList();
+
+                    // Hiển thị dữ liệu vào DataGridView
+                    dtgKhachHang.DataSource = sortedData;
+
                     // Hiển thị kết quả
                     lbThongTin2.Text = $"Tên món ăn nhiều lượt mua nhất: {dishName}";
                     lbThongTin3.Text = $"Số lượng đã bán: {mostPurchasedDish.SoLuong}";
                 }
+
 
             }
         }

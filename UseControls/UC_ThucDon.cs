@@ -124,7 +124,6 @@ namespace UIDuAn1
             txtTenMonAn.Clear();
             txtTimKiem.Clear();
             txtGiaMonAn.Clear();
-            txtMaMonAn.Clear();
             txtSoluongMon.Clear();
             cbMaNV.SelectedIndex = -1;
             pcChenAnh.Image = null;
@@ -162,44 +161,57 @@ namespace UIDuAn1
         {
             using (var context = new QUANLYQUANNETContext())
             {
-                int sl, gia;
+                decimal gia;
+                int sl;
+
+                // Kiểm tra trạng thái của radio button và điều chỉnh số lượng
+                if (rdoHetMonAn.Checked)
+                {
+                    sl = 0; // Đặt số lượng là 0 khi "Hết món ăn" được chọn
+                }
+                else if (!int.TryParse(txtSoluongMon.Text, out sl))
+                {
+                    MessageBox.Show("Số lượng không hợp lệ.");
+                    return;
+                }
 
                 // Kiểm tra các trường bắt buộc
                 if (string.IsNullOrWhiteSpace(txtTenMonAn.Text) ||
-                    string.IsNullOrWhiteSpace(txtSoluongMon.Text) ||
                     string.IsNullOrWhiteSpace(txtGiaMonAn.Text) ||
-                    !int.TryParse(txtSoluongMon.Text, out sl) ||
-                    !int.TryParse(txtGiaMonAn.Text, out gia) ||
-                     gia <= 0 || gia > 922337203685477.5807m)
+                    !decimal.TryParse(txtGiaMonAn.Text, out gia) ||
+                    gia <= 0 || gia > 922337203685477.5807m
+                    )
                 {
                     MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
                     return;
                 }
 
+                // Kiểm tra tình trạng và số lượng
                 if (!rdoConMonAn.Checked && !rdoHetMonAn.Checked)
                 {
                     MessageBox.Show("Vui lòng chọn tình trạng.");
                     return;
                 }
 
+                if (rdoConMonAn.Checked && sl <= 0)
+                {
+                    MessageBox.Show("Số lượng phải lớn hơn 0 khi tình trạng là còn món ăn.");
+                    return;
+                }
 
-
-                // Tạo mã món ăn mới
                 string newCustomerID = GenerateNewMaMonAn();
-
                 bool tinhtrang = rdoConMonAn.Checked;
-                // Tạo đối tượng món ăn mới
+
                 ThucDon newSP = new ThucDon
                 {
                     MaMonAn = newCustomerID,
                     TenMonAn = txtTenMonAn.Text,
-                    SoLuong = int.Parse(txtSoluongMon.Text),
-                    Gia = int.Parse(txtGiaMonAn.Text),
+                    SoLuong = sl,
+                    Gia = gia,
                     TinhTrang = tinhtrang,
                     MaNhanVien = cbMaNV.SelectedValue.ToString()
                 };
 
-                // Lưu trữ ảnh
                 if (pcChenAnh.Image != null)
                 {
                     newSP.HinhAnh = GetImageFromFile(pcChenAnh.ImageLocation);
@@ -223,6 +235,7 @@ namespace UIDuAn1
                 }
             }
         }
+
 
 
         private void UC_ThucDon_Load(object sender, EventArgs e)
@@ -274,35 +287,40 @@ namespace UIDuAn1
 
                 using (var context = new QUANLYQUANNETContext())
                 {
-                    int sl, gia;
-                    bool tinhtrang = rdoConMonAn.Checked;
-
                     ThucDon SuaTD = context.ThucDon.FirstOrDefault(c => c.MaMonAn == MaSelected);
                     if (SuaTD == null)
                     {
                         MessageBox.Show("Mã sản phẩm không tồn tại");
                         return;
                     }
+
+                    // Kiểm tra trạng thái của radio button và điều chỉnh số lượng
+                    int sl = rdoHetMonAn.Checked ? 0 : int.TryParse(txtSoluongMon.Text, out sl) ? sl : 0;
+                    decimal gia;
+
                     // Kiểm tra các trường thông tin bắt buộc
                     if (
                         string.IsNullOrWhiteSpace(txtTenMonAn.Text) ||
-                    string.IsNullOrWhiteSpace(txtSoluongMon.Text) ||
-                    string.IsNullOrWhiteSpace(txtGiaMonAn.Text) ||
-                    !int.TryParse(txtSoluongMon.Text, out sl) ||
-                    !int.TryParse(txtGiaMonAn.Text, out gia)
-                        )
-
+                        string.IsNullOrWhiteSpace(txtSoluongMon.Text) ||
+                        string.IsNullOrWhiteSpace(txtGiaMonAn.Text) ||
+                        !decimal.TryParse(txtGiaMonAn.Text, out gia)
+                    )
                     {
                         MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
                         return;
                     }
 
+                    if (rdoConMonAn.Checked && sl <= 0)
+                    {
+                        MessageBox.Show("Số lượng phải lớn hơn 0 khi tình trạng là còn món ăn.");
+                        return;
+                    }
+
                     // Cập nhật thông tin sản phẩm
                     SuaTD.TenMonAn = txtTenMonAn.Text;
-                    SuaTD.SoLuong = int.Parse(txtSoluongMon.Text);
-                    SuaTD.Gia = int.Parse(txtGiaMonAn.Text);
-                    SuaTD.TinhTrang = tinhtrang;
-                    SuaTD.MaNhanVien = cbMaNV.SelectedValue.ToString();
+                    SuaTD.SoLuong = sl;
+                    SuaTD.Gia = gia;
+                    SuaTD.TinhTrang = rdoConMonAn.Checked;
 
                     // Kiểm tra nếu người dùng đã chọn một hình ảnh mới
                     if (pcChenAnh.ImageLocation != null)
@@ -310,19 +328,26 @@ namespace UIDuAn1
                         SuaTD.HinhAnh = GetImageFromFile(pcChenAnh.ImageLocation);
                     }
 
-                    context.SaveChanges();
-                    MessageBox.Show("Cập nhật thành công");
+                    try
+                    {
+                        context.SaveChanges();
+                        MessageBox.Show("Cập nhật thành công");
 
-                    reset();
-                    LoadData();
+                        reset();
+                        LoadData();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Lỗi");
+                    }
                 }
             }
             else
             {
                 MessageBox.Show("Vui lòng chọn sản phẩm cần cập nhật");
             }
-
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
