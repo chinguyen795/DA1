@@ -313,11 +313,6 @@ namespace UIDuAn1
 
         }
 
-
-
-
-
-
         private void btnThemMon_Click(object sender, EventArgs e)
         {
             ThemMonAn themMonAn = new ThemMonAn();
