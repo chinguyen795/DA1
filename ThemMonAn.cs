@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
 using UIDuAn1.Models;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
 namespace UIDuAn1
 {
@@ -99,54 +100,49 @@ namespace UIDuAn1
                         return;
                     }
 
-                    // Tạo mã hóa đơn chi tiết mới
-                    int hdctCount = context.HoaDonChiTiet.Count();
-                    string newMaHDCT = $"HDCT{(hdctCount + 1).ToString("D3")}";
-
-                    // Tạo mới chi tiết hóa đơn
-                    HoaDonChiTiet newHDCT = new HoaDonChiTiet
-                    {
-                        MaHoaDonChiTiet = newMaHDCT,
-                        MaHoaDon = cboMaHD.SelectedValue.ToString(),
-                        MaMonAn = cboMonAn.SelectedValue.ToString(),
-                        SoLuongMon = soLuongMon,
-                        TriGia = triGia
-                    };
-
-                    // Thêm chi tiết hóa đơn vào cơ sở dữ liệu
-                    context.HoaDonChiTiet.Add(newHDCT);
-                    context.SaveChanges();
-                    MessageBox.Show("Thêm thành công");
-
-                    string maHoaDon = cboMaHD.SelectedValue.ToString();
-                    LoadHDCTByMaHD(maHoaDon); // Tải lại dữ liệu sau khi thêm thành công
-
                     // Tìm món ăn trong thực đơn
-                    var monAn = context.ThucDon.FirstOrDefault(ma => ma.MaMonAn == newHDCT.MaMonAn);
+                    var monAn = context.ThucDon.FirstOrDefault(ma => ma.MaMonAn == cboMonAn.SelectedValue.ToString());
 
                     if (monAn != null)
                     {
-                        // Trừ số lượng món ăn trong thực đơn
-                        monAn.SoLuong -= soLuongMon;
-
-                        if (monAn.SoLuong < 0)
+                        // Kiểm tra số lượng món ăn còn đủ không
+                        if (monAn.SoLuong < soLuongMon)
                         {
                             MessageBox.Show("Số lượng món ăn không đủ.");
-                            return;
+                            return; // Thoát khỏi phương thức nếu số lượng không đủ
                         }
 
-                        // Lưu thay đổi vào cơ sở dữ liệu
+                        // Tạo mã hóa đơn chi tiết mới
+                        int hdctCount = context.HoaDonChiTiet.Count();
+                        string newMaHDCT = $"HDCT{(hdctCount + 1).ToString("D3")}";
+
+                        // Tạo mới chi tiết hóa đơn
+                        HoaDonChiTiet newHDCT = new HoaDonChiTiet
+                        {
+                            MaHoaDonChiTiet = newMaHDCT,
+                            MaHoaDon = cboMaHD.SelectedValue.ToString(),
+                            MaMonAn = cboMonAn.SelectedValue.ToString(),
+                            SoLuongMon = soLuongMon,
+                            TriGia = triGia
+                        };
+
+                        // Thêm chi tiết hóa đơn vào cơ sở dữ liệu
+                        context.HoaDonChiTiet.Add(newHDCT);
+                        context.SaveChanges();
+                        MessageBox.Show("Thêm thành công");
+
+                        // Trừ số lượng món ăn trong thực đơn
+                        monAn.SoLuong -= soLuongMon;
                         context.SaveChanges();
 
-
-                        CalculateTotalAllThePrice();
+                        string maHoaDon = cboMaHD.SelectedValue.ToString();
+                        LoadHDCTByMaHD(maHoaDon); // Tải lại dữ liệu sau khi thêm thành công
+                        CalculateTotalAllThePrice(); // Cập nhật tổng tiền
                     }
                     else
                     {
                         MessageBox.Show("Không tìm thấy món ăn trong thực đơn.");
                     }
-
-
                 }
                 catch (Exception ex)
                 {
@@ -156,10 +152,11 @@ namespace UIDuAn1
             }
         }
 
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Thông báo",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -169,16 +166,27 @@ namespace UIDuAn1
 
                     using (var context = new QUANLYQUANNETContext())
                     {
+                        // Tìm chi tiết hóa đơn cần xóa
                         HoaDonChiTiet deleteHDCT = context.HoaDonChiTiet
                             .FirstOrDefault(hdct => hdct.MaHoaDonChiTiet == maHoaDonChiTiet);
 
                         if (deleteHDCT != null)
                         {
+                            // Tìm món ăn trong thực đơn
+                            var monAn = context.ThucDon.FirstOrDefault(ma => ma.MaMonAn == deleteHDCT.MaMonAn);
+
+                            if (monAn != null)
+                            {
+                                // Cộng lại số lượng món ăn trong thực đơn
+                                monAn.SoLuong += deleteHDCT.SoLuongMon;
+                            }
+
+                            // Xóa chi tiết hóa đơn
+                            string maHoaDon = cboMaHD.SelectedValue.ToString();
                             context.HoaDonChiTiet.Remove(deleteHDCT);
                             context.SaveChanges();
                             MessageBox.Show("Xóa thành công");
-                            LoadData();
-                            reset();
+                            LoadHDCTByMaHD(maHoaDon);
                         }
                         else
                         {
@@ -191,6 +199,7 @@ namespace UIDuAn1
                     MessageBox.Show("Vui lòng chọn chi tiết hóa đơn cần xóa.");
                 }
             }
+            
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
