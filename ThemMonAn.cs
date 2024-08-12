@@ -41,7 +41,7 @@ namespace UIDuAn1
 
                 var query = from hdct in context.HoaDonChiTiet
                             join td in context.ThucDon on hdct.MaMonAn equals td.MaMonAn
-                            orderby hdct.MaHoaDon
+                            orderby hdct.MaHoaDonChiTiet
                             select new
                             {
                                 hdct.MaHoaDon,
@@ -100,6 +100,16 @@ namespace UIDuAn1
                         return;
                     }
 
+                    // Kiểm tra nếu mã hóa đơn đã đủ chi tiết chưa
+                    string maHoaDon = cboMaHD.SelectedValue.ToString();
+                    int existingCount = context.HoaDonChiTiet.Count(hdct => hdct.MaHoaDon == maHoaDon);
+
+                    if (existingCount >= 10) // Ví dụ: Giới hạn 10 món cho mỗi hóa đơn
+                    {
+                        MessageBox.Show("Hóa đơn đã đủ món ăn, không thể thêm món mới.");
+                        return;
+                    }
+
                     // Tìm món ăn trong thực đơn
                     var monAn = context.ThucDon.FirstOrDefault(ma => ma.MaMonAn == cboMonAn.SelectedValue.ToString());
 
@@ -113,14 +123,27 @@ namespace UIDuAn1
                         }
 
                         // Tạo mã hóa đơn chi tiết mới
-                        int hdctCount = context.HoaDonChiTiet.Count();
-                        string newMaHDCT = $"HDCT{(hdctCount + 1).ToString("D3")}";
+                        var maxMaHDCT = context.HoaDonChiTiet
+                            .OrderByDescending(hdct => hdct.MaHoaDonChiTiet)
+                            .Select(hdct => hdct.MaHoaDonChiTiet)
+                            .FirstOrDefault();
+
+
+                        int newIndex = 1;
+                        // Tạo mã hóa đơn chi tiết mới
+                        if (maxMaHDCT != null)
+                        {
+                            // Tách số thứ tự từ mã HDCT hiện tại và tăng lên 1
+                            newIndex = int.Parse(maxMaHDCT.Substring(4)) + 1;
+                        }
+
+                        string newMaHDCT = $"HDCT{newIndex.ToString("D3")}";
 
                         // Tạo mới chi tiết hóa đơn
                         HoaDonChiTiet newHDCT = new HoaDonChiTiet
                         {
                             MaHoaDonChiTiet = newMaHDCT,
-                            MaHoaDon = cboMaHD.SelectedValue.ToString(),
+                            MaHoaDon = maHoaDon,
                             MaMonAn = cboMonAn.SelectedValue.ToString(),
                             SoLuongMon = soLuongMon,
                             TriGia = triGia
@@ -135,7 +158,6 @@ namespace UIDuAn1
                         monAn.SoLuong -= soLuongMon;
                         context.SaveChanges();
 
-                        string maHoaDon = cboMaHD.SelectedValue.ToString();
                         LoadHDCTByMaHD(maHoaDon); // Tải lại dữ liệu sau khi thêm thành công
                         CalculateTotalAllThePrice(); // Cập nhật tổng tiền
                     }
@@ -151,6 +173,7 @@ namespace UIDuAn1
                 }
             }
         }
+
 
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -187,6 +210,7 @@ namespace UIDuAn1
                             context.SaveChanges();
                             MessageBox.Show("Xóa thành công");
                             LoadHDCTByMaHD(maHoaDon);
+                            CalculateTotalAllThePrice();
                         }
                         else
                         {

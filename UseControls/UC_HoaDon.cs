@@ -184,6 +184,12 @@ namespace UIDuAn1
 
                 using (var context = new QUANLYQUANNETContext())
                 {
+                    if (cbMaNV.SelectedIndex == -1 || cboMaKH.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Vui lòng thử lại.");
+                        return;
+                    }
+
                     HoaDon suaHoaDon = context.HoaDon.FirstOrDefault(hd => hd.MaHoaDon == maHoaDonSelected);
                     if (suaHoaDon == null)
                     {
@@ -229,17 +235,24 @@ namespace UIDuAn1
                     {
                         HoaDon deleteHoaDon = context.HoaDon.FirstOrDefault(hd => hd.MaHoaDon == maHoaDon);
 
-                        if (deleteHoaDon != null)
+                        try
                         {
-                            context.HoaDon.Remove(deleteHoaDon);
-                            context.SaveChanges();
-                            MessageBox.Show("Xóa thành công");
-                            LoadData();
-                            ResetForm();
+                            if (deleteHoaDon != null)
+                            {
+                                context.HoaDon.Remove(deleteHoaDon);
+                                context.SaveChanges();
+                                MessageBox.Show("Xóa thành công");
+                                LoadData();
+                                ResetForm();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Mã hóa đơn không tồn tại.");
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            MessageBox.Show("Mã hóa đơn không tồn tại.");
+                            MessageBox.Show("Không thể xoá vì còn liên kết với dữ liệu khác (hoá đơn chi tiết).");
                         }
                     }
                 }
