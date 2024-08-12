@@ -235,7 +235,7 @@ namespace UIDuAn1
                     Image logo;
                     try
                     {
-                        logo = Image.FromFile("G:\\DuAn1\\IMG\\go.png");
+                        logo = Image.FromFile("D:\\FPT Polytechnic\\DA1_logo\\z5724904645891_664da714e9649c2b3039fce1b5b1c396.jpg");
                     }
                     catch (Exception)
                     {
@@ -243,8 +243,8 @@ namespace UIDuAn1
                         return;
                     }
 
-                    float imgWidth = logo.Width * 0.5f;
-                    float imgHeight = logo.Height * 0.5f;
+                    float imgWidth = logo.Width * 0.25f;
+                    float imgHeight = logo.Height * 0.25f;
                     float imgX = (ev.MarginBounds.Left + ev.MarginBounds.Right) / 2 - imgWidth / 2;
                     float imgY = yLineTop;
                     ev.Graphics.DrawImage(logo, imgX, imgY, imgWidth, imgHeight);

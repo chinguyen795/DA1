@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIDuAn1.Models;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace UIDuAn1
 {
@@ -93,6 +94,7 @@ namespace UIDuAn1
                                 CL.SoGioLam,
                                 CL.ViPham,
                                 CL.NgayLam,
+                                NhanVien.MaNhanVien,
                                 NhanVien.HoTen,
 
                             };
@@ -104,7 +106,8 @@ namespace UIDuAn1
                 dtgCongViec.Columns[2].HeaderText = "Số giờ làm";
                 dtgCongViec.Columns[3].HeaderText = "Vi phạm";
                 dtgCongViec.Columns[4].HeaderText = "Ngày đăng ký";
-                dtgCongViec.Columns[5].HeaderText = "Tên nhân viên";
+                dtgCongViec.Columns[5].HeaderText = "Mã nhân viên";
+                dtgCongViec.Columns[6].HeaderText = "Tên nhân viên";
 
 
                 int count = context.CaLam.Count();
@@ -241,6 +244,17 @@ namespace UIDuAn1
                         return;
                     }
 
+                    if (cbMaNV.SelectedValue != null)
+                    {
+                        suaCaLam.MaNhanVien = cbMaNV.SelectedValue.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vui lòng chọn một nhân viên.");
+                        return;
+                    }
+
+
                     // Đặt SoGioLam luôn bằng 4
                     int soGioLam = 4;
 
@@ -370,7 +384,7 @@ namespace UIDuAn1
 
                 string maCa = selectedRow.Cells["MaCa"].Value.ToString();
                 string caLam = selectedRow.Cells["CaLam1"].Value.ToString();
-
+                cbMaNV.SelectedValue = selectedRow.Cells["MaNhanVien"].Value.ToString();
                 string viPham = selectedRow.Cells["ViPham"].Value.ToString();
 
 
