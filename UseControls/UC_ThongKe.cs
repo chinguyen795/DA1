@@ -74,13 +74,16 @@ namespace UIDuAn1
 
             using (var context = new QUANLYQUANNETContext())
             {
+                dtgKhachHang.DataSource = null;
+                dtgKhachHang.Rows.Clear();
+
                 if (selectedOption == "Lương phải trả cho nhân viên theo tháng")
                 {
                     var caLam = context.CaLam
                         .Where(c => c.NgayLam.Month == month)
                         .Join(context.NhanVien,
                               c => c.MaNhanVien,
-nv => nv.MaNhanVien,
+                              nv => nv.MaNhanVien,
                               (c, nv) => new { c.MaNhanVien, nv.HoTen, c.SoGioLam, c.NgayLam })
                         .ToList();
 
@@ -152,7 +155,7 @@ nv => nv.MaNhanVien,
                 }
                 else if (selectedOption == "Món ăn được mua nhiều nhất theo tháng")
                 {
-                    // Truy vấn để lấy món ăn được mua nhiều nhất theo tháng
+                    // Truy vấn để lấy món ăn được mua trong tháng và số lượng tương ứng
                     var intermediateData = context.HoaDonChiTiet
                         .Join(context.HoaDon,
                              hdct => hdct.MaHoaDon,
@@ -162,9 +165,10 @@ nv => nv.MaNhanVien,
                         .Join(context.ThucDon,
                              hdct => hdct.MaMonAn,
                              td => td.MaMonAn,
-                             (hdct, td) => new { hdct.MaMonAn, td.TenMonAn, hdct.NgayLap, hdct.SoLuongMon })
+                             (hdct, td) => new { hdct.MaMonAn, td.TenMonAn, hdct.SoLuongMon })
                         .ToList();
 
+                    // Kiểm tra nếu không có dữ liệu
                     if (intermediateData.Count == 0)
                     {
                         lbThongTin2.Text = "Không có dữ liệu trong tháng được chọn.";
@@ -172,51 +176,33 @@ nv => nv.MaNhanVien,
                         return;
                     }
 
-                    var mostPurchasedDish = intermediateData
-                        .GroupBy(hdct => hdct.MaMonAn)
+                    // Nhóm theo mã món ăn và tính tổng số lượng đã bán
+                    var groupedData = intermediateData
+                        .GroupBy(hdct => new { hdct.MaMonAn, hdct.TenMonAn })
                         .Select(g => new
                         {
-                            MaMonAn = g.Key,
-                            SoLuong = g.Sum(hdct => hdct.SoLuongMon)
+                            MaMonAn = g.Key.MaMonAn,
+                            TenMonAn = g.Key.TenMonAn,
+                            TongSoLuong = g.Sum(hdct => hdct.SoLuongMon)
                         })
-                        .OrderByDescending(g => g.SoLuong)
-                        .FirstOrDefault();
+                        .OrderByDescending(g => g.TongSoLuong)
+                        .ToList();
 
                     // Kiểm tra nếu không có dữ liệu
-                    if (mostPurchasedDish == null)
+                    if (groupedData.Count == 0)
                     {
                         lbThongTin2.Text = "Không có dữ liệu.";
                         lbThongTin3.Text = string.Empty;
                         return;
                     }
 
-                    // Truy vấn để lấy tên món ăn từ bảng ThucDon
-                    var dishName = context.ThucDon
-                        .Where(td => td.MaMonAn == mostPurchasedDish.MaMonAn)
-                        .Select(td => td.TenMonAn)
-                        .FirstOrDefault();
-
-                    // Kiểm tra nếu không có tên món ăn
-                    if (dishName == null)
-                    {
-                        lbThongTin2.Text = "Không tìm thấy tên món ăn.";
-                        lbThongTin3.Text = string.Empty;
-                        return;
-                    }
-
-                    // Sắp xếp intermediateData theo số lượng từ lớn đến bé
-                    var sortedData = intermediateData
-                                            .OrderByDescending(hdct => hdct.SoLuongMon)
-                                            .ToList();
-
                     // Hiển thị dữ liệu vào DataGridView
-                    dtgKhachHang.DataSource = sortedData;
+                    dtgKhachHang.DataSource = groupedData;
 
                     // Hiển thị kết quả
-                    lbThongTin2.Text = $"Tên món ăn nhiều lượt mua nhất: {dishName}";
-                    lbThongTin3.Text = $"Số lượng đã bán: {mostPurchasedDish.SoLuong}";
+                    lbThongTin2.Text = $"Món ăn được mua nhiều nhất trong tháng {month}: {groupedData.First().TenMonAn}";
+                    lbThongTin3.Text = $"Số lượng đã bán: {groupedData.First().TongSoLuong}";
                 }
-
 
             }
         }
