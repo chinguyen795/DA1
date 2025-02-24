@@ -15,6 +15,10 @@ namespace UIDuAn1
 {
     public partial class UC_CongViec : UserControl
     {
+        public bool IsBtnThemEnabled => btnThem.Enabled;
+        public bool IsBtnSuaEnabled => btnSua.Enabled;
+        public bool IsBtnXoaEnabled => btnXoa.Enabled;
+        public bool IsBtnLamMoiEnabled => btnLamMoi.Enabled;
         private string currentUserRole;
         public UC_CongViec(string userRole)
         {
