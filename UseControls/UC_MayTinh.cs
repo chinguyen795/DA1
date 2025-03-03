@@ -187,7 +187,9 @@ namespace UIDuAn1
                     !decimal.TryParse(txtGiaTien.Text, out giaTien) ||
                     giaTien <= 0 || giaTien > 922337203685477.5807m)
                 {
-                    MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
+                    string message = "Vui lòng nhập đầy đủ và đúng định dạng thông tin";
+                    MessageBox.Show(message);
+                    Console.WriteLine(message);
                     return;
                 }
 
@@ -214,7 +216,9 @@ namespace UIDuAn1
                 {
                     context.MayTinh.Add(newMayTinh);
                     context.SaveChanges();
-                    MessageBox.Show("Thêm thành công");
+                    string message = "Thêm thành công";
+                    MessageBox.Show(message);
+                    Console.WriteLine(message);
                     LoadData();
                     reset();
                 }
@@ -239,7 +243,9 @@ namespace UIDuAn1
                     MayTinh suaMayTinh = context.MayTinh.FirstOrDefault(c => c.MaMay == maMaySelected);
                     if (suaMayTinh == null)
                     {
-                        MessageBox.Show("Mã máy tính không tồn tại");
+                        string message = "Mã máy tính không tồn tại";
+                        MessageBox.Show(message);
+                        Console.WriteLine(message);
                         return;
                     }
                     int soLuong;
@@ -255,7 +261,9 @@ namespace UIDuAn1
                     !decimal.TryParse(txtGiaTien.Text, out giaTien) ||
                     giaTien <= 0)
                     {
-                        MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
+                        string message = "Vui lòng nhập đầy đủ và đúng định dạng thông tin";
+                        MessageBox.Show(message);
+                        Console.WriteLine(message);
                         return;
                     }
 
@@ -268,7 +276,9 @@ namespace UIDuAn1
                     suaMayTinh.MaNhanVien = cbMaNV.SelectedValue.ToString();
 
                     context.SaveChanges();
-                    MessageBox.Show("Cập nhật thành công");
+                    string message2 = "Cập nhật thành công";
+                    MessageBox.Show(message2);
+                    Console.WriteLine(message2);
 
                     reset();
                     LoadData();
@@ -276,7 +286,9 @@ namespace UIDuAn1
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn máy tính cần cập nhật");
+                string message2 = "Vui lòng chọn máy tính cần sửa";
+                MessageBox.Show(message2);
+                Console.WriteLine(message2);
             }
         }
 
@@ -329,19 +341,25 @@ namespace UIDuAn1
                             }
 
                             context.SaveChanges();
-                            MessageBox.Show("Xóa thành công");
+                            string message2 = "Xóa thành công";
+                            MessageBox.Show(message2);
+                            Console.WriteLine(message2);
                             LoadData();
                             reset();
                         }
                         else
                         {
-                            MessageBox.Show("Mã máy tính không tồn tại.");
+                            string message2 = "Mã máy tính không tồn tại";
+                            MessageBox.Show(message2);
+                            Console.WriteLine(message2);
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng chọn máy tính cần xóa.");
+                    string message2 = "Vui lòng chọn máy tính cần xóa";
+                    MessageBox.Show(message2);
+                    Console.WriteLine(message2);
                 }
                 reset();
             }
@@ -380,6 +398,9 @@ namespace UIDuAn1
                             };
 
                 dtgMayTinh.DataSource = query.ToList();
+                string message2 = "Tìm thành công";
+                MessageBox.Show(message2);
+                Console.WriteLine(message2);
                 reset();
             }
         }
@@ -387,6 +408,11 @@ namespace UIDuAn1
         {
             LoadData();
             
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

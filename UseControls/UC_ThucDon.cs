@@ -303,7 +303,7 @@ namespace UIDuAn1
             if (dtgThucDon.SelectedRows.Count > 0)
             {
                 int selectedRowIndex = dtgThucDon.SelectedRows[0].Index;
-                string MaSelected = dtgThucDon.Rows[selectedRowIndex].Cells["Masp"].Value.ToString();
+                string MaSelected = dtgThucDon.Rows[selectedRowIndex].Cells["MaMonAn"].Value.ToString();
 
                 using (var context = new QUANLYQUANNETContext())
                 {
@@ -316,33 +316,42 @@ namespace UIDuAn1
                         MessageBox.Show("Mã sản phẩm không tồn tại");
                         return;
                     }
-                    // Kiểm tra các trường thông tin bắt buộc
-                    if (
-                        string.IsNullOrWhiteSpace(txtTenMonAn.Text) ||
-                    string.IsNullOrWhiteSpace(txtSoluongMon.Text) ||
-                    string.IsNullOrWhiteSpace(txtGiaMonAn.Text) ||
-                    !int.TryParse(txtSoluongMon.Text, out sl) ||
-                    !int.TryParse(txtGiaMonAn.Text, out gia)
-                        )
 
+                    // Kiểm tra các trường thông tin bắt buộc
+                    if (string.IsNullOrWhiteSpace(txtTenMonAn.Text) ||
+                        string.IsNullOrWhiteSpace(txtSoluongMon.Text) ||
+                        string.IsNullOrWhiteSpace(txtGiaMonAn.Text) ||
+                        !int.TryParse(txtSoluongMon.Text, out sl) ||
+                        !int.TryParse(txtGiaMonAn.Text, out gia))
                     {
                         MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
                         return;
                     }
 
-                    // Cập nhật thông tin sản phẩm
-                    SuaTD.TenMonAn = txtTenMonAn.Text;
-                    SuaTD.SoLuong = int.Parse(txtSoluongMon.Text);
-                    SuaTD.Gia = int.Parse(txtGiaMonAn.Text);
-                    SuaTD.TinhTrang = tinhtrang;
-                    SuaTD.MaNhanVien = cbMaNV.SelectedValue.ToString();
+                    // Chỉ cập nhật những thông tin có thay đổi
+                    if (SuaTD.TenMonAn != txtTenMonAn.Text)
+                        SuaTD.TenMonAn = txtTenMonAn.Text;
+
+                    if (SuaTD.SoLuong != int.Parse(txtSoluongMon.Text))
+                        SuaTD.SoLuong = int.Parse(txtSoluongMon.Text);
+
+                    if (SuaTD.Gia != int.Parse(txtGiaMonAn.Text))
+                        SuaTD.Gia = int.Parse(txtGiaMonAn.Text);
+
+                    if (SuaTD.TinhTrang != tinhtrang)
+                        SuaTD.TinhTrang = tinhtrang;
+
+                    if (SuaTD.MaNhanVien != cbMaNV.SelectedValue.ToString())
+                        SuaTD.MaNhanVien = cbMaNV.SelectedValue.ToString();
 
                     // Kiểm tra nếu người dùng đã chọn một hình ảnh mới
                     if (pcChenAnh.ImageLocation != null)
                     {
+                        // Chỉ cập nhật hình ảnh nếu có thay đổi
                         SuaTD.HinhAnh = GetImageFromFile(pcChenAnh.ImageLocation);
                     }
 
+                    // Lưu thay đổi
                     context.SaveChanges();
                     MessageBox.Show("Cập nhật thành công");
 
@@ -354,8 +363,8 @@ namespace UIDuAn1
             {
                 MessageBox.Show("Vui lòng chọn sản phẩm cần cập nhật");
             }
-
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {

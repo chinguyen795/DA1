@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UIDuAn1;
 using UIDuAn1.Models;
-
 namespace Ui_DuAn
 {
     public partial class MainForm : Form
@@ -125,19 +124,6 @@ namespace Ui_DuAn
             UC_HoaDon uC_HoaDon = new UC_HoaDon(currentUserRole);
             addUC(uC_HoaDon);
         }
-
-        private void btnThongTin_Click(object sender, EventArgs e)
-        {
-            UC_ThongTin uC_ThongTin = new UC_ThongTin(currentUserRole);
-            addUC(uC_ThongTin);
-        }
-
-        private void btnConViec_Click(object sender, EventArgs e)
-        {
-            UC_CongViec uC_CongViec = new UC_CongViec(currentUserRole);
-            addUC(uC_CongViec);
-        }
-
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
             UC_TaiKhoan uC_TaiKhoan = new UC_TaiKhoan();
@@ -149,7 +135,19 @@ namespace Ui_DuAn
             guna2ShadowForm1.SetShadowForm(this);
         }
 
-        private void pnSlideContainer_tick(object sender, EventArgs e)
+        private void btnNhanVien_Click(object sender, EventArgs e)
+        {
+            tmNhanVien.Start();
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Close();
+        }
+
+        private void slideTimer_Tick(object sender, EventArgs e)
         {
             if (slideExpand)
             {
@@ -193,16 +191,16 @@ namespace Ui_DuAn
             }
         }
 
-        private void btnNhanVien_Click(object sender, EventArgs e)
+        private void btnThongTin_Click(object sender, EventArgs e)
         {
-            tmNhanVien.Start();
+            UC_ThongTin uC_ThongTin = new UC_ThongTin(currentUserRole);
+            addUC(uC_ThongTin);
         }
 
-        private void btnDangXuat_Click(object sender, EventArgs e)
+        private void btnConViec_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
-            this.Close();
+            UC_CongViec uC_CongViec = new UC_CongViec(currentUserRole);
+            addUC(uC_CongViec);
         }
     }
 }

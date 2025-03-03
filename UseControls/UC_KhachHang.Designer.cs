@@ -5,7 +5,7 @@
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -139,8 +139,7 @@
             // 
             // txtTaiKhoan
             // 
-            this.txtTaiKhoan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtTaiKhoan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTaiKhoan.AutoRoundedCorners = true;
             this.txtTaiKhoan.BorderRadius = 20;
@@ -164,8 +163,7 @@
             // 
             // txtSoTien
             // 
-            this.txtSoTien.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtSoTien.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSoTien.AutoRoundedCorners = true;
             this.txtSoTien.BorderRadius = 20;
@@ -189,8 +187,7 @@
             // 
             // txtMatkhau
             // 
-            this.txtMatkhau.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtMatkhau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMatkhau.AutoRoundedCorners = true;
             this.txtMatkhau.BorderRadius = 20;
@@ -214,8 +211,7 @@
             // 
             // txtMaKhachHang
             // 
-            this.txtMaKhachHang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtMaKhachHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaKhachHang.AutoRoundedCorners = true;
             this.txtMaKhachHang.BorderRadius = 20;
@@ -355,8 +351,9 @@
             this.dtgKhachHang.ThemeStyle.RowsStyle.Height = 22;
             this.dtgKhachHang.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgKhachHang.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dtgKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgKhachHang_CellContentClick);
+            this.dtgKhachHang.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgKhachHang_CellDoubleClick);
             this.dtgKhachHang.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgKhachHang_CellFormatting);
-            this.dtgKhachHang.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgKhachHang_CellMouseDoubleClick);
             // 
             // btnTimKiem
             // 
@@ -518,24 +515,24 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2ComboBox cbMaNV;
-        private System.Windows.Forms.Label lbMaNhanVien;
-        private System.Windows.Forms.Label label13;
-        private Guna.UI2.WinForms.Guna2TextBox txtTimKiem;
-        private System.Windows.Forms.Label label12;
-        private Guna.UI2.WinForms.Guna2TextBox txtTaiKhoan;
-        private Guna.UI2.WinForms.Guna2TextBox txtSoTien;
-        private Guna.UI2.WinForms.Guna2TextBox txtMatkhau;
-        private Guna.UI2.WinForms.Guna2TextBox txtMaKhachHang;
-        private System.Windows.Forms.Label lbTaiKhoan;
-        private System.Windows.Forms.Label lbSoTien;
-        private System.Windows.Forms.Label lbMatKhau;
-        private System.Windows.Forms.Label lbMaKhachHang;
-        private Guna.UI2.WinForms.Guna2DataGridView dtgKhachHang;
-        private Guna.UI2.WinForms.Guna2GradientButton btnTimKiem;
-        private Guna.UI2.WinForms.Guna2GradientButton btnThem;
-        private Guna.UI2.WinForms.Guna2GradientButton btnSua;
-        private Guna.UI2.WinForms.Guna2GradientButton btnXoa;
-        private Guna.UI2.WinForms.Guna2GradientButton btnLamMoi;
+        public Guna.UI2.WinForms.Guna2ComboBox cbMaNV;
+        public System.Windows.Forms.Label lbMaNhanVien;
+        public System.Windows.Forms.Label label13;
+        public Guna.UI2.WinForms.Guna2TextBox txtTimKiem;
+        public System.Windows.Forms.Label label12;
+        public Guna.UI2.WinForms.Guna2TextBox txtTaiKhoan;
+        public Guna.UI2.WinForms.Guna2TextBox txtSoTien;
+        public Guna.UI2.WinForms.Guna2TextBox txtMatkhau;
+        public Guna.UI2.WinForms.Guna2TextBox txtMaKhachHang;
+        public System.Windows.Forms.Label lbTaiKhoan;
+        public System.Windows.Forms.Label lbSoTien;
+        public System.Windows.Forms.Label lbMatKhau;
+        public System.Windows.Forms.Label lbMaKhachHang;
+        public Guna.UI2.WinForms.Guna2DataGridView dtgKhachHang;
+        public Guna.UI2.WinForms.Guna2GradientButton btnTimKiem;
+        public Guna.UI2.WinForms.Guna2GradientButton btnThem;
+        public Guna.UI2.WinForms.Guna2GradientButton btnSua;
+        public Guna.UI2.WinForms.Guna2GradientButton btnXoa;
+        public Guna.UI2.WinForms.Guna2GradientButton btnLamMoi;
     }
 }

@@ -2,9 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
 
 namespace UIDuAn1.Models
 {
@@ -33,7 +30,7 @@ namespace UIDuAn1.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DATTENMT\\HUUHUY;Database=QUANLYQUANNET;Trusted_Connection=True;uid=sa;password=123456");
+                optionsBuilder.UseSqlServer("Server=LAPTOP-F19TKEAD\\MAY1;Database=QUANLYQUANNET;Trusted_Connection=True;uid=sa;password=123456;TrustServerCertificate=True");
             }
         }
 

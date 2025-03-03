@@ -23,7 +23,7 @@ namespace Ui_DuAn
             Application.Exit();
         }
         private bool ispasswordShow = false;
-        // Class dùng để lưu thông tin đăng nhập
+        // dùng để lưu thông tin đăng nhập
         public class CurrentUser
         {
             private static CurrentUser _instance;
@@ -54,22 +54,30 @@ namespace Ui_DuAn
 
             if (string.IsNullOrWhiteSpace(email))
             {
-                MessageBox.Show("Vui lòng nhập Email!");
+                string message = "Vui lòng nhập Email!";
+                MessageBox.Show(message);
+                Console.WriteLine(message);
                 return;
             }
             if (!email.EndsWith("@gmail.com"))
             {
-                MessageBox.Show("Định dạng email phải là {username}@gmail.com");
+                string message = "Định dạng email phải là {username}@gmail.com";
+                MessageBox.Show(message);
+                Console.WriteLine(message);
                 return;
             }
             if (string.IsNullOrWhiteSpace(matKhau))
             {
-                MessageBox.Show("Vui lòng nhập mật khẩu!");
+                string message = "Vui lòng nhập mật khẩu!";
+                MessageBox.Show(message);
+                Console.WriteLine(message);
                 return;
             }
             if (matKhau.Length < 8)
             {
-                MessageBox.Show("Mật khẩu phải có ít nhất 8 ký tự!");
+                string message = "Mật khẩu phải có ít nhất 8 ký tự!";
+                MessageBox.Show(message);
+                Console.WriteLine(message);
                 return;
             }
             using (var context = new QUANLYQUANNETContext())
@@ -87,7 +95,6 @@ namespace Ui_DuAn
                     CurrentUser.Instance.MatKhau = nhanVien.MatKhau;
                     CurrentUser.Instance.VaiTro = nhanVien.MaVaiTro;
                     CurrentUser.Instance.HoTen = nhanVien.HoTen; // Lưu tên người dùng
-
                     MainForm mainform = new MainForm(CurrentUser.Instance.VaiTro, CurrentUser.Instance.HoTen);
                     mainform.Show();
                     this.Hide();
@@ -118,6 +125,16 @@ namespace Ui_DuAn
                 txtMatKhau.PasswordChar = '●';
                 ispasswordShow = true;
             }
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMatKhau_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

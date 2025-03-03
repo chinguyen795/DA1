@@ -120,7 +120,7 @@
             this.label1.ForeColor = System.Drawing.Color.Gray;
             this.label1.Location = new System.Drawing.Point(67, 275);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 15);
+            this.label1.Size = new System.Drawing.Size(80, 18);
             this.label1.TabIndex = 12;
             this.label1.Text = "Ghi nhớ tôi";
             // 
@@ -132,7 +132,7 @@
             this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.Location = new System.Drawing.Point(236, 109);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 17);
+            this.label2.Size = new System.Drawing.Size(37, 21);
             this.label2.TabIndex = 13;
             this.label2.Text = "GO!";
             // 
@@ -144,7 +144,7 @@
             this.label3.ForeColor = System.Drawing.Color.Gray;
             this.label3.Location = new System.Drawing.Point(139, 109);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 17);
+            this.label3.Size = new System.Drawing.Size(98, 20);
             this.label3.TabIndex = 14;
             this.label3.Text = "Welcome to";
             // 
@@ -215,7 +215,7 @@
             this.lbQuenMatKhau.ForeColor = System.Drawing.Color.Blue;
             this.lbQuenMatKhau.Location = new System.Drawing.Point(226, 275);
             this.lbQuenMatKhau.Name = "lbQuenMatKhau";
-            this.lbQuenMatKhau.Size = new System.Drawing.Size(106, 16);
+            this.lbQuenMatKhau.Size = new System.Drawing.Size(136, 20);
             this.lbQuenMatKhau.TabIndex = 17;
             this.lbQuenMatKhau.Text = "Quên mật khẩu ?";
             this.lbQuenMatKhau.Click += new System.EventHandler(this.lbQuenMatKhau_Click);
@@ -226,6 +226,7 @@
             this.btnThoat.Animated = true;
             this.btnThoat.AutoRoundedCorners = true;
             this.btnThoat.BorderRadius = 19;
+            this.btnThoat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnThoat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnThoat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnThoat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -250,6 +251,7 @@
             this.btnDangNhap.Animated = true;
             this.btnDangNhap.AutoRoundedCorners = true;
             this.btnDangNhap.BorderRadius = 19;
+            this.btnDangNhap.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDangNhap.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnDangNhap.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnDangNhap.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -291,6 +293,7 @@
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.btnDangNhap;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(850, 475);
             this.Controls.Add(this.btnShowMkCu);

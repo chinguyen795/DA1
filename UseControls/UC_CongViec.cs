@@ -21,16 +21,22 @@ namespace UIDuAn1
             currentUserRole = userRole;
             InitializeComponent();
             checkVaiTro();
+
+            // Thêm danh sách ca làm vào ComboBox
             cbCaLam.Items.AddRange(new string[] {
-                "Ca 1 ",
-                "Ca 2 ",
-                "Ca 3 ",
-                "Ca 4 "
-            });
+        "Ca 1",
+        "Ca 2",
+        "Ca 3",
+        "Ca 4"
+    });
 
+            // Đặt mặc định chọn "Ca 1"
+            cbCaLam.SelectedIndex = 0;
+
+            // Gán sự kiện khi thay đổi giá trị trong ComboBox
             cbCaLam.SelectedIndexChanged += cbCaLam_SelectedIndexChanged;
-
         }
+
         private void checkVaiTro()
         {
             using (var context = new QUANLYQUANNETContext())
@@ -111,6 +117,10 @@ namespace UIDuAn1
 
                 // Hiển thị mã ca làm mới trên form
                 txtMaCaLam.Text = newMaCa;
+                if (cbCaLam.Items.Count > 0)
+                {
+                    cbCaLam.SelectedIndex = 0; // Mặc định chọn "Ca 1"
+                }
             }
             
         }
@@ -168,27 +178,44 @@ namespace UIDuAn1
             using (var context = new QUANLYQUANNETContext())
             {
                 // Kiểm tra các trường thông tin bắt buộc
-                if (string.IsNullOrWhiteSpace(txtMaCaLam.Text) ||
-                    cbCaLam.SelectedIndex == -1 ||
-                    string.IsNullOrWhiteSpace(txtViPham.Text) ||
-                    !ContainsLetter(txtViPham.Text)) // Kiểm tra ít nhất một chữ cái trong ViPham
+                if (string.IsNullOrWhiteSpace(txtMaCaLam.Text))
                 {
-                    MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
+                    ShowError("Vui lòng nhập đầy đủ và đúng định dạng thông tin");
                     return;
                 }
 
-                // Kiểm tra giá trị SelectedValue của ComboBox
-                if (cbMaNV.SelectedValue == null)
+                if (cbCaLam.SelectedIndex == -1 || string.IsNullOrWhiteSpace(cbCaLam.Text))
                 {
-                    MessageBox.Show("Vui lòng chọn nhân viên.");
+                    ShowError("Vui lòng nhập đầy đủ và đúng định dạng thông tin");
                     return;
                 }
-                int customerCount = context.ThucDon.Count();
-                string newCustomerID = $"CA{(customerCount + 1).ToString("D3")}";
-                // Đặt SoGioLam luôn bằng 4
-                int soGioLam = 4;
 
-                // Tạo đối tượng CaLam mới
+                if (string.IsNullOrWhiteSpace(txtThoiGianLam.Text) || !int.TryParse(txtThoiGianLam.Text, out int soGioLam) || soGioLam <= 0)
+                {
+                    ShowError("Vui lòng nhập đầy đủ và đúng định dạng thông tin");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtViPham.Text) || !ContainsLetter(txtViPham.Text))
+                {
+                    ShowError("Vui lòng nhập đầy đủ và đúng định dạng thông tin");
+                    return;
+                }
+
+                if (cbMaNV.SelectedValue == null || string.IsNullOrWhiteSpace(cbMaNV.Text))
+                {
+                    ShowError("Vui lòng nhập đầy đủ và đúng định dạng thông tin");
+                    return;
+                }
+
+                // Tạo Mã Ca tự động nếu để trống
+               /* if (string.IsNullOrWhiteSpace(txtMaCaLam.Text))
+                {
+                    int count = context.CaLam.Count();
+                    txtMaCaLam.Text = $"CA{(count + 1).ToString("D3")}";
+                }*/
+
+                // Tạo đối tượng mới để thêm vào cơ sở dữ liệu
                 CaLam newCaLam = new CaLam
                 {
                     MaCa = txtMaCaLam.Text,
@@ -197,24 +224,38 @@ namespace UIDuAn1
                     ViPham = txtViPham.Text,
                     MaNhanVien = cbMaNV.SelectedValue.ToString(),
                     NgayLam = DateTime.Now,
-                    
                 };
 
                 context.CaLam.Add(newCaLam);
+
                 try
                 {
                     context.SaveChanges();
-                    MessageBox.Show("Thêm thành công");
+                    ShowSuccess("Thêm thành công");
                     LoadData();
                     ResetForm();
                 }
-                catch (DbUpdateException ex)
+                catch (DbUpdateException)
                 {
-                    // Hiển thị thông tin chi tiết của inner exception
-                    MessageBox.Show($"An error occurred while updating the entries. See the inner exception for details.\n{ex.InnerException?.Message}");
+                    ShowError("Vui lòng nhập đầy đủ và đúng định dạng thông tin");
                 }
             }
         }
+
+        // Hàm hiển thị thông báo lỗi
+        private void ShowError(string message)
+        {
+            MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Console.WriteLine(message);
+        }
+
+        // Hàm hiển thị thông báo thành công
+        private void ShowSuccess(string message)
+        {
+            MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Console.WriteLine(message);
+        }
+
 
         private void btnSua_Click_1(object sender, EventArgs e)
         {
@@ -227,7 +268,7 @@ namespace UIDuAn1
                     CaLam suaCaLam = context.CaLam.FirstOrDefault(c => c.MaCa == maCaSelected);
                     if (suaCaLam == null)
                     {
-                        MessageBox.Show("Mã ca làm không tồn tại");
+                        ShowError("Mã ca làm không tồn tại");
                         return;
                     }
 
@@ -236,7 +277,7 @@ namespace UIDuAn1
                         string.IsNullOrWhiteSpace(txtViPham.Text) ||
                         !ContainsLetter(txtViPham.Text)) // Kiểm tra ít nhất một chữ cái trong ViPham
                     {
-                        MessageBox.Show("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
+                        ShowError("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
                         return;
                     }
 
@@ -247,84 +288,68 @@ namespace UIDuAn1
                     suaCaLam.CaLam1 = cbCaLam.SelectedItem.ToString();
                     suaCaLam.SoGioLam = soGioLam;
                     suaCaLam.ViPham = txtViPham.Text;
+
+                    if (cbMaNV.SelectedValue == null || string.IsNullOrWhiteSpace(cbMaNV.Text))
+                    {
+                        ShowError("Vui lòng nhập đầy đủ và đúng định dạng thông tin");
+                        return;
+                    }
+
                     suaCaLam.MaNhanVien = cbMaNV.SelectedValue.ToString();
                     suaCaLam.NgayLam = DateTime.Now;
 
-                    context.SaveChanges();
-                    MessageBox.Show("Cập nhật thành công");
-                    LoadData();
-                    ResetForm();
+                    try
+                    {
+                        context.SaveChanges();
+                        ShowSuccess("Cập nhật thành công");
+                        LoadData();
+                        ResetForm();
+                    }
+                    catch (DbUpdateException)
+                    {
+                        ShowError("Vui lòng nhập đầy đủ và đúng định dạng thông tin.");
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn ca làm cần cập nhật");
+                ShowError("Vui lòng chọn ca làm cần cập nhật");
             }
         }
 
         private void btnXoa_Click_1(object sender, EventArgs e)
         {
+            if (dtgCongViec.SelectedRows.Count == 0)
+            {
+                ShowError("Vui lòng chọn ca làm cần xóa.");
+                return;
+            }
+
             DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Thông báo",
-        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                if (dtgCongViec.SelectedRows.Count > 0)
-                {
-                    string maCa = dtgCongViec.SelectedRows[0].Cells["MaCa"].Value.ToString();
+                string maCa = dtgCongViec.SelectedRows[0].Cells["MaCa"].Value.ToString();
 
-                    using (var context = new QUANLYQUANNETContext())
+                using (var context = new QUANLYQUANNETContext())
+                {
+                    CaLam deleteCaLam = context.CaLam.FirstOrDefault(c => c.MaCa == maCa);
+
+                    if (deleteCaLam == null)
                     {
-                        CaLam deleteCaLam = context.CaLam.FirstOrDefault(c => c.MaCa == maCa);
-
-                        if (deleteCaLam != null)
-                        {
-                            context.CaLam.Remove(deleteCaLam);
-
-                            // Cập nhật lại các khóa chính sau khi xóa
-                            var subsequentRecords = context.CaLam
-                                .Where(c => string.Compare(c.MaCa, maCa) > 0)
-                                .OrderBy(c => c.MaCa)
-                                .ToList();
-
-                            foreach (var record in subsequentRecords)
-                            {
-                                // Lưu thông tin cũ
-                                var oldRecord = new CaLam
-                                {
-                                    CaLam1 = record.CaLam1,
-                                    SoGioLam = record.SoGioLam,
-                                    ViPham = record.ViPham,
-                                    MaNhanVien = record.MaNhanVien,
-                                    NgayLam = record.NgayLam
-                                };
-
-                                // Xóa bản ghi cũ
-                                context.CaLam.Remove(record);
-                                context.SaveChanges();
-
-                                // Tạo bản ghi mới với khóa chính mới
-                                oldRecord.MaCa = "CA" + (int.Parse(record.MaCa.Substring(2)) - 1).ToString("D3");
-                                context.CaLam.Add(oldRecord);
-                            }
-
-                            context.SaveChanges();
-                            MessageBox.Show("Xóa thành công");
-                            LoadData();
-                            ResetForm();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Mã ca làm không tồn tại.");
-                        }
+                        ShowError("Mã ca làm không tồn tại.");
+                        return;
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng chọn ca làm cần xóa.");
+
+                    context.CaLam.Remove(deleteCaLam);
+                    context.SaveChanges();
+
+                    ShowSuccess("Xóa thành công");
+                    LoadData();
+                    ResetForm();
                 }
             }
-
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -338,6 +363,12 @@ namespace UIDuAn1
             using (var context = new QUANLYQUANNETContext())
             {
                 string searchTerm = txtTimKiem.Text.Trim();
+
+                if (string.IsNullOrEmpty(searchTerm))
+                {
+                    ShowError("Vui lòng nhập thông tin tìm kiếm");
+                    return;
+                }
 
                 var query = from ca in context.CaLam
                             join nhanVien in context.NhanVien on ca.MaNhanVien equals nhanVien.MaNhanVien
@@ -353,14 +384,27 @@ namespace UIDuAn1
                                 ca.CaLam1,
                                 ca.SoGioLam,
                                 ca.ViPham,
-                                ca.NgayLam, // Thêm NgayLam vào kết quả
+                                ca.NgayLam,
                                 nhanVien.HoTen
                             };
 
-                dtgCongViec.DataSource = query.ToList();
+                var result = query.ToList();
+
+                if (result.Count == 0)
+                {
+                    ShowError("Tìm thất bại. Không có kết quả phù hợp.");
+                }
+                else
+                {
+                    dtgCongViec.DataSource = result;
+                }
+
                 ResetForm();
             }
         }
+
+        // Hàm hiển thị thông báo lỗi
+        
 
         private void dtgCongViec_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -383,6 +427,11 @@ namespace UIDuAn1
 
 
             }
+        }
+
+        private void cbCaLam_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

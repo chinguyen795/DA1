@@ -36,10 +36,7 @@
             this.txtTimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.rdoHoatDong = new Guna.UI2.WinForms.Guna2CustomRadioButton();
             this.rdoKhongHoatDong = new Guna.UI2.WinForms.Guna2CustomRadioButton();
-            this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.txtGiaTien = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtGPU = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCPU = new Guna.UI2.WinForms.Guna2TextBox();
@@ -59,7 +56,9 @@
             this.btnTimKiem = new Guna.UI2.WinForms.Guna2GradientButton();
             this.label3 = new System.Windows.Forms.Label();
             this.txtMaMayTinh = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2GroupBox2.SuspendLayout();
+            this.label11 = new System.Windows.Forms.Label();
+            this.rdoHoatDong = new Guna.UI2.WinForms.Guna2CustomRadioButton();
+            this.gbTrangThai = new Guna.UI2.WinForms.Guna2GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgMayTinh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,7 +89,7 @@
             this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTimKiem.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTimKiem.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtTimKiem.IconLeft")));
-            this.txtTimKiem.Location = new System.Drawing.Point(895, 15);
+            this.txtTimKiem.Location = new System.Drawing.Point(882, 15);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.PasswordChar = '\0';
@@ -102,12 +101,14 @@
             // 
             // label12
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label12.Location = new System.Drawing.Point(0, 64);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(1332, 1);
+            this.label12.Size = new System.Drawing.Size(1319, 1);
             this.label12.TabIndex = 65;
             // 
             // label10
@@ -116,42 +117,13 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(55, 55);
+            this.label10.Location = new System.Drawing.Point(1330, 190);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(162, 25);
             this.label10.TabIndex = 33;
             this.label10.Text = "Không hoạt động";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(55, 12);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(102, 25);
-            this.label11.TabIndex = 34;
-            this.label11.Text = "Hoạt động";
-            // 
-            // rdoHoatDong
-            // 
-            this.rdoHoatDong.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoHoatDong.CheckedState.BorderThickness = 0;
-            this.rdoHoatDong.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoHoatDong.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoHoatDong.Location = new System.Drawing.Point(20, 12);
-            this.rdoHoatDong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.rdoHoatDong.Name = "rdoHoatDong";
-            this.rdoHoatDong.Size = new System.Drawing.Size(27, 25);
-            this.rdoHoatDong.TabIndex = 27;
-            this.rdoHoatDong.Text = "guna2CustomRadioButton5";
-            this.rdoHoatDong.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoHoatDong.UncheckedState.BorderThickness = 2;
-            this.rdoHoatDong.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoHoatDong.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.label10.Visible = false;
             // 
             // rdoKhongHoatDong
             // 
@@ -159,8 +131,8 @@
             this.rdoKhongHoatDong.CheckedState.BorderThickness = 0;
             this.rdoKhongHoatDong.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.rdoKhongHoatDong.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoKhongHoatDong.Location = new System.Drawing.Point(20, 55);
-            this.rdoKhongHoatDong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoKhongHoatDong.Location = new System.Drawing.Point(1414, 238);
+            this.rdoKhongHoatDong.Margin = new System.Windows.Forms.Padding(4);
             this.rdoKhongHoatDong.Name = "rdoKhongHoatDong";
             this.rdoKhongHoatDong.Size = new System.Drawing.Size(27, 25);
             this.rdoKhongHoatDong.TabIndex = 30;
@@ -169,35 +141,11 @@
             this.rdoKhongHoatDong.UncheckedState.BorderThickness = 2;
             this.rdoKhongHoatDong.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rdoKhongHoatDong.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            // 
-            // guna2GroupBox2
-            // 
-            this.guna2GroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2GroupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2GroupBox2.BorderColor = System.Drawing.Color.Silver;
-            this.guna2GroupBox2.BorderRadius = 10;
-            this.guna2GroupBox2.Controls.Add(this.label10);
-            this.guna2GroupBox2.Controls.Add(this.label11);
-            this.guna2GroupBox2.Controls.Add(this.rdoHoatDong);
-            this.guna2GroupBox2.Controls.Add(this.rdoKhongHoatDong);
-            this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.guna2GroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0);
-            this.guna2GroupBox2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(1059, 124);
-            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.ShadowDecoration.BorderRadius = 10;
-            this.guna2GroupBox2.Size = new System.Drawing.Size(232, 101);
-            this.guna2GroupBox2.TabIndex = 60;
+            this.rdoKhongHoatDong.Visible = false;
             // 
             // txtGiaTien
             // 
-            this.txtGiaTien.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtGiaTien.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtGiaTien.AutoRoundedCorners = true;
             this.txtGiaTien.BorderRadius = 20;
@@ -216,13 +164,12 @@
             this.txtGiaTien.PasswordChar = '\0';
             this.txtGiaTien.PlaceholderText = "Giá tiền";
             this.txtGiaTien.SelectedText = "";
-            this.txtGiaTien.Size = new System.Drawing.Size(281, 43);
+            this.txtGiaTien.Size = new System.Drawing.Size(268, 43);
             this.txtGiaTien.TabIndex = 58;
             // 
             // txtGPU
             // 
-            this.txtGPU.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtGPU.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtGPU.AutoRoundedCorners = true;
             this.txtGPU.BorderRadius = 20;
@@ -241,13 +188,12 @@
             this.txtGPU.PasswordChar = '\0';
             this.txtGPU.PlaceholderText = "GPU";
             this.txtGPU.SelectedText = "";
-            this.txtGPU.Size = new System.Drawing.Size(281, 43);
+            this.txtGPU.Size = new System.Drawing.Size(268, 43);
             this.txtGPU.TabIndex = 57;
             // 
             // txtCPU
             // 
-            this.txtCPU.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCPU.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCPU.AutoRoundedCorners = true;
             this.txtCPU.BorderRadius = 20;
@@ -266,7 +212,7 @@
             this.txtCPU.PasswordChar = '\0';
             this.txtCPU.PlaceholderText = "CPU";
             this.txtCPU.SelectedText = "";
-            this.txtCPU.Size = new System.Drawing.Size(281, 43);
+            this.txtCPU.Size = new System.Drawing.Size(268, 43);
             this.txtCPU.TabIndex = 56;
             // 
             // label6
@@ -278,7 +224,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(1056, 96);
+            this.label6.Location = new System.Drawing.Point(1021, 96);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 25);
@@ -358,11 +304,11 @@
             this.dtgMayTinh.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgMayTinh.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgMayTinh.Location = new System.Drawing.Point(0, 501);
-            this.dtgMayTinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgMayTinh.Margin = new System.Windows.Forms.Padding(4);
             this.dtgMayTinh.Name = "dtgMayTinh";
             this.dtgMayTinh.RowHeadersVisible = false;
             this.dtgMayTinh.RowHeadersWidth = 51;
-            this.dtgMayTinh.Size = new System.Drawing.Size(1332, 341);
+            this.dtgMayTinh.Size = new System.Drawing.Size(1319, 341);
             this.dtgMayTinh.TabIndex = 48;
             this.dtgMayTinh.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dtgMayTinh.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -389,8 +335,7 @@
             // 
             // cbMaNV
             // 
-            this.cbMaNV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.cbMaNV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbMaNV.BackColor = System.Drawing.Color.Transparent;
             this.cbMaNV.BorderRadius = 16;
@@ -402,9 +347,9 @@
             this.cbMaNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbMaNV.ItemHeight = 30;
             this.cbMaNV.Location = new System.Drawing.Point(557, 287);
-            this.cbMaNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbMaNV.Margin = new System.Windows.Forms.Padding(4);
             this.cbMaNV.Name = "cbMaNV";
-            this.cbMaNV.Size = new System.Drawing.Size(276, 36);
+            this.cbMaNV.Size = new System.Drawing.Size(263, 36);
             this.cbMaNV.TabIndex = 99;
             // 
             // label9
@@ -425,8 +370,7 @@
             // 
             // txtRAM
             // 
-            this.txtRAM.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtRAM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRAM.AutoRoundedCorners = true;
             this.txtRAM.BorderRadius = 20;
@@ -445,7 +389,7 @@
             this.txtRAM.PasswordChar = '\0';
             this.txtRAM.PlaceholderText = "RAM";
             this.txtRAM.SelectedText = "";
-            this.txtRAM.Size = new System.Drawing.Size(281, 43);
+            this.txtRAM.Size = new System.Drawing.Size(268, 43);
             this.txtRAM.TabIndex = 101;
             // 
             // label4
@@ -482,7 +426,7 @@
             this.btnThem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnThem.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
             this.btnThem.Location = new System.Drawing.Point(56, 860);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(196, 54);
             this.btnThem.TabIndex = 141;
@@ -507,7 +451,7 @@
             this.btnSua.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnSua.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
             this.btnSua.Location = new System.Drawing.Point(347, 860);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(196, 54);
             this.btnSua.TabIndex = 140;
@@ -531,8 +475,8 @@
             this.btnXoa.ForeColor = System.Drawing.Color.White;
             this.btnXoa.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnXoa.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
-            this.btnXoa.Location = new System.Drawing.Point(769, 860);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXoa.Location = new System.Drawing.Point(756, 860);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(196, 54);
             this.btnXoa.TabIndex = 139;
@@ -556,8 +500,8 @@
             this.btnLamMoi.ForeColor = System.Drawing.Color.White;
             this.btnLamMoi.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnLamMoi.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
-            this.btnLamMoi.Location = new System.Drawing.Point(1080, 860);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLamMoi.Location = new System.Drawing.Point(1067, 860);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(196, 54);
             this.btnLamMoi.TabIndex = 138;
@@ -581,8 +525,8 @@
             this.btnTimKiem.ForeColor = System.Drawing.Color.White;
             this.btnTimKiem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnTimKiem.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
-            this.btnTimKiem.Location = new System.Drawing.Point(1165, 15);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTimKiem.Location = new System.Drawing.Point(1152, 15);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(163, 43);
             this.btnTimKiem.TabIndex = 142;
@@ -607,10 +551,7 @@
             // 
             // txtMaMayTinh
             // 
-            this.txtMaMayTinh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMaMayTinh.AutoRoundedCorners = true;
+            this.txtMaMayTinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaMayTinh.BorderRadius = 20;
             this.txtMaMayTinh.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaMayTinh.DefaultText = "";
@@ -621,7 +562,7 @@
             this.txtMaMayTinh.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMaMayTinh.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMaMayTinh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaMayTinh.Location = new System.Drawing.Point(39, 145);
+            this.txtMaMayTinh.Location = new System.Drawing.Point(26, 145);
             this.txtMaMayTinh.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtMaMayTinh.Name = "txtMaMayTinh";
             this.txtMaMayTinh.PasswordChar = '\0';
@@ -631,12 +572,68 @@
             this.txtMaMayTinh.Size = new System.Drawing.Size(281, 43);
             this.txtMaMayTinh.TabIndex = 55;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(1070, 145);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(102, 25);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "Hoạt động";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // rdoHoatDong
+            // 
+            this.rdoHoatDong.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoHoatDong.CheckedState.BorderThickness = 0;
+            this.rdoHoatDong.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoHoatDong.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rdoHoatDong.Location = new System.Drawing.Point(1026, 145);
+            this.rdoHoatDong.Margin = new System.Windows.Forms.Padding(4);
+            this.rdoHoatDong.Name = "rdoHoatDong";
+            this.rdoHoatDong.Size = new System.Drawing.Size(27, 25);
+            this.rdoHoatDong.TabIndex = 27;
+            this.rdoHoatDong.Text = "guna2CustomRadioButton5";
+            this.rdoHoatDong.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rdoHoatDong.UncheckedState.BorderThickness = 2;
+            this.rdoHoatDong.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rdoHoatDong.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            // 
+            // gbTrangThai
+            // 
+            this.gbTrangThai.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbTrangThai.BackColor = System.Drawing.Color.Transparent;
+            this.gbTrangThai.BorderColor = System.Drawing.Color.Silver;
+            this.gbTrangThai.BorderRadius = 10;
+            this.gbTrangThai.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.gbTrangThai.CustomBorderThickness = new System.Windows.Forms.Padding(0);
+            this.gbTrangThai.FillColor = System.Drawing.Color.Transparent;
+            this.gbTrangThai.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbTrangThai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.gbTrangThai.Location = new System.Drawing.Point(1320, 320);
+            this.gbTrangThai.Margin = new System.Windows.Forms.Padding(4);
+            this.gbTrangThai.Name = "gbTrangThai";
+            this.gbTrangThai.ShadowDecoration.BorderRadius = 10;
+            this.gbTrangThai.Size = new System.Drawing.Size(253, 90);
+            this.gbTrangThai.TabIndex = 60;
+            this.gbTrangThai.Visible = false;
+            // 
             // UC_MayTinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.rdoHoatDong);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.btnThem);
+            this.Controls.Add(this.rdoKhongHoatDong);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnLamMoi);
@@ -647,7 +644,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.guna2GroupBox2);
+            this.Controls.Add(this.gbTrangThai);
             this.Controls.Add(this.txtGiaTien);
             this.Controls.Add(this.txtGPU);
             this.Controls.Add(this.txtCPU);
@@ -658,12 +655,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtgMayTinh);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_MayTinh";
-            this.Size = new System.Drawing.Size(1332, 933);
+            this.Size = new System.Drawing.Size(1319, 933);
             this.Load += new System.EventHandler(this.UC_MayTinh_Load);
-            this.guna2GroupBox2.ResumeLayout(false);
-            this.guna2GroupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgMayTinh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -672,32 +667,32 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label13;
-        private Guna.UI2.WinForms.Guna2TextBox txtTimKiem;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private Guna.UI2.WinForms.Guna2CustomRadioButton rdoHoatDong;
-        private Guna.UI2.WinForms.Guna2CustomRadioButton rdoKhongHoatDong;
-        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox2;
-        private Guna.UI2.WinForms.Guna2TextBox txtGiaTien;
-        private Guna.UI2.WinForms.Guna2TextBox txtGPU;
-        private Guna.UI2.WinForms.Guna2TextBox txtCPU;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2DataGridView dtgMayTinh;
-        private Guna.UI2.WinForms.Guna2ComboBox cbMaNV;
-        private System.Windows.Forms.Label label9;
-        private Guna.UI2.WinForms.Guna2TextBox txtRAM;
-        private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2GradientButton btnThem;
-        private Guna.UI2.WinForms.Guna2GradientButton btnSua;
-        private Guna.UI2.WinForms.Guna2GradientButton btnXoa;
-        private Guna.UI2.WinForms.Guna2GradientButton btnLamMoi;
-        private Guna.UI2.WinForms.Guna2GradientButton btnTimKiem;
-        private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2TextBox txtMaMayTinh;
+        public System.Windows.Forms.Label label13;
+        public Guna.UI2.WinForms.Guna2TextBox txtTimKiem;
+        public System.Windows.Forms.Label label12;
+        public System.Windows.Forms.Label label10;
+        public Guna.UI2.WinForms.Guna2CustomRadioButton rdoKhongHoatDong;
+        public Guna.UI2.WinForms.Guna2TextBox txtGiaTien;
+        public Guna.UI2.WinForms.Guna2TextBox txtGPU;
+        public Guna.UI2.WinForms.Guna2TextBox txtCPU;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label1;
+        public Guna.UI2.WinForms.Guna2DataGridView dtgMayTinh;
+        public Guna.UI2.WinForms.Guna2ComboBox cbMaNV;
+        public System.Windows.Forms.Label label9;
+        public Guna.UI2.WinForms.Guna2TextBox txtRAM;
+        public System.Windows.Forms.Label label4;
+        public Guna.UI2.WinForms.Guna2GradientButton btnThem;
+        public Guna.UI2.WinForms.Guna2GradientButton btnSua;
+        public Guna.UI2.WinForms.Guna2GradientButton btnXoa;
+        public Guna.UI2.WinForms.Guna2GradientButton btnLamMoi;
+        public Guna.UI2.WinForms.Guna2GradientButton btnTimKiem;
+        public System.Windows.Forms.Label label3;
+        public Guna.UI2.WinForms.Guna2TextBox txtMaMayTinh;
+        public System.Windows.Forms.Label label11;
+        public Guna.UI2.WinForms.Guna2CustomRadioButton rdoHoatDong;
+        public Guna.UI2.WinForms.Guna2GroupBox gbTrangThai;
     }
 }

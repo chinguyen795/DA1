@@ -241,7 +241,7 @@
             this.dtgCongViec.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgCongViec.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtgCongViec.Location = new System.Drawing.Point(0, 501);
-            this.dtgCongViec.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgCongViec.Margin = new System.Windows.Forms.Padding(4);
             this.dtgCongViec.Name = "dtgCongViec";
             this.dtgCongViec.RowHeadersVisible = false;
             this.dtgCongViec.RowHeadersWidth = 51;
@@ -285,7 +285,7 @@
             this.cbMaNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbMaNV.ItemHeight = 30;
             this.cbMaNV.Location = new System.Drawing.Point(1019, 145);
-            this.cbMaNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbMaNV.Margin = new System.Windows.Forms.Padding(4);
             this.cbMaNV.Name = "cbMaNV";
             this.cbMaNV.Size = new System.Drawing.Size(276, 36);
             this.cbMaNV.TabIndex = 96;
@@ -349,7 +349,7 @@
             this.btnLamMoi.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnLamMoi.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
             this.btnLamMoi.Location = new System.Drawing.Point(1084, 864);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(196, 54);
             this.btnLamMoi.TabIndex = 130;
@@ -374,7 +374,7 @@
             this.btnXoa.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnXoa.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
             this.btnXoa.Location = new System.Drawing.Point(773, 864);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(196, 54);
             this.btnXoa.TabIndex = 131;
@@ -399,7 +399,7 @@
             this.btnSua.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnSua.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
             this.btnSua.Location = new System.Drawing.Point(351, 864);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(196, 54);
             this.btnSua.TabIndex = 132;
@@ -424,7 +424,7 @@
             this.btnThem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnThem.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
             this.btnThem.Location = new System.Drawing.Point(60, 864);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(196, 54);
             this.btnThem.TabIndex = 133;
@@ -449,7 +449,7 @@
             this.btnTimKiem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.btnTimKiem.HoverState.FillColor2 = System.Drawing.Color.SkyBlue;
             this.btnTimKiem.Location = new System.Drawing.Point(1165, 11);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(163, 43);
             this.btnTimKiem.TabIndex = 134;
@@ -471,10 +471,11 @@
             this.cbCaLam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbCaLam.ItemHeight = 30;
             this.cbCaLam.Location = new System.Drawing.Point(528, 145);
-            this.cbCaLam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCaLam.Margin = new System.Windows.Forms.Padding(4);
             this.cbCaLam.Name = "cbCaLam";
             this.cbCaLam.Size = new System.Drawing.Size(276, 36);
             this.cbCaLam.TabIndex = 135;
+            this.cbCaLam.SelectedIndexChanged += new System.EventHandler(this.cbCaLam_SelectedIndexChanged_1);
             // 
             // UC_CongViec
             // 
@@ -499,7 +500,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtgCongViec);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_CongViec";
             this.Size = new System.Drawing.Size(1332, 933);
             this.Load += new System.EventHandler(this.UC_CongViec_Load_1);
@@ -511,24 +512,24 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private Guna.UI2.WinForms.Guna2TextBox txtThoiGianLam;
-        private Guna.UI2.WinForms.Guna2TextBox txtViPham;
-        private Guna.UI2.WinForms.Guna2TextBox txtMaCaLam;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2DataGridView dtgCongViec;
-        private Guna.UI2.WinForms.Guna2ComboBox cbMaNV;
-        private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2TextBox txtTimKiem;
-        private Guna.UI2.WinForms.Guna2GradientButton btnLamMoi;
-        private Guna.UI2.WinForms.Guna2GradientButton btnXoa;
-        private Guna.UI2.WinForms.Guna2GradientButton btnSua;
-        private Guna.UI2.WinForms.Guna2GradientButton btnThem;
-        private Guna.UI2.WinForms.Guna2GradientButton btnTimKiem;
-        private Guna.UI2.WinForms.Guna2ComboBox cbCaLam;
+        public System.Windows.Forms.Label label13;
+        public System.Windows.Forms.Label label12;
+        public Guna.UI2.WinForms.Guna2TextBox txtThoiGianLam;
+        public Guna.UI2.WinForms.Guna2TextBox txtViPham;
+        public Guna.UI2.WinForms.Guna2TextBox txtMaCaLam;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label3;
+        public Guna.UI2.WinForms.Guna2DataGridView dtgCongViec;
+        public Guna.UI2.WinForms.Guna2ComboBox cbMaNV;
+        public System.Windows.Forms.Label label4;
+        public Guna.UI2.WinForms.Guna2TextBox txtTimKiem;
+        public Guna.UI2.WinForms.Guna2GradientButton btnLamMoi;
+        public Guna.UI2.WinForms.Guna2GradientButton btnXoa;
+        public Guna.UI2.WinForms.Guna2GradientButton btnSua;
+        public Guna.UI2.WinForms.Guna2GradientButton btnThem;
+        public Guna.UI2.WinForms.Guna2GradientButton btnTimKiem;
+        public Guna.UI2.WinForms.Guna2ComboBox cbCaLam;
     }
 }
