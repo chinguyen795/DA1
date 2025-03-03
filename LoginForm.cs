@@ -54,24 +54,32 @@ namespace Ui_DuAn
 
             if (string.IsNullOrWhiteSpace(email))
             {
-                MessageBox.Show("Vui lòng nhập Email!");
-                return;
-            }
+				string message = "Vui lòng nhập Email!";
+				MessageBox.Show(message);
+				Console.WriteLine(message);
+				return;
+			}
             if (!email.EndsWith("@gmail.com"))
             {
-                MessageBox.Show("Định dạng email phải là {username}@gmail.com");
-                return;
-            }
+				string message = "Định dạng email phải là {username}@gmail.com";
+				MessageBox.Show(message);
+				Console.WriteLine(message);
+				return;
+			}
             if (string.IsNullOrWhiteSpace(matKhau))
             {
-                MessageBox.Show("Vui lòng nhập mật khẩu!");
-                return;
-            }
+				string message = "Vui lòng nhập mật khẩu!";
+				MessageBox.Show(message);
+				Console.WriteLine(message);
+				return;
+			}
             if (matKhau.Length < 8)
             {
-                MessageBox.Show("Mật khẩu phải có ít nhất 8 ký tự!");
-                return;
-            }
+				string message = "Mật khẩu phải có ít nhất 8 ký tự!";
+				MessageBox.Show(message);
+				Console.WriteLine(message);
+				return;
+			}
             using (var context = new QUANLYQUANNETContext())
             {
                 var query = from NhanVien in context.NhanVien
@@ -86,7 +94,7 @@ namespace Ui_DuAn
                     CurrentUser.Instance.Email = nhanVien.Gmail;
                     CurrentUser.Instance.MatKhau = nhanVien.MatKhau;
                     CurrentUser.Instance.VaiTro = nhanVien.MaVaiTro;
-                    CurrentUser.Instance.HoTen = nhanVien.HoTen; // Lưu tên người dùng
+                    CurrentUser.Instance.HoTen = nhanVien.HoTen;
 
                     MainForm mainform = new MainForm(CurrentUser.Instance.VaiTro, CurrentUser.Instance.HoTen);
                     mainform.Show();
@@ -94,7 +102,9 @@ namespace Ui_DuAn
                 }
                 else
                 {
-                    MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!");
+					string message = "Tài khoản hoặc mật khẩu không chính xác!";
+					MessageBox.Show(message);
+					Console.WriteLine(message);
                 }
             }
         }
@@ -118,6 +128,16 @@ namespace Ui_DuAn
                 txtMatKhau.PasswordChar = '●';
                 ispasswordShow = true;
             }
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMatKhau_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

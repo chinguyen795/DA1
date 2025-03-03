@@ -581,6 +581,7 @@
             this.Controls.Add(this.label1);
             this.Name = "UC_TaiKhoan";
             this.Size = new System.Drawing.Size(999, 758);
+            this.Load += new System.EventHandler(this.UC_TaiKhoan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

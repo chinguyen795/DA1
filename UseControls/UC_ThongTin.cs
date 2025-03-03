@@ -56,7 +56,6 @@ namespace UIDuAn1
                             btnLamMoi.Enabled = false;
                             break;
                         default:
-                            // Vô hiệu hóa tất cả các nút nếu vai trò không xác định
                             break;
                     }
                 }
